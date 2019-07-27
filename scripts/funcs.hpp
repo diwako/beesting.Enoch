@@ -83,3 +83,4 @@ class mission{
 		class coverMap{};
 	};
 };
+#include "cbrn\funcs.hpp"
