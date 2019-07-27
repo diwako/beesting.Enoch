@@ -1,0 +1,1 @@
+[] remoteExec ["respawn_fnc_respawn",0,false];
