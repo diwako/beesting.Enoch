@@ -73,8 +73,8 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 }] call CBA_fnc_addClassEventHandler;
 
 // [[3126.300,1316.491], [2993.318,1297.753,0]] call mission_fnc_coverMap;
-[getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
-//[[9625,4480],[2100,900,0]] spawn mission_fnc_coverMap; // Rute 2 AO
+// [getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
+[[9625,4480],[2100,900,0]] spawn mission_fnc_coverMap; // Rute 2 AO
 
 ["destr1", 300, 32, [], true] call msc_fnc_destroyCity;
 ["destr2", 300, 32, [], true] call msc_fnc_destroyCity;

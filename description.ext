@@ -40,10 +40,15 @@ class CfgDebriefingSections {
         variable = "acex_killTracker_outputText";
     };
 };
+class RscTitles
+{
+  #include "scripts\cbrn\rsctitles.hpp"
+}
 
 class CfgSounds {
   sounds[] = {};
   #include "sounds\units\sounds.hpp"
+  #include "scripts\cbrn\sounds\sounds.hpp"
   class Hitsound {
 		name = "Hitsound";
 		sound[] = {"sounds\Hitsound.ogg", 1, 0.75, 50};
