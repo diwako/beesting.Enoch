@@ -4,5 +4,8 @@ class cbrn{
 		file = "scripts\cbrn\functions";
 		class init{postInit=1;};
 		class startOxygen{};
+		class addZone{};
+		class createZone{};
+		class threatPFH{};
 	};
 };

@@ -123,3 +123,43 @@ _action = ["cbrn_check_oxygen", "Check remaining oxygen","",{
     ace_player getVariable ["cbrn_backpack_on", false];
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+cbrn_localZones = [];
+["cbrn_createZone", {
+    params ["_pos", "_threatLevel", "_size", "_falloffArea"];
+    private _trg = createTrigger ["EmptyDetector", _pos, false];
+    _trg setVariable ["cbrn_zone", true];
+    _trg enableDynamicSimulation false;
+    _trg setVariable ["cbrn_active", true];
+    _trg setVariable ["cbrn_threatLevel", _threatLevel];
+    _trg setVariable ["cbrn_size", _size];
+    _trg setVariable ["cbrn_falloffArea", _falloffArea];
+    private _radius = _size + _falloffArea;
+    _trg setTriggerArea [_radius, _radius, 0, false, _radius];
+    _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+    _trg setTriggerStatements ["thisTrigger getVariable ['cbrn_active',false] && {this && {ace_player in thisList}}", "[thisTrigger, ace_player, true] call cbrn_fnc_addZone", "[thisTrigger, ace_player, false] call cbrn_fnc_addZone"];
+    cbrn_localZones pushBack _trg;
+}] call CBA_fnc_addEventhandler;
+
+[cbrn_fnc_threatPFH, 1] call CBA_fnc_addPerFrameHandler;
+
+[{
+    private _player = ace_player;
+    {
+        if ((_player distance2D _x) < 500) then {
+            if !(simulationEnabled _x) then {
+                systemChat "enabling zone";
+                _x enableSimulation true;
+            };
+        } else {
+            if (simulationEnabled _x) then {
+                systemChat "disabling zone";
+                _x enableSimulation false;
+            };
+        };
+    } forEach cbrn_localZones;
+}, 10] call CBA_fnc_addPerFrameHandler;
+
+private _pos = (getPosATL player) vectorAdd [10,0,0];
+[player, 2] call cbrn_fnc_createZone;
+[_pos] call cbrn_fnc_createZone;
