@@ -77,7 +77,6 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
 }] call CBA_fnc_addEventHandler;
 
 private _action = ["cbrn_turn_on_oxygen", "Turn on oxygen","",{
-    systemChat "boop!";
     [ace_player] call cbrn_fnc_startOxygen;
 },{
     private _plr = ace_player;
@@ -90,5 +89,37 @@ _action = ["cbrn_turn_off_oxygen", "Turn off oxygen","",{
     ace_player setVariable ["cbrn_oxygen", false, true];
 },{
     ace_player getVariable ["cbrn_oxygen", false]
+},{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
+["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+_action = ["cbrn_check_oxygen", "Check remaining oxygen","",{
+    [{
+        params ["_unit"];
+        private _remaining = (backpackContainer _unit) getVariable ["cbrn_oxygen", cbrn_maxOxygenTime];
+        private _bars = round ((_remaining / cbrn_maxOxygenTime) * 10);
+        if (_bars isEqualTo 0 && {_remaining > 0}) then {
+            _bars = 1;
+        };
+        private _emptyBars = 10 - _bars;
+
+        private _color = [((2 * (1 - _remaining / cbrn_maxOxygenTime)) min 1), ((2 * _remaining / cbrn_maxOxygenTime) min 1), 0];
+
+        private _string = "";
+        for "_a" from 1 to _bars do {
+            _string = _string + "|";
+        };
+        private _text = [_string, _color] call ace_common_fnc_stringToColoredText;
+
+        _string = "";
+        for "_a" from 1 to _emptyBars do {
+            _string = _string + "|";
+        };
+        _text = composeText [_text, [_string, "#808080"] call ace_common_fnc_stringToColoredText];
+
+        private _picture = getText (configFile >> "CfgVehicles" >> (backpack _unit) >> "picture");
+        [_text, _picture] call ace_common_fnc_displayTextPicture;
+    }, [ace_player]] call CBA_fnc_execNextFrame;
+},{
+    ace_player getVariable ["cbrn_backpack_on", false];
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;

@@ -46,3 +46,15 @@ class gas_breath_out_4
     sound[] = {"scripts\cbrn\sounds\gas_breath_out_4.ogg", 1, 1, 10};
     titles[]={};
 };
+class lowoxwarning_short
+{
+    name = "lowoxwarning_short";
+    sound[] = {"scripts\cbrn\sounds\lowoxwarning_short.ogg", 1.5, 1, 50};
+    titles[]={};
+};
+class lowoxwarning
+{
+    name = "lowoxwarning";
+    sound[] = {"scripts\cbrn\sounds\lowoxwarning.ogg", 1.5, 1, 50};
+    titles[]={};
+};
