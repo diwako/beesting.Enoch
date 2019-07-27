@@ -46,6 +46,7 @@ _buildings = _buildings - _blacklist;
 		if (_seedLocal > 0.9) then {
 			//_x hideobject true;
 			_x setdamage [1,false];
+			_x hideObjectGlobal true;
 			if (_debug) then {_marker =_x call bis_fnc_boundingboxmarker; _marker setmarkercolor "colorblue";};
 
 		} else {

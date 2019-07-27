@@ -1,4 +1,4 @@
-#define RANGE 75
+#define RANGE 150
 
 tint_range = RANGE;
 

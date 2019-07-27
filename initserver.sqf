@@ -75,8 +75,5 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 // [[3126.300,1316.491], [2993.318,1297.753,0]] call mission_fnc_coverMap;
 [getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
 
-[] spawn {
-	sleep 5;
-	["destr1", 300, 32, [], true] call msc_fnc_destroyCity;
-	["destr2", 300, 32, [], true] call msc_fnc_destroyCity;
-};
+["destr1", 300, 32, [], true] call msc_fnc_destroyCity;
+["destr2", 300, 32, [], true] call msc_fnc_destroyCity;
