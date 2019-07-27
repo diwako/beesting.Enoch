@@ -55,10 +55,10 @@ if(_side == west) exitWith {
 		_man addVest "V_Chestrig_rgr";
 		_man addHeadgear "H_HelmetB_light_wdl";
 
-		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_545x39_Mag_F";};
-
 		_man addWeapon "arifle_AKS_F";
 		_man addWeapon "Binocular";
+
+		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_545x39_Mag_F";};
 	};
 
 	//Doc
@@ -67,10 +67,10 @@ if(_side == west) exitWith {
 		_man addVest "V_Rangemaster_belt";
 		_man addHeadgear "H_PASGT_basic_blue_F";
 
-		for "_i" from 1 to 4 do {_man addItemToVest "11Rnd_45ACP_Mag";};
-
 		_man addWeapon "hgun_Pistol_heavy_01_green_F";
 		_man addHandgunItem "acc_flashlight_pistol";
+
+		for "_i" from 1 to 4 do {_man addItemToVest "11Rnd_45ACP_Mag";};
 	};
 
 	//Pawel
@@ -79,10 +79,10 @@ if(_side == west) exitWith {
 		_man addVest "V_CarrierRigKBT_01_EAF_F";
 		_man addHeadgear "H_HelmetHBK_headset_F";
 
-		for "_i" from 1 to 4 do {_man addItemToVest "30Rnd_9x21_Mag";};
-
 		_man addWeapon "hgun_PDW2000_F";
 		_man addPrimaryWeaponItem "muzzle_snds_l";
+
+		for "_i" from 1 to 4 do {_man addItemToVest "30Rnd_9x21_Mag";};
 	};
 
 	//Jaroslaw
@@ -91,9 +91,9 @@ if(_side == west) exitWith {
 		_man addVest "V_Chestrig_rgr";
 		_man addHeadgear "H_Bandanna_sgg";
 
-		for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
-
 		_man addWeapon "arifle_AKM_F";
+
+		for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
 	};
 
 	//Stanislaw
@@ -102,10 +102,10 @@ if(_side == west) exitWith {
 		_man addVest "V_BandollierB_rgr";
 		_man addHeadgear "H_Hat_tan";
 
-		for "_i" from 1 to 6 do {_man addItemToVest "10Rnd_Mk14_762x51_Mag";};
-
 		_man addWeapon "srifle_DMR_06_hunter_F";
 		_man addPrimaryWeaponItem "optic_khs_old";
+
+		for "_i" from 1 to 6 do {_man addItemToVest "10Rnd_Mk14_762x51_Mag";};
 	};
 
 	//Tomasz and Tymon
@@ -114,10 +114,10 @@ if(_side == west) exitWith {
 		_man addVest selectRandom ["V_Pocketed_black_F","V_Pocketed_coyote_F","V_Pocketed_olive_F"];
 		_man addHeadgear selectRandom ["H_Cap_oli","H_Watchcap_camo","H_Booniehat_mgrn","H_MilCap_gry","H_Construction_earprot_black_F"];
 
+		_man addWeapon "sgun_HunterShotgun_01_F";
+
 		for "_i" from 1 to 5 do {_man addItemToVest "2Rnd_12Gauge_Pellets";};
 		for "_i" from 1 to 6 do {_man addItemToVest "2Rnd_12Gauge_Slug";};
-
-		_man addWeapon "sgun_HunterShotgun_01_F";
 	};
 
 	//Andrey
@@ -126,10 +126,10 @@ if(_side == west) exitWith {
 		_man addVest "V_SmershVest_01_radio_F";
 		_man addHeadgear "H_MilCap_grn";
 
-		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_762x39_AK12_Mag_F";};
-
 		_man addWeapon "arifle_AK12U_F";
 		_man addPrimaryWeaponItem "acc_flashlight";
+
+		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_762x39_AK12_Mag_F";};
 	};
 
 	//Valery
@@ -138,9 +138,9 @@ if(_side == west) exitWith {
 		_man addVest "V_SmershVest_01_F";
 		_man addHeadgear "H_HelmetAggressor_F";
 
-		for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
-
 		_man addWeapon "arifle_AK12U_F";
+
+		for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
 	};
 
 	//Kamil
@@ -148,10 +148,10 @@ if(_side == west) exitWith {
 		_man forceAddUniform "U_C_E_LooterJacket_01_F";
 		_man addVest "V_Rangemaster_belt";
 
+		_man addWeapon "sgun_HunterShotgun_01_sawedoff_F";
+
 		for "_i" from 1 to 4 do {_man addItemToVest "2Rnd_12Gauge_Pellets";};
 		for "_i" from 1 to 2 do {_man addItemToVest "2Rnd_12Gauge_Slug";};
-
-		_man addWeapon "sgun_HunterShotgun_01_sawedoff_F";
 	};
 
 
@@ -164,7 +164,7 @@ if(_side == west) exitWith {
 	if (25 > random 100) then {_man addItemToVest "HandGrenade";};
 
 	//Add backpacks with mask and medical for doc
-	if (_type != "") then {
+	if (_type != "B_medic_F") then {
 		_man addBackpack selectRandom ["B_AssaultPack_blk","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk","B_AssaultPack_wdl_F","B_AssaultPack_sgg","B_AssaultPack_eaf_F","B_Messenger_Black_F","B_Messenger_Coyote_F","B_Messenger_Gray_F","B_Messenger_Olive_F"];
 		_man addItemToBackpack selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 	} else {
