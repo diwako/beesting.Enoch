@@ -214,7 +214,7 @@ player addEventHandler ["Respawn", {
     player setVariable ["cbrn_damage", 0];
 }];
 
-_action = ["cbrn_turn_check_damage", "Check CBRN related damage","",{
+_action = ["cbrn_turn_check_damage", "Check CRBN Exposure","",{
     private _damage = ace_player getVariable ["cbrn_damage", 0];
     private _coef = _damage / cbrn_maxDamage;
     if (_coef < 0.1) exitWith {
