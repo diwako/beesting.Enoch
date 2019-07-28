@@ -15,7 +15,7 @@ if (_threadLevel >= 2) then {
 if (_threadLevel >= 3) then {
     // level 4 threat
     // requires cbrn suit
-    _actualThreat = _actualThreat - ([0,1] select (_unit getVariable ["cbrn_oxygen", false]));
+    _actualThreat = _actualThreat - ([0,1] select (_unit getVariable ["cbrn_hasSuite", false]));
 };
 
 _actualThreat = _actualThreat max 0;

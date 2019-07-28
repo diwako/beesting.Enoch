@@ -13,7 +13,7 @@ class gasmask {
         style = 48;
         colorBackground[] = { };
         colorText[] = { };
-        font = Bitstream;
+        font = "PuristaMedium";
         sizeEx = 1.0;
         moving = false;
         x = safeZoneXAbs;

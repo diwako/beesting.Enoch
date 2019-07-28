@@ -1,6 +1,6 @@
 cbrn_backpacks = ["B_SCBA_01_F"];
 
-cbrn_suits = [];
+cbrn_suits = ["U_C_CBRN_Suit_01_Blue_F", "U_B_CBRN_Suit_01_MTP_F", "U_B_CBRN_Suit_01_Tropic_F", "U_C_CBRN_Suit_01_White_F", "U_B_CBRN_Suit_01_Wdl_F", "U_I_CBRN_Suit_01_AAF_F", "U_I_E_CBRN_Suit_01_EAF_F"];
 
 cbrn_masks = ["G_AirPurifyingRespirator_02_black_F",
     "G_AirPurifyingRespirator_02_olive_F",
@@ -61,6 +61,7 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     if (_unit != ace_player) exitWith {};
     private _goggles = goggles _unit;
     private _backpack = backpack _unit;
+    private _uniform = uniform _unit;
 
     private _hasMask = (cbrn_masks findIf {_x isEqualTo _goggles}) > -1;
     if (!(_unit getVariable ["cbrn_mask_on", false]) && {_hasMask}) then {
@@ -113,6 +114,16 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
             _unit setVariable ["cbrn_using_threat_meter", false, true];
         };
     };
+
+    private _hasSuit = (cbrn_suits findIf {_x isEqualTo _uniform}) > -1;
+    if (!(_unit getVariable ["cbrn_hasSuite", false]) && {_hasSuit}) then {
+        _unit setVariable ["cbrn_hasSuite", true, true];
+    };
+    if (_unit getVariable ["cbrn_hasSuite", false] && {!_hasSuit}) then {
+        _unit setVariable ["cbrn_hasSuite", false, true];
+    };
+
+    // todo: https://forums.bohemia.net/forums/topic/143930-general-discussion-dev-branch/?page=1020&tab=comments#comment-3363538
 }] call CBA_fnc_addEventHandler;
 
 private _action = ["cbrn_turn_on_oxygen", "Turn on oxygen","",{

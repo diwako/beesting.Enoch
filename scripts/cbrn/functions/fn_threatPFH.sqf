@@ -31,23 +31,32 @@ if (_player getVariable ["cbrn_using_threat_meter", false]) then {
         private _ctrl = _display ctrlCreate ["RscPicture", 753];
         _ctrl ctrlSetPosition _pos;
         _ctrl ctrlSetBackgroundColor [1,1,1,0.5];
-        _ctrl ctrlSetText "scripts\cbrn\images\threatmeter.paa";
+        _ctrl ctrlSetText "scripts\cbrn\images\threatmetercolours.paa";
         _ctrl ctrlSetTextColor [1,1,1,1];
         _ctrl ctrlCommit 0;
         uiNamespace setVariable ["cbrn_threatBaseCtrl", _ctrl];
 
         _ctrl = _display ctrlCreate ["RscPicture", 755];
-        _ctrl ctrlSetPosition _pos;
+        _ctrl ctrlSetPosition [0.5 - ((256 * pixelW) / 2),safeZoneY - ((256 * pixelH) / 2),256 * pixelW, 256 * pixelH];
         _ctrl ctrlSetBackgroundColor [1,1,1,1];
         _ctrl ctrlSetText "scripts\cbrn\images\needle.paa";
         _ctrl ctrlSetTextColor [1,1,1,1];
         _ctrl ctrlCommit 0;
         uiNamespace setVariable ["cbrn_threatNeedleCtrl", _ctrl];
+
+        _ctrl = _display ctrlCreate ["RscPicture", 755];
+        _ctrl ctrlSetPosition _pos;
+        _ctrl ctrlSetBackgroundColor [1,1,1,1];
+        _ctrl ctrlSetText "scripts\cbrn\images\threatmeteroverlay.paa";
+        _ctrl ctrlSetTextColor [1,1,1,1];
+        _ctrl ctrlCommit 0;
+        uiNamespace setVariable ["cbrn_threatOverlayCtrl", _ctrl];
     };
     private _needle = uiNamespace getVariable ["cbrn_threatNeedleCtrl", ctrlNull];
     private _dir = (linearConversion [0, 4, _max - 0.1 + (random 0.2), 90, -90, true]) mod 360;
-    _needle ctrlSetAngle [_dir, 0.5, 0];
+    _needle ctrlSetAngle [_dir, 0.5, 0.5];
 } else {
     ctrlDelete (uiNamespace getVariable ["cbrn_threatBaseCtrl", ctrlNull]);
     ctrlDelete (uiNamespace getVariable ["cbrn_threatNeedleCtrl", ctrlNull]);
+    ctrlDelete (uiNamespace getVariable ["cbrn_threatOverlayCtrl", ctrlNull]);
 };
