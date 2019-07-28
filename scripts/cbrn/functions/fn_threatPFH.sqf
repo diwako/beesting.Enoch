@@ -24,7 +24,7 @@ if (alive _player && {!(_zones isEqualTo [])}) then {
 [_player, _max] call cbrn_fnc_handleDamage;
 
 if (_player getVariable ["cbrn_using_threat_meter", false]) then {
-    if (isNull (uiNamespace getVariable ["cbrn_threatBaseCtrl", ctrlNull])) then {
+    if (isNull (uiNamespace getVariable ["cbrn_threatBaseCtrl", objNull])) then {
         private _display = findDisplay 46;
         if (isNull _display) exitWith {};
         private _pos = [0.5 - ((256 * pixelW) / 2),safeZoneY,256 * pixelW, 256 * pixelH];
