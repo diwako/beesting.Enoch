@@ -8,22 +8,22 @@ class EditorData
 	toggles=13;
 	class ItemIDProvider
 	{
-		nextID=54;
+		nextID=61;
 	};
 	class MarkerIDProvider
 	{
-		nextID=15;
+		nextID=20;
 	};
 	class LayerIndexProvider
 	{
-		nextID=4;
+		nextID=5;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={9922.9961,188.98508,3780.7788};
+		dir[]={-0.54348224,-0.45055771,0.70825899};
+		up[]={-0.27428794,0.89274287,0.35744858};
+		aside[]={0.79334778,-1.4679972e-007,0.60877395};
 	};
 };
 binarizationWanted=0;
@@ -124,24 +124,14 @@ class Mission
 	};
 	class Entities
 	{
-		items=5;
+		items=7;
 		class Item0
-		{
-			dataType="Group";
-			side="West";
-			class Attributes
-			{
-			};
-			id=16;
-			atlOffset=-252.33;
-		};
-		class Item1
 		{
 			dataType="Layer";
 			name="Rute 1";
 			class Entities
 			{
-				items=10;
+				items=11;
 				class Item0
 				{
 					dataType="Marker";
@@ -247,11 +237,20 @@ class Mission
 					id=36;
 					atlOffset=56.611992;
 				};
+				class Item10
+				{
+					dataType="Marker";
+					position[]={11519.837,159.756,4602.3232};
+					name="destr3";
+					type="Empty";
+					id=54;
+					atlOffset=0.0059967041;
+				};
 			};
 			id=28;
-			atlOffset=-15.794601;
+			atlOffset=42.315773;
 		};
-		class Item2
+		class Item1
 		{
 			dataType="Group";
 			side="West";
@@ -386,7 +385,7 @@ class Mission
 			};
 			id=41;
 		};
-		class Item3
+		class Item2
 		{
 			dataType="Group";
 			side="West";
@@ -638,7 +637,7 @@ class Mission
 			};
 			id=44;
 		};
-		class Item4
+		class Item3
 		{
 			dataType="Group";
 			side="West";
@@ -889,6 +888,33 @@ class Mission
 				init="call{[this,""TEAM 2""] call CBA_fnc_setCallsign;}";
 			};
 			id=49;
+		};
+		class Item4
+		{
+			dataType="Marker";
+			position[]={11501.821,159.83,4655.3633};
+			name="marker_16";
+			type="loc_Hospital";
+			id=55;
+		};
+		class Item5
+		{
+			dataType="Marker";
+			position[]={11465.964,159.75,4559.2192};
+			name="marker_18";
+			text="Police station";
+			type="mil_circle";
+			id=57;
+			atlOffset=-0.00050354004;
+		};
+		class Item6
+		{
+			dataType="Marker";
+			position[]={9893,181.08252,3799};
+			name="destr4";
+			type="Empty";
+			id=60;
+			atlOffset=-0.58387756;
 		};
 	};
 };

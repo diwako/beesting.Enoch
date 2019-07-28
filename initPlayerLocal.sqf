@@ -179,3 +179,5 @@ player addEventHandler ["Hit", {
 }] call CBA_fnc_addPlayerEventHandler;
 
 onMapSingleClick "_shift";
+
+"LightShafts" ppEffectAdjust [0.5, 0.6, 0.45, 0.89];

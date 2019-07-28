@@ -7,5 +7,6 @@ class cbrn{
 		class addZone{};
 		class createZone{};
 		class threatPFH{};
+		class handleDamage{};
 	};
 };

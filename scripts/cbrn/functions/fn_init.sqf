@@ -20,16 +20,36 @@ if (isNil "MISSION_ROOT") then {
     };
 };
 
+cbrn_maxDamage = 100;
+
 if !(hasInterface) exitWith {};
 
-private _handle = 0;
-while {
-    _handle = ppEffectCreate ["ChromAberration", 200];
-    _handle < 0
-} do {
-    _priority = _priority + 1;
+if (isNil "cbrn_mask_abberation") then {
+    private _name = "ChromAberration";
+    private _priority = 400;
+    cbrn_mask_abberation = ppEffectCreate [_name, _priority];
+    while {
+        cbrn_mask_abberation < 0
+    } do {
+        _priority = _priority + 1;
+        cbrn_mask_abberation = ppEffectCreate [_name, _priority];
+    };
 };
-cbrn_mask_abberation = _handle;
+if (isNil "cbrn_mask_damage") then {
+    private _name = "ChromAberration";
+    private _priority = 400;
+    cbrn_mask_damage = ppEffectCreate [_name, _priority];
+    while {
+        cbrn_mask_damage < 0
+    } do {
+        _priority = _priority + 1;
+        cbrn_mask_damage = ppEffectCreate [_name, _priority];
+    };
+    cbrn_mask_damage ppEffectEnable true;
+    cbrn_mask_damage ppEffectAdjust [0, 0, true];
+    cbrn_mask_damage ppEffectCommit 0;
+};
+
 cbrn_maxOxygenTime = 60 * 30;
 
 cbrn_loadouteh = ["cba_events_loadoutEvent",{
@@ -39,7 +59,7 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     private _backpack = backpack _unit;
     if (!(_unit getVariable ["cbrn_mask_on", false]) && {(cbrn_masks findIf {_x isEqualTo _goggles}) > -1}) then {
         // guy JUST put that mask on
-        _unit setVariable ["cbrn_mask_on", true];
+        _unit setVariable ["cbrn_mask_on", true, true];
         cbrn_mask_abberation ppEffectEnable true;
         cbrn_mask_abberation ppEffectAdjust [0.005,0.005,true];
         cbrn_mask_abberation ppEffectCommit 1;
@@ -61,7 +81,7 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     };
     if (_unit getVariable ["cbrn_mask_on", false] && {(cbrn_masks findIf {_x isEqualTo _goggles}) isEqualTo -1}) then {
         // guy JUST put that mask away
-        _unit setVariable ["cbrn_mask_on", false];
+        _unit setVariable ["cbrn_mask_on", false, true];
         cbrn_mask_abberation ppEffectEnable true;
         cbrn_mask_abberation ppEffectAdjust [0,0,true];
         cbrn_mask_abberation ppEffectCommit 1;
@@ -160,6 +180,38 @@ cbrn_localZones = [];
     } forEach cbrn_localZones;
 }, 10] call CBA_fnc_addPerFrameHandler;
 
+player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    if (_unit getVariable ["cbrn_mask_on", false]) then {
+        _unit setVariable ["cbrn_mask_on", false, true];
+        cbrn_mask_abberation ppEffectEnable true;
+        cbrn_mask_abberation ppEffectAdjust [0,0,true];
+        cbrn_mask_abberation ppEffectCommit 1;
+        100 cutFadeOut 1;
+        terminate cbrn_breath_handle;
+    };
+}];
+
+player addEventHandler ["Respawn", {
+    player setVariable ["cbrn_damage", 0];
+}];
+
 private _pos = (getPosATL player) vectorAdd [10,0,0];
-[player, 2] call cbrn_fnc_createZone;
-[_pos] call cbrn_fnc_createZone;
+// [player, 3] call cbrn_fnc_createZone;
+[_pos, 1.5] call cbrn_fnc_createZone;
+
+_action = ["cbrn_turn_check_damage", "Check CBRN related damage","",{
+    private _damage = ace_player getVariable ["cbrn_damage", 0];
+    private _coef = _damage / cbrn_maxDamage;
+    if (_coef < 0.1) exitWith {
+        titleText ["You are feeling <t color='#00ff00'>fine</t>!" , "PLAIN DOWN", -1, false, true];
+    };
+    if (_coef < 0.4) exitWith {
+        titleText ["You are feeling <t color='#ffff00'>okay</t>! Breathing stings a little..." , "PLAIN DOWN", -1, false, true];
+    };
+    if (_coef < 0.9) exitWith {
+        titleText ["You are feeling <t color='#ff7b00'>not good</t>! Breathing stings, your skin feels bad..." , "PLAIN DOWN", -1, false, true];
+    };
+    titleText ["You are feeling <t color='#ff0000'>really fucking bad</t>! The end is near..." , "PLAIN DOWN", -1, false, true];
+},{true},{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
+["CAManBase", 1, ["ACE_SelfActions","Medical"], _action, true] call ace_interact_menu_fnc_addActionToClass;

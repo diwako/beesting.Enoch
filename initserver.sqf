@@ -76,5 +76,8 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 // [getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
 [[9625,4480],[2100,900,0]] spawn mission_fnc_coverMap; // Rute 2 AO
 
-["destr1", 300, 32, [], true] call msc_fnc_destroyCity;
-["destr2", 300, 32, [], true] call msc_fnc_destroyCity;
+["marker_0", 300, 32] call msc_fnc_destroyCity;
+["destr1", 300, 32] call msc_fnc_destroyCity;
+["destr4", 300, 668.569, [], true] call msc_fnc_destroyCity;
+["destr2", 300, 32] call msc_fnc_destroyCity;
+["destr3", 300, 15] call msc_fnc_destroyCity;
