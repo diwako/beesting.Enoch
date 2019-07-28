@@ -1,17 +1,19 @@
 params [["_man", nil]];
 if(isNil "_man") exitWith {};
 
-(group _man) allowFleeing 0;
-_man setskill ["courage",1];
-// _man disableAI "fsm";
-// _man disableAI "COVER";
-// _man disableAI "pathplan";
+//disable some AI stuff
+//(group _man) allowFleeing 0;
+//_man disableAI "fsm";
+//_man disableAI "COVER";
+//_man disableAI "pathplan";
 
+//define some things for later
 private _pWeap = primaryWeapon _man;
 private _isMachineGun = getText(configFile >> "CfgWeapons" >> _pWeap >> "UIPicture") == "\a3\weapons_f\data\ui\icon_mg_ca.paa";
+//private _sWeap = secondaryWeapon _man;
+private _fact = faction _man;
 
-private _sWeap = secondaryWeapon _man;
-
+//remove all existing items
 removeAllWeapons _man;
 removeAllItems _man;
 removeAllAssignedItems _man;
@@ -21,10 +23,13 @@ removeBackpack _man;
 removeHeadgear _man;
 removeGoggles _man;
 
+//link new basic items
 _man linkItem "ItemMap";
 _man linkItem "ItemCompass";
 _man linkItem "ItemWatch";
+//_man linkItem "ItemRadio";
 
+//give them new identities
 [{
 	params ["_man"];
 	private _name = selectRandom ["Adam","Alan","Aleks","Aleksander","Boguslaw","Czeslaw","David","Donald","Fabian","Gustaw","Jan","Jaroslaw","Kamil","Karol","Kornel","Krzysztof","Kuba","Lech","Maciej","Marek","Michal","Milosz","Miron","Olaf","Pawel","Piotr","Przemek","Radoslaw","Robert","Ryszard","Seweryn","Stanislaw","Tomasz","Tymon","Zbigniew","Zenon"];
@@ -34,59 +39,40 @@ _man linkItem "ItemWatch";
 	_man setVariable ["ACE_NameRaw", format ["%1 %2",_name,_famName], true];
 }, [_man], 0.5] call CBA_fnc_waitAndExecute;
 
-private _type = typeOf _man;
-if (_type == "O_Survivor_F") exitWith {
-	_man forceAddUniform selectRandom ["UK3CB_CHC_C_U_HIKER_01", "UK3CB_CHC_C_U_HIKER_02", "UK3CB_CHC_C_U_HIKER_03", "UK3CB_CHC_C_U_HIKER_04"];
-	_man addGoggles selectRandom ["","UK3CB_G_Neck_Shemag_Oli","UK3CB_G_Neck_Shemag_Tan","UK3CB_G_Neck_Shemag"];
-	_man addHeadgear selectRandom ["","UK3CB_H_Ushanka_Cap_02", "UK3CB_H_Ushanka_Cap_04", "UK3CB_H_Ushanka_Cap_01", "UK3CB_H_Ushanka_Cap_03","UK3CB_H_Worker_Cap_01","UK3CB_H_Worker_Cap_03","UK3CB_H_Worker_Cap_04","UK3CB_H_Worker_Cap_02"];
-	for "_i" from 1 to 6 do {_man addItem "ACE_fieldDressing";};
-	for "_i" from 1 to 3 do {_man addItem "ACE_morphine";};
-	["lmf_ai_listener", [_man]] call CBA_fnc_localEvent;
+
+//Do looter specific stuff
+if (_fact == "OPF_G_F") then {
+	_man forceAddUniform "U_O_R_Gorka_01_black_F";
+	_man addVest selectRandom ["V_Pocketed_black_F","","V_BandollierB_blk","","V_Chestrig_blk","","V_LegStrapBag_black_F","","V_PlateCarrier1_blk",""];
+	_man addBackpack selectRandom ["B_Messenger_Black_F","B_LegStrapBag_black_F","B_AssaultPack_blk","B_FieldPack_blk","B_TacticalPack_blk","B_ViperLightHarness_blk_F"];
+	_man addHeadgear selectRandom ["","H_Bandanna_gry","","H_Beret_blk","","H_Cap_blk","","H_EarProtectors_black_F","","H_Construction_earprot_black_F","","H_Tank_black_F","","H_PASGT_basic_black_F",""];
+	_man addGoggles selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
+
+	private _lootWeaps = ["hgun_PDW2000_F","SMG_03C_black","SMG_02_F","SMG_05_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","srifle_DMR_06_hunter_F","srifle_DMR_06_hunter_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F","hgun_Rook40_F","hgun_Rook40_F","hgun_ACPC2_F","hgun_ACPC2_F"];
+	[_man, selectRandom _lootWeaps, 3, 0] call BIS_fnc_addWeapon;
+
+	_man addItem "FirstAidKit";
+	if (10 > random 100) then {_man addItem "HandGrenade"};
+	if (20 > random 100) then {_man addItem "SmokeShell"};
+
+//Else do livonian army loadout
+} else {
+	_man forceAddUniform selectRandom ["U_I_E_Uniform_01_shortsleeve_F","U_I_E_Uniform_01_sweater_F","U_I_E_Uniform_01_F","U_I_E_Uniform_01_F","U_I_E_Uniform_01_F"];
+	_man addVest selectRandom ["V_CarrierRigKBT_01_light_EAF_F","V_CarrierRigKBT_01_heavy_Olive_F","V_CarrierRigKBT_01_heavy_EAF_F","V_CarrierRigKBT_01_light_Olive_F","V_CarrierRigKBT_01_EAF_F"];
+	_man addBackpack selectRandom ["B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_RadioBag_01_eaf_F"];
+	_man addHeadgear selectRandom ["H_HelmetHBK_headset_F","H_HelmetHBK_chops_F","H_HelmetHBK_ear_F","H_HelmetHBK_F","H_Booniehat_eaf"];
+	_man addGoggles "G_AirPurifyingRespirator_02_olive_F";
+
+	private _LivWeaps = ["arifle_MSBS65_ico_pointer_f","arifle_MSBS65_GL_ico_pointer_f","arifle_MSBS65_Mark_SOS_LP_BI_F","LMG_Mk200_black_LP_BI_F","arifle_MSBS65_ico_pointer_f","arifle_MSBS65_GL_ico_pointer_f","arifle_MSBS65_ico_pointer_f","arifle_MSBS65_ico_pointer_f","arifle_MSBS65_ico_pointer_f","arifle_MSBS65_ico_pointer_f"];
+	[_man, selectRandom _LivWeaps, 3, 0] call BIS_fnc_addWeapon;
+	if (primaryWeapon _man == "arifle_MSBS65_GL_ico_pointer_f") then {
+		for "_i" from 1 to 2 do {_man addItem "1Rnd_HE_Grenade_shell";};
+	};
+
+	for "_i" from 1 to 2 do {_man addItem "FirstAidKit";};
+	if (35 > random 100) then {_man addItem "HandGrenade"};
+	if (50 > random 100) then {_man addItem "SmokeShell"};
 };
 
-// _man linkItem "ItemRadio";
-
-_man forceAddUniform "gorkaemrw";
-
-_man addVest selectRandom ["UK3CB_TKA_O_V_6b23_ml_Surpat_02", "UK3CB_TKA_O_V_6b23_ML_6sh92_radio_Surpat", "UK3CB_TKA_O_V_6b23_ml_engineer_Surpat", "UK3CB_TKA_O_V_6b23_ml_sniper_Surpat", "UK3CB_TKA_O_V_6b23_ml_Surpat"];
-
-
-_man addHeadgear selectRandom ["UK3CB_H_Ushanka_Cap_02","UK3CB_TKA_O_H_6b27m_Surpat","UK3CB_TKA_O_H_6b27m_ESS_Surpat","UK3CB_ABP_B_H_Patrolcap_Off_UCC","UK3CB_H_Worker_Cap_01"];
-
-if(_sWeap != "") then {
-	_man addBackpack "UK3CB_BAF_B_Kitbag_Arctic";
-	_man addItemToBackpack "rhs_rpg7_OG7V_mag";
-	_man addItemToBackpack "rhs_rpg7_PG7V_mag";
-	_man addWeapon "rhs_weap_rpg7";
-	_man addItemToBackpack "rhs_rpg7_PG7V_mag";
-};
-
-_man addGoggles selectRandom ["UK3CB_G_Face_Wrap_06","UK3CB_G_Neck_Shemag_KLR_blk","UK3CB_G_Neck_Shemag_KL_blk","UK3CB_G_Neck_Shemag_KR_blk","rhsusf_shemagh_white","rhsusf_shemagh2_white","rhsusf_shemagh_gogg_white","rhsusf_shemagh2_gogg_white","UK3CB_BAF_G_Balaclava_Win"];
-
-for "_i" from 1 to 6 do {_man addItemToUniform "ACE_fieldDressing";};
-for "_i" from 1 to 3 do {_man addItemToUniform "ACE_morphine";};
-
-for "_i" from 1 to 2 do {_man addItemToVest "ACE_M84";};
-for "_i" from 1 to 2 do {_man addItemToVest "rhs_mag_rgd5";};
-
-for "_i" from 1 to 2 do {_man addItemToVest "rhs_mag_rgd5";};
-
-if(_isMachineGun) then {
-	for "_i" from 1 to 4 do {_man addItem "ACE_100Rnd_580x42_Drum_tracer_red";};
-	_man addBackpack "UK3CB_BAF_B_Kitbag_Arctic";
-	// for "_i" from 1 to 4 do {_man addItemToBackpack "ACE_100Rnd_580x42_Drum_tracer_red";};
-
-	_man addWeapon "arifle_CTARS_blk_F";
-	_man addPrimaryWeaponItem "rhs_acc_2dpzenit_ris";
-}else{
-	for "_i" from 1 to 3 do {_man addItemToUniform "ACE_30Rnd_580x42_Mag_tracer_red";};
-	for "_i" from 1 to 4 do {_man addItemToVest "ACE_30Rnd_580x42_Mag_tracer_red";};
-
-	_man addWeapon "arifle_CTAR_blk_F";
-	_man addPrimaryWeaponItem "rhs_acc_2dpzenit_ris";
-};
-
-if !(missionNamespace getVariable ["stealthBroken", false]) then {
-	_man enableGunLights "ForceOn";
-};
+//apply some other AI suff
 ["lmf_ai_listener", [_man]] call CBA_fnc_localEvent;

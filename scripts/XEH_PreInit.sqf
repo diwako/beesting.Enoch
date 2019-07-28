@@ -36,6 +36,7 @@
 	_unit setskill _skill_regular;
 	_unit setSkill ["spotDistance", 1];
 	_unit setSkill ["spotTime", 1];
+	_unit setSkill ["courage",1];
 /*	{
 		_unit setskill _x;
 	} forEach [

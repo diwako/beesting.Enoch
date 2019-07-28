@@ -19,7 +19,7 @@ if (!isMultiplayer) then {
     } forEach (switchableUnits - (entities "HeadlessClient_F" + [player] + allCurators));
 };
 
-if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722"]) then {
+if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722", "76561197997590271"]) then {
     [{[player] call zeus_fnc_createDynamicZeus;}, [], 5] call CBA_fnc_waitAndExecute;
     player setVariable ["fpz_zombies_ignore",true,true];
     player allowDamage false;

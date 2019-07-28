@@ -156,7 +156,12 @@ if(_side == west) exitWith {
 
 
 	//Add radios and basic first aid to everyone (radios only to leader)
-	if (_type == "B_officer_F" || {_type == "B_Soldier_SL_F" || {_type == "B_Soldier_TL_F"}}) then {_man addItemToUniform "ACRE_SEM52SL"};
+	if (_type == "B_officer_F" || {_type == "B_Soldier_SL_F" || {_type == "B_Soldier_TL_F"}}) then {
+		_man addItemToUniform "ACRE_SEM52SL";
+		_man addItemToUniform "ACE_microDAGR";
+	} else {
+		if (10 > random 100) then {_man addItemToUniform "ACE_microDAGR";};	
+	};
 	for "_i" from 1 to 2 do {_man addItemToUniform "FirstAidKit";};
 
 	//Add grenades and smoke grenades to people that have space in their vests (also some chance to that)
