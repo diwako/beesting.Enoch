@@ -32,7 +32,11 @@
 	//PARAMS INITIALLY PASSED FROM LOCAL EVENT IN INITMAN.SQF
 	params ["_unit"];
 	(group _unit) allowFleeing 0;
-	{
+	private _skill_regular = skill _unit * selectRandom [0.35,0.45,0.50,0.55,0.60];
+	_unit setskill _skill_regular;
+	_unit setSkill ["spotDistance", 1];
+	_unit setSkill ["spotTime", 1];
+/*	{
 		_unit setskill _x;
 	} forEach [
 		// ['aimingAccuracy',0.75],
@@ -51,7 +55,7 @@
 		['spotTime',0.25]
 		// ['spotTime',0.85]
 	];
-
+*/
 	private _isMachineGun = getText(configFile >> "CfgWeapons" >> (primaryWeapon _unit) >> "UIPicture") == "\a3\weapons_f\data\ui\icon_mg_ca.paa";
 
 	private _id = _unit addEventHandler["Reloaded", {
@@ -72,7 +76,7 @@
 	};
 	[{
 		params ["_unit"];
-		["diw_setUpUnit", [_unit, selectRandom ["AsianHead_A3_05","AsianHead_A3_04","AsianHead_A3_07","AsianHead_A3_06","AsianHead_A3_01","AsianHead_A3_03","AsianHead_A3_02"],selectRandom ["Male01CHI","Male02CHI","Male03CHI"]]] call CBA_fnc_globalEvent;
+		["diw_setUpUnit", [_unit, selectRandom ["RussianHead_4","LivonianHead_5","WhiteHead_24","WhiteHead_25","LivonianHead_2","WhiteHead_26","RussianHead_1","LivonianHead_7","LivonianHead_6","WhiteHead_28","LivonianHead_3","RussianHead_3","LivonianHead_1","RussianHead_2","LivonianHead_10","WhiteHead_32","WhiteHead_29","WhiteHead_30","LivonianHead_8","LivonianHead_4","WhiteHead_31","RussianHead_5","LivonianHead_9"],selectRandom ["Male01POL","Male02POL","Male03POL"]]] call CBA_fnc_globalEvent;
 	},[_unit],0.5] call CBA_fnc_waitAndExecute;
 
 	//LOKAL EH (To remove and reapply all EHs if locality changes.)

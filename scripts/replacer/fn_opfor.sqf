@@ -27,8 +27,8 @@ _man linkItem "ItemWatch";
 
 [{
 	params ["_man"];
-	private _name = selectRandom ["Lee","Ai","Aiguo","Bai","Bingwen","Bo","Bohai","Bojing","Bolin","Boqin","Chang","Changming","Changpu","Chao","Chen","Cheng","Chonglin","Chuanli","Da","Delun","Deming","Dingxiang","Dong","Donghai","Duyi","Enlai","Fa","Fan","Fang","Feng","Fengge","Fu","Gang","Geming","Gen","Guang","Guangli","Gui","Guiren","Guoliang","Guowei","Guozhi","Hai","Han","He","Heng","Hong","Honghui","Huan","Huang","Hui","Huiliang","Huiqing","Huizhong","Jian","Jiang","Jianguo","Jianjun","Jianyu","Jiayi","Jing","Jingguo","Jinhai","Junjie","Kang","Lei","Li","Liang","Ling","Liqin","Liu","Liwei","Longwei","Meilin","Mengyao","Mingli","Mingyu","Nianzu","Niu","Peizhi","Peng"];
-	private _famName = selectRandom ["Xing","Bai","Chan","Chen","Cheung","Chong","Chou","Chow","Chu","Du","Fan","Guan","Guo","Han","Hou","Hsu","Hu","Huang","Jiang","Jiang","Jin","Kuang","Kwan","Kwok","Lam","Lau","Lee","Li","Liao","Lim","Lin","Liu","Lu","Ma","Mah","Man","Ng","Pan","Ruan","Song","Sun","Sung","Tan","Tang","Wang","Wen","Wong","Wu","Xu","Xun","Yang","Yeung","Yu","Yuen","Zhang","Zhao","Zheng","Zhou","Zhu"];
+	private _name = selectRandom ["Adam","Alan","Aleks","Aleksander","Boguslaw","Czeslaw","David","Donald","Fabian","Gustaw","Jan","Jaroslaw","Kamil","Karol","Kornel","Krzysztof","Kuba","Lech","Maciej","Marek","Michal","Milosz","Miron","Olaf","Pawel","Piotr","Przemek","Radoslaw","Robert","Ryszard","Seweryn","Stanislaw","Tomasz","Tymon","Zbigniew","Zenon"];
+	private _famName = selectRandom ["Adamczyk","Baran","Brodzki","Burak","Dabrowski","Drewniak","Dukaj","Gorecki","Gorski","Grzelczyk","Janowski","Kava","Kowalski","Kozlowski","Krukowski","Lem","Lewandowski","Litwiniec","Mazur","Michnik","Milosz","Narleski","Norwid","Nowak","Orman","Pawlik","Rabinowitz","Sarna","Smolko","Sternik","Stolarski","Stormowski","Tomek","Witkowski","Zielinski","Zimniak"];
 
 	_man setVariable ["ACE_Name", format ["%1 %2",_name,_famName], true];
 	_man setVariable ["ACE_NameRaw", format ["%1 %2",_name,_famName], true];
