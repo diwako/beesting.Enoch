@@ -13,7 +13,7 @@ switch (toUpper _mode) do {
 
     // private _players = [] call respawn_fnc_getSpectators;
     private _players = [] call ace_spectator_fnc_players;
-    if (count _players == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
+    if (count _players == 0) exitWith {["ERROR: No dead players"] call zen_common_fnc_showMessage};
     private _names = _players apply {name _x};
 
     private _args = ["Respawn single unit", [
@@ -23,10 +23,10 @@ switch (toUpper _mode) do {
 
     private _plr = _players select (_args select 0);
     private _uid = getPlayerUID _plr;
-    if (isNull _plr || _uid == "") exitWith {["ERROR: Unable to find player"] call ares_fnc_ShowZeusMessage};
+    if (isNull _plr || _uid == "") exitWith {["ERROR: Unable to find player"] call zen_common_fnc_showMessage};
 
     [_pos] remoteExecCall ["respawn_fnc_forceRespawn", _plr];
-    ["Respawned %1 at %2", name _plr, mapGridPosition _pos] call ares_fnc_ShowZeusMessage;
+    ["Respawned %1 at %2", name _plr, mapGridPosition _pos] call zen_common_fnc_showMessage;
   };
 
   // Respawns all spectating units at the selected position
@@ -36,12 +36,12 @@ switch (toUpper _mode) do {
 
     private _plrs = [] call ace_spectator_fnc_players;
     // private _plrs = [] call respawn_fnc_getSpectators;
-    if (count _plrs == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
+    if (count _plrs == 0) exitWith {["ERROR: No dead players"] call zen_common_fnc_showMessage};
 
     private _uids = _plrs apply {getPlayerUID _x};
 
     [_pos] remoteExecCall ["respawn_fnc_forceRespawn", _plrs];
-    ["Respawned %1 players", count _plrs] call ares_fnc_ShowZeusMessage;
+    ["Respawned %1 players", count _plrs] call zen_common_fnc_showMessage;
 
   };
 
@@ -50,7 +50,7 @@ switch (toUpper _mode) do {
     private _maxAmount = _Xarg emptyPositions "cargo";
     private _plrs = [_maxAmount] call ace_spectator_fnc_players;
     // private _plrs = [_maxAmount] call respawn_fnc_getSpectators;
-    if (_maxAmount isEqualTo 0 || {count _plrs == 0}) exitWith {["ERROR: No cargo slots / no dead players"] call ares_fnc_ShowZeusMessage};
+    if (_maxAmount isEqualTo 0 || {count _plrs == 0}) exitWith {["ERROR: No cargo slots / no dead players"] call zen_common_fnc_showMessage};
 
     private _uids = _plrs apply {getPlayerUID _x};
 
@@ -65,6 +65,6 @@ switch (toUpper _mode) do {
     };
 
     [[_Xarg], _code] remoteExecCall ["BIS_fnc_call", _plrs];
-    ["Moved %1 players into cargo", count _plrs] call ares_fnc_ShowZeusMessage;
+    ["Moved %1 players into cargo", count _plrs] call zen_common_fnc_showMessage;
   };
 };

@@ -38,7 +38,7 @@ player addEventHandler ["Respawn", {
     player setUnitTrait ["camouflageCoef", diw_camoCoef];
 }];
 
-if (!isnil "Ares_fnc_RegisterCustomModule") then{
+if (!isnil "zen_custom_modules_fnc_register") then{
     [] execVM "scripts\CR_fnc_ares.sqf";
 };
 
