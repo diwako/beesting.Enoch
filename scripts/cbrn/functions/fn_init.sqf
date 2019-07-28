@@ -1,5 +1,7 @@
 cbrn_backpacks = ["B_SCBA_01_F"];
 
+cbrn_suits = [];
+
 cbrn_masks = ["G_AirPurifyingRespirator_02_black_F",
     "G_AirPurifyingRespirator_02_olive_F",
     "G_AirPurifyingRespirator_02_sand_F",
@@ -11,6 +13,8 @@ cbrn_masks = ["G_AirPurifyingRespirator_02_black_F",
     "SE_M17",
     "Hamster_PS",
     "SE_S10"];
+
+cbrn_threatMeteritem = "ACE_microDAGR";
 
 if (isNil "MISSION_ROOT") then {
     if(isDedicated) then {
@@ -57,7 +61,9 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     if (_unit != ace_player) exitWith {};
     private _goggles = goggles _unit;
     private _backpack = backpack _unit;
-    if (!(_unit getVariable ["cbrn_mask_on", false]) && {(cbrn_masks findIf {_x isEqualTo _goggles}) > -1}) then {
+
+    private _hasMask = (cbrn_masks findIf {_x isEqualTo _goggles}) > -1;
+    if (!(_unit getVariable ["cbrn_mask_on", false]) && {_hasMask}) then {
         // guy JUST put that mask on
         _unit setVariable ["cbrn_mask_on", true, true];
         cbrn_mask_abberation ppEffectEnable true;
@@ -79,7 +85,7 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
             };
         };
     };
-    if (_unit getVariable ["cbrn_mask_on", false] && {(cbrn_masks findIf {_x isEqualTo _goggles}) isEqualTo -1}) then {
+    if (_unit getVariable ["cbrn_mask_on", false] && {!_hasMask}) then {
         // guy JUST put that mask away
         _unit setVariable ["cbrn_mask_on", false, true];
         cbrn_mask_abberation ppEffectEnable true;
@@ -88,11 +94,24 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
         100 cutFadeOut 1;
         terminate cbrn_breath_handle;
     };
-    if (!(_unit getVariable ["cbrn_backpack_on", false]) && {(cbrn_backpacks findIf {_x isEqualTo _backpack}) > -1}) then {
+
+    private _hasBackpack = (cbrn_backpacks findIf {_x isEqualTo _backpack}) > -1;
+    if (!(_unit getVariable ["cbrn_backpack_on", false]) && {_hasBackpack}) then {
         _unit setVariable ["cbrn_backpack_on", true, true];
     };
-    if (_unit getVariable ["cbrn_backpack_on", false] && {(cbrn_backpacks findIf {_x isEqualTo _backpack}) isEqualTo -1}) then {
+    if (_unit getVariable ["cbrn_backpack_on", false] && {!_hasBackpack}) then {
         _unit setVariable ["cbrn_backpack_on", false, true];
+    };
+
+    private _hasThreatMeter = [_unit, cbrn_threatMeteritem] call ace_common_fnc_hasItem;
+    if (!(_unit getVariable ["cbrn_hasThreatMeter", false]) && {_hasThreatMeter}) then {
+        _unit setVariable ["cbrn_hasThreatMeter", true, true];
+    };
+    if (_unit getVariable ["cbrn_hasThreatMeter", false] && {!_hasThreatMeter}) then {
+        _unit setVariable ["cbrn_hasThreatMeter", false, true];
+        if (_unit getVariable ["cbrn_using_threat_meter", false]) then {
+            _unit setVariable ["cbrn_using_threat_meter", false, true];
+        };
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -168,12 +187,10 @@ cbrn_localZones = [];
     {
         if ((_player distance2D _x) < 500) then {
             if !(simulationEnabled _x) then {
-                systemChat "enabling zone";
                 _x enableSimulation true;
             };
         } else {
             if (simulationEnabled _x) then {
-                systemChat "disabling zone";
                 _x enableSimulation false;
             };
         };
@@ -190,15 +207,12 @@ player addEventHandler ["Killed", {
         100 cutFadeOut 1;
         terminate cbrn_breath_handle;
     };
+    _unit setVariable ["cbrn_using_threat_meter", false, true];
 }];
 
 player addEventHandler ["Respawn", {
     player setVariable ["cbrn_damage", 0];
 }];
-
-private _pos = (getPosATL player) vectorAdd [10,0,0];
-// [player, 3] call cbrn_fnc_createZone;
-[_pos, 1.5] call cbrn_fnc_createZone;
 
 _action = ["cbrn_turn_check_damage", "Check CBRN related damage","",{
     private _damage = ace_player getVariable ["cbrn_damage", 0];
@@ -215,3 +229,24 @@ _action = ["cbrn_turn_check_damage", "Check CBRN related damage","",{
     titleText ["You are feeling <t color='#ff0000'>really fucking bad</t>! The end is near..." , "PLAIN DOWN", -1, false, true];
 },{true},{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","Medical"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+_action = ["cbrn_turn_on_threatmeter", "Turn on threatmeter","",{
+    ace_player setVariable ["cbrn_using_threat_meter", true, true];
+},{
+    !(ace_player getVariable ["cbrn_using_threat_meter", false]) && {ace_player getVariable ["cbrn_hasThreatMeter", false]}
+},{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
+["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+_action = ["cbrn_turn_off_threatmeter", "Turn off threatmeter","",{
+    ace_player setVariable ["cbrn_using_threat_meter", false, true];
+},{
+    ace_player getVariable ["cbrn_using_threat_meter", false]
+},{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
+["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+private _pos = (getPosATL player) vectorAdd [10,0,0];
+// [player, 3] call cbrn_fnc_createZone;
+// [_pos, 1.5] call cbrn_fnc_createZone;
+[] spawn {
+    sleep 1;
+    player additem cbrn_threatMeteritem;
+};
