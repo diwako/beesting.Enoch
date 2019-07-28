@@ -242,11 +242,3 @@ _action = ["cbrn_turn_off_threatmeter", "Turn off threatmeter","",{
     ace_player getVariable ["cbrn_using_threat_meter", false]
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-
-private _pos = (getPosATL player) vectorAdd [10,0,0];
-// [player, 3] call cbrn_fnc_createZone;
-// [_pos, 1.5] call cbrn_fnc_createZone;
-[] spawn {
-    sleep 1;
-    player additem cbrn_threatMeteritem;
-};
