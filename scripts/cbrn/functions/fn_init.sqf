@@ -124,6 +124,28 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     };
 
     // todo: https://forums.bohemia.net/forums/topic/143930-general-discussion-dev-branch/?page=1020&tab=comments#comment-3363538
+    private _backPackContainer = backpackContainer _unit;
+    // private _textures = getObjectTextures _backPackContainer;
+    if (_unit getVariable ["cbrn_backpack_on", false] && {_unit getVariable ["cbrn_mask_on", false]}) then {
+        // add hose
+        if !(_backPackContainer getVariable ["cbrn_hose_attached", false]) then {
+            _backPackContainer setVariable ["cbrn_hose_attached", true];
+            
+            if (_goggles isEqualTo "G_RegulatorMask_F") then {
+                _backPackContainer setObjectTextureGlobal [2,"a3\supplies_f_enoch\bags\data\b_cur_01_co.paa"];
+            } else {
+                _backPackContainer setObjectTextureGlobal [1,"a3\supplies_f_enoch\bags\data\b_cur_01_co.paa"];
+                _backPackContainer setObjectTextureGlobal [3,"a3\supplies_f_enoch\bags\data\b_cur_01_co.paa"];
+            };
+        };
+    } else {
+        if (_backPackContainer getVariable ["cbrn_hose_attached", false]) then {
+            _backPackContainer setVariable ["cbrn_hose_attached", false];
+            _backPackContainer setObjectTextureGlobal [1,""];
+            _backPackContainer setObjectTextureGlobal [2,""];
+            _backPackContainer setObjectTextureGlobal [3,""];
+        };
+    };
 }] call CBA_fnc_addEventHandler;
 
 private _action = ["cbrn_turn_on_oxygen", "Turn on oxygen","",{
