@@ -1,3 +1,13 @@
+
+["Players", "Re-apply Loadout", {
+	params ["", "_obj"];
+
+	if (isNull _obj) exitWith {["ERROR: No Unit"] call zen_common_fnc_showMessage};
+
+	[_obj] remoteExec ["loadout_fnc_applyPlayerLoadout",_obj];
+
+}] call zen_custom_modules_fnc_register;
+
 ["Mission", "Disable Weapons", 
 	{
 		[-1, {[true, "admin"] call zeus_fnc_disableWeapons;}, []] call CBA_fnc_globalExecute;
