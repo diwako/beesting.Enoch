@@ -48,7 +48,7 @@ execvm "scripts\groupTracker.sqf";
     sleep 5;
     arsenal = "building" createVehicleLocal [0,0,0];
     player setVariable ["diw_startpos", getPosASL player];
-    private _itemCargo = ["G_Balaclava_TI_G_blk_F","rhsusf_shemagh2_gogg_white","rhsusf_shemagh2_gogg_od","G_Balaclava_combat","G_Balaclava_lowprofile","ItemMap","ItemCompass","ItemWatch","ItemGPS","rhsusf_acc_eotech_552","rhsusf_acc_rx01_tan","rhsusf_acc_rx01_nofilter_tan","rhsusf_acc_eotech_xps3","optic_aco_smg","optic_aco_grn_smg","rhsusf_acc_t1_low","rhsusf_acc_t1_high","optic_aco_grn","optic_aco","rhs_acc_rakurspm","H_ShemagOpen_khk","rhsusf_cvc_alt_helmet"];
+    private _itemCargo = ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F","H_Bandanna_gry","H_Bandanna_blu","H_Bandanna_cbr","H_Bandanna_khk","H_Bandanna_sgg","H_Bandanna_sand","H_Bandanna_surfer","H_Bandanna_surfer_blk","H_Bandanna_surfer_grn","H_Bandanna_camo","H_Beret_blk","H_Booniehat_khk","H_Booniehat_oli","H_Booniehat_tan","H_Cap_grn_BI","H_Cap_blk","H_Cap_blu","H_Cap_blk_CMMG","H_Cap_grn","H_Cap_oli","H_Cap_police","H_Cap_press","H_Cap_red","H_Cap_surfer","H_Cap_tan","H_Cap_khaki_specops_UK","H_Cap_usblack","H_Hat_blue","H_Hat_brown","H_Hat_camo","H_Hat_checker","H_Hat_grey","H_Hat_tan","H_Cap_marshal","H_StrawHat","H_StrawHat_dark","H_Beret_gen_F","H_Booniehat_tna_F","H_MilCap_gen_F","H_Beret_EAF_01_F","H_Booniehat_mgrn","H_Booniehat_taiga","H_Hat_Tinfoil_F","H_EarProtectors_black_F","H_EarProtectors_orange_F","H_EarProtectors_red_F","H_EarProtectors_white_F","H_EarProtectors_yellow_F","H_Construction_basic_black_F","H_Construction_earprot_black_F","H_Construction_basic_orange_F","H_Construction_earprot_orange_F","H_Construction_basic_red_F","H_Construction_earprot_red_F","H_Construction_basic_white_F","H_Construction_earprot_white_F","H_Construction_basic_yellow_F","H_Construction_earprot_yellow_F","H_HeadBandage_clean_F","H_HeadBandage_stained_F","H_HeadBandage_bloody_F","H_Hat_Safari_olive_F","H_Hat_Safari_sand_F","H_WirelessEarpiece_F"];
     {
         _itemCargo pushBackUnique _x;
     } forEach (primaryWeaponItems player);
@@ -77,6 +77,8 @@ execvm "scripts\groupTracker.sqf";
                 _ctrl ctrlSetFade 0.6;
                 _ctrl ctrlCommit 0;
             } forEach [
+                2002, //primary weapon
+                2004, //pistols
                 2006, //launchers
                 2022, //map
                 2024, //gps
