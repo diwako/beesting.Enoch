@@ -46,8 +46,6 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 	};
 };
 
-[{ace_weather_temperatureShift = 25;},[], 1] call CBA_fnc_waitAndExecute;
-
 ["CAManBase", "killed", {
     params ["_unit"];
 	if !(isNull objectParent _unit) exitWith {};
@@ -81,3 +79,9 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 ["destr4", 300, 668.569, [], true] call msc_fnc_destroyCity;
 ["destr2", 300, 32] call msc_fnc_destroyCity;
 ["destr3", 300, 15] call msc_fnc_destroyCity;
+
+[{
+	ace_weather_humidityShift = 0;
+		ace_weather_badWeatherShift = 0;
+		ace_weather_temperatureShift = 35;
+},[], 1] call CBA_fnc_waitAndExecute;

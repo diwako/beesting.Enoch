@@ -219,7 +219,7 @@ onMapSingleClick "_shift";
                     for "_a" from 1 to 20 do {
                         if (_maxIter <= _curIter) exitWith {};
                         _pos = [[_roadPos, 6, 50, _dir, true]] call CBA_fnc_randPosArea;
-                        if ((_campos distance2D _pos) >= 75 && {_surfacetype isEqualTo (surfaceType _pos)}) then {
+                        if ((_campos distance2D _pos) >= 50 && {_surfacetype isEqualTo (surfaceType _pos)}) then {
                             _pos = _pos vectorAdd [0,0,-0.5];
                             drop [["\A3\data_f\ParticleEffects\Universal\Refract.p3d", 1, 0, 1], "", "Billboard", 1, 5, _pos, [0, 0, 0.25], 0, 11, 7.9, 0, [0.01, 5, 5, 0.01], [[0.1, 0.1, 0.1, 0.5]], [0.08], 1, 0, "", "", ""];
                             _cur = _cur + 1;
