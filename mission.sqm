@@ -5,25 +5,25 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=13;
+	toggles=1037;
 	class ItemIDProvider
 	{
-		nextID=61;
+		nextID=64;
 	};
 	class MarkerIDProvider
 	{
-		nextID=20;
+		nextID=21;
 	};
 	class LayerIndexProvider
 	{
-		nextID=5;
+		nextID=6;
 	};
 	class Camera
 	{
-		pos[]={9922.9961,188.98508,3780.7788};
-		dir[]={-0.54348224,-0.45055771,0.70825899};
-		up[]={-0.27428794,0.89274287,0.35744858};
-		aside[]={0.79334778,-1.4679972e-007,0.60877395};
+		pos[]={7642,99.32,5187};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -124,7 +124,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=7;
+		items=10;
 		class Item0
 		{
 			dataType="Layer";
@@ -915,6 +915,51 @@ class Mission
 			type="Empty";
 			id=60;
 			atlOffset=-0.58387756;
+		};
+		class Item7
+		{
+			dataType="Marker";
+			position[]={9997.5117,156,4512.8677};
+			name="marker_20";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			fillName="DiagGrid";
+			a=921.14893;
+			b=184.90192;
+			angle=188.03101;
+			id=61;
+			atlOffset=13.669418;
+		};
+		class Item8
+		{
+			dataType="Marker";
+			position[]={9368,178,4092};
+			name="marker_21";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			fillName="DiagGrid";
+			a=437.91788;
+			b=184.90192;
+			angle=188.03101;
+			id=62;
+			atlOffset=12.172791;
+		};
+		class Item9
+		{
+			dataType="Marker";
+			position[]={10479.165,184,3935.1138};
+			name="marker_22";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			fillName="DiagGrid";
+			a=396.33313;
+			b=184.90192;
+			angle=188.03101;
+			id=63;
+			atlOffset=24.45372;
 		};
 	};
 };
