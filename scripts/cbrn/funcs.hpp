@@ -8,5 +8,7 @@ class cbrn{
 		class createZone{};
 		class threatPFH{};
 		class handleDamage{};
+		class toggleShower{};
+		class setUpDeconShower{};
 	};
 };

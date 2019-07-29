@@ -25,6 +25,8 @@ class Extended_InitPost_EventHandlers {
 	class Land_Camping_Light_F{
 		init = "(_this select 0) addEventHandler [""HitPart"",{_this = _this select 0;[-2, {_this setDamage 1}, (_this select 0)] call CBA_fnc_globalExecute;}];";
 	};
+
+	#include "scripts\cbrn\XEH_InitPost_eh.hpp"
 };
 
 // class Extended_DisplayLoad_EventHandlers {

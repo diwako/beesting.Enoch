@@ -275,3 +275,12 @@ _action = ["cbrn_turn_off_threatmeter", "Turn off threatmeter","",{
     ace_player getVariable ["cbrn_using_threat_meter", false]
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+["cbrn_turnOnShower", {
+    params ["_shower"];
+    [_shower, true] call cbrn_fnc_toggleShower;
+}] call CBA_fnc_addEventhandler;
+["cbrn_turnOffShower", {
+    params ["_shower"];
+    [_shower, false] call cbrn_fnc_toggleShower;
+}] call CBA_fnc_addEventhandler;
