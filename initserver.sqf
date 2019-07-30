@@ -41,7 +41,7 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 					sleep random 15;
 				};
 			};
-		}forEach (allGroups select {side _x == opfor});
+		}forEach (allGroups select {side _x isEqualTo independent || {side _x isEqualTo opfor}});
 		sleep 5;
 	};
 };

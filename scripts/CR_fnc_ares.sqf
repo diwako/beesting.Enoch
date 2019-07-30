@@ -8,61 +8,61 @@
 
 }] call zen_custom_modules_fnc_register;
 
-["Mission", "Disable Weapons", 
+["Mission", "Disable Weapons",
 	{
 		[-1, {[true, "admin"] call zeus_fnc_disableWeapons;}, []] call CBA_fnc_globalExecute;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["Mission", "Enable Weapons", 
+["Mission", "Enable Weapons",
 	{
 		[-1, {[false, "admin"] call zeus_fnc_disableWeapons;}, []] call CBA_fnc_globalExecute;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["AI", "Force SAFE", 
+["AI", "Force SAFE",
 	{
 		[_this select 1, "SAFE"] spawn zeus_fnc_forcestate;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["AI", "Force CARELESS", 
+["AI", "Force CARELESS",
 	{
 		[_this select 1, "CARELESS"] spawn zeus_fnc_forcestate;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["AI", "Force AWARE", 
+["AI", "Force AWARE",
 	{
 		[_this select 1, "AWARE"] spawn zeus_fnc_forcestate;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["AI", "Force COMBAT", 
+["AI", "Force COMBAT",
 	{
 		[_this select 1, "COMBAT"] spawn zeus_fnc_forcestate;
 	}
 ] call zen_custom_modules_fnc_register;
 
-["AI", "Force STEALTH", 
+["AI", "Force STEALTH",
 	{
 		[_this select 1, "STEALTH"] spawn zeus_fnc_forcestate;
 	}
 ] call zen_custom_modules_fnc_register;
 
-// ["Mission", "Make Paniced", 
+// ["Mission", "Make Paniced",
 // 	{
 // 		[_this select 1] call zeus_fnc_makePaniced;
 // 	}
 // ] call zen_custom_modules_fnc_register;
 
-["Mission", "Fix Unit", 
+["Mission", "Fix Unit",
 	{
 		[(_this select 1)] spawn zeus_fnc_fixPlayer;
 	}
 ] call zen_custom_modules_fnc_register;
 
-// ["Mission", "Make all rifles jam", 
+// ["Mission", "Make all rifles jam",
 // 	{
 // 		[(_this select 1)] spawn zeus_fnc_jamathlon;
 // 	}
@@ -70,7 +70,7 @@
 
 ["AI SPAWN", "Spawn Enemy Group",
   {
-    private _pos = (_this select 0);
+    private _pos = ASLToATL (_this select 0);
     private _types = [
       "riflesquad",
       "weaponssquad",
@@ -80,25 +80,36 @@
       "aa",
       "at"
     ];
-    private _dialogResult =
+
     [
-      "Spawn Group",
-      [
-        ["Group Type", _types]
-      ]
-    ] call Ares_fnc_ShowChooseDialog;
-
-    if (count _dialogResult == 0) exitWith {};
-    if ((_dialogResult select 0) isEqualTo []) exitWith {};
-
-    _dialogResult params ["_type"];
-    [_pos, _types select _type] call spawner_fnc_spawnGroup;
+      "Spawn Group", [
+        [
+          "COMBO", "Group Type",
+          [
+            _types,
+            ["Rifle squad", "Weapons squad", "Fire team", "Assault squad", "Sentry", "AA team", "AT team"],
+            0
+          ]
+        ], [
+          "COMBO", "Side",
+          [
+            [opfor, independent],
+            ["LDF", "Looters"],
+            1
+          ]
+        ]
+      ], {
+        params ["_dialog", "_args"];
+        _dialog params ["_type", "_side"];
+        _args params ["_pos"];
+        [_pos, _type, _side] call spawner_fnc_spawnGroup;
+    }, {}, [_pos]] call zen_dialog_fnc_create;
   }
 ] call zen_custom_modules_fnc_register;
 
 ["AI SPAWN", "Spawn QRF",
   {
-    private _pos = (_this select 0);
+    private _pos = ASLToATL (_this select 0);
     private _types = [
       "tank",
       "apc",
@@ -106,44 +117,53 @@
       "helitransport",
 	    "infantry"
     ];
-    private _dialogResult =
     [
-      "Spawn QRF",
-      [
-        ["Type", _types],
-        ["Amount", "NUMBER"]
-      ]
-    ] call Ares_fnc_ShowChooseDialog;
-
-    if (count _dialogResult == 0) exitWith {};
-    if ((_dialogResult select 0) isEqualTo []) exitWith {};
-
-    _dialogResult params ["_type", "_amount"];
-    [_pos, _types select _type, parseNumber _amount] call spawner_fnc_spawnQrf;
+      "Spawn QRF", [
+        [
+          "COMBO", "Type",
+          [_types, _types, 4]
+        ], [
+          "SLIDER", "Amount", [1, 10, 2, 0]
+        ], [
+          "COMBO", "Side",
+          [
+            [opfor, independent],
+            ["LDF", "Looters"],
+            1
+          ]
+        ]
+      ],
+    {
+      params ["_dialog", "_args"];
+      _dialog params ["_type", "_amount", "_side"];
+      _args params ["_pos"];
+      [_pos, _type, floor _amount, _side] call spawner_fnc_spawnQrf;
+    }, {}, [_pos]] call zen_dialog_fnc_create;
   }
 ] call zen_custom_modules_fnc_register;
 
 ["AI SPAWN", "Spawn Hunter Group",
   {
-    private _pos = (_this select 0);
-    private _radiuses = [
-      "500",
-      "1000",
-      "2000"
-    ];
-    private _dialogResult =
+    private _pos = ASLToATL (_this select 0);
     [
-      "Spawn Hunter Group",
-      [
-        ["Search Radius", _radiuses]
-      ]
-    ] call Ares_fnc_ShowChooseDialog;
-
-    if (count _dialogResult == 0) exitWith {};
-    if ((_dialogResult select 0) isEqualTo []) exitWith {};
-
-    _dialogResult params ["_radius"];
-    [_pos, parseNumber (_radiuses select _radius)] call spawner_fnc_spawnHunter;
+      "Spawn Hunter Group", [
+        [
+          "SLIDER", "Radius", [500, 4000, 2000, 0]
+        ], [
+          "COMBO", "Side",
+          [
+            [opfor, independent],
+            ["LDF", "Looters"],
+            1
+          ]
+        ]
+      ],
+      {
+        params ["_dialog", "_args"];
+        _dialog params ["_radius", "_side"];
+        _args params ["_pos"];
+        [_pos, floor _radius, _side] call spawner_fnc_spawnHunter;
+    }, {}, [_pos]] call zen_dialog_fnc_create;
   }
 ] call zen_custom_modules_fnc_register;
 
