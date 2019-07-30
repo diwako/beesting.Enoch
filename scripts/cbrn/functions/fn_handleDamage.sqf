@@ -1,6 +1,27 @@
 params ["_unit", "_threadLevel"];
 
 private _actualThreat = _threadLevel;
+private _curDamage = _unit getVariable ["cbrn_damage", 0];
+
+if (_curDamage > 50 && {!(_unit getVariable ["cbrn_autoDamage", false])}) then {
+    _unit setVariable ["cbrn_autoDamage", true];
+    "WARNING!" hintC ["Your CBRN exposure is now rising automatically!!","SEEK DECONTAMINATION IMMIDIATELY!!","FIND DECONTAMINATION SHOWERS!"];
+    [{
+        params ["_args", "_idPFH"];
+        _args params ["_unit"];
+
+        if (!alive _unit || {_unit getVariable ["cbrn_stoppedAutoDamage", false]}) exitWith {
+            [_idPFH] call CBA_fnc_removePerFrameHandler;
+        };
+
+        // private _newDamage = ((_unit getVariable ["cbrn_damage", 0]) + 1) min 100;
+        private _newDamage = ((_unit getVariable ["cbrn_damage", 0]) + 0.0277777777777777) min 100;
+        _unit setVariable ["cbrn_damage", _newDamage];
+        if (_newDamage >= 100) then {
+            _unit setDamage 1;
+        };
+    }, 1, [_unit]] call CBA_fnc_addPerFrameHandler;
+};
 
 if (_threadLevel >= 1) then {
     // level 2 threat
@@ -28,10 +49,9 @@ if (_actualThreat < 1) exitWith {
 };
 
 private _effectStrength = _actualThreat / 5;
-private _curDamage = _unit getVariable ["cbrn_damage", 0];
 _unit setVariable ["cbrn_damage", _curDamage + _actualThreat];
 
-if ((_curDamage + _actualThreat) > cbrn_maxDamage) exitWith {
+if (alive _unit && {(_curDamage + _actualThreat) > cbrn_maxDamage}) exitWith {
     // I am sorry john...
     _unit setDamage 1;
 };

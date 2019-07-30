@@ -244,7 +244,9 @@ player addEventHandler ["Killed", {
 }];
 
 player addEventHandler ["Respawn", {
-    player setVariable ["cbrn_damage", 0];
+    player setVariable ["cbrn_damage", nil];
+    player setVariable ["cbrn_autoDamage", nil];
+    player setVariable ["cbrn_stoppedAutoDamage", nil];
 }];
 
 _action = ["cbrn_turn_check_damage", "Check CRBN Exposure","",{

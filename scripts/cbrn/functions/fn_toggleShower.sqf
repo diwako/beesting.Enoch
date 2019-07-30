@@ -43,6 +43,14 @@ if (_on) then {
 	//private _sound = createSoundSource ["Sound_DeconShower_01_loop" , [0,0,1], [], 0];
 	_sound setPosASL (getPosASLVisual _shower);
 
+	private _trg = createTrigger ["EmptyDetector", getpos _shower, false];
+	// _trg setPosWorld getPosWorld _shower;
+	_trg setTriggerArea [1, 1, (getDir _shower), true, 1];
+	_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+	_trg setTriggerTimeout [5, 5, 5, true];
+	_trg setTriggerStatements ["ace_player getVariable ['cbrn_autoDamage', false] && { !(ace_player getVariable ['cbrn_stoppedAutoDamage', false]) && {ace_player in thisList}}", "ace_player setVariable ['cbrn_stoppedAutoDamage', true]; 'Success!' hintC 'The contamination stopped, it should have not come to this in the first place!'", ""];
+	_particles pushBack _trg;
+
 	// Update objects list to delete
 	_shower setVariable ["cbrn_objects",[_sound] + _particles];
 
