@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=252;
+		nextID=253;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=36;
+		nextID=40;
 	};
 	class Camera
 	{
-		pos[]={9018.291,184.82256,4369.083};
-		dir[]={0.71731776,-0.33564529,0.61059403};
-		up[]={0.25560027,0.94198042,0.21757299};
-		aside[]={0.64819348,-9.406358e-008,-0.76149023};
+		pos[]={9061.6797,177.21478,4379.4331};
+		dir[]={0.021427149,-0.35100946,0.93613398};
+		up[]={0.0080324346,0.93636936,0.35092261};
+		aside[]={0.99974477,2.5844201e-008,-0.022883074};
 	};
 };
 binarizationWanted=0;
@@ -328,7 +328,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=29;
+		items=30;
 		class Item0
 		{
 			dataType="Layer";
@@ -5154,18 +5154,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8365.7061,140.2594,5031.9585};
+				position[]={8365.7061,140.25949,5031.9585};
 			};
 			side="Empty";
 			class Attributes
 			{
 				name="crows_1";
-				createAsSimpleObject=1;
 				disableSimulation=1;
 			};
 			id=250;
 			type="Land_PencilBlue_F";
-			atlOffset=13.906906;
+			atlOffset=13.906998;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5201,10 +5200,51 @@ class Mission
 			class Attributes
 			{
 				name="crows_2";
+				disableSimulation=1;
 			};
 			id=251;
 			type="Land_PencilBlue_F";
 			atlOffset=7.3710022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item29
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9062.207,180.95111,4467.4775};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_3";
+				disableSimulation=1;
+			};
+			id=252;
+			type="Land_PencilBlue_F";
+			atlOffset=7.371048;
 			class CustomAttributes
 			{
 				class Attribute0

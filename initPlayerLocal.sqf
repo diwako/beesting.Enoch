@@ -212,7 +212,6 @@ onMapSingleClick "_shift";
     private _curIter = 0;
     private _roadPos = [];
     private _surfacetype = "";
-    private _player = objNull;
     private _campos = [];
 
     private _streets = ["#GdtKlTarmac", "#GdtKlWeatheredTarmac"];
@@ -220,7 +219,6 @@ onMapSingleClick "_shift";
         _campos = positionCameraToWorld [0,0,0];
         _roads = _campos nearRoads 150;
         _cur = 0;
-        _player = ace_player;
         {
             _roadPos = getpos _x;
             _surfacetype = surfaceType _roadPos;

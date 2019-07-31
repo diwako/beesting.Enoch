@@ -108,7 +108,7 @@ for "_i" from 0 to 5 do {
 			_nest setVariable ["active", true];
 			_nest removeEventHandler ["FiredNear", _thisEventhandler];
 			["crows_spawn", ["Crowe", getpos _nest,1 + (ceil random 5), 0, 29, _nest]] call CBA_fnc_globalevent;
-			[{deleteVehicle _this}, _nest, 30] call CBA_fnc_waitAndExecute;
+			[{deleteVehicle _this}, _nest, 60*5] call CBA_fnc_waitAndExecute;
 		};
 	}];
 } forEach [crows_1,crows_2,crows_3];
