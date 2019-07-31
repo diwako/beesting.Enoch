@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=20;
+		nextID=24;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={7652.3359,85.043793,5220.3857};
+		dir[]={-0.5354805,-0.57352346,-0.61995518};
+		up[]={-0.37489578,0.81918597,-0.43403739};
+		aside[]={-0.75679231,2.8230716e-008,0.65367174};
 	};
 };
 binarizationWanted=0;
@@ -449,7 +449,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{this setVariable [""mab_playerName"",""Dylan Clarke""];}";
+						init="call{this setVariable [""mab_playerName"",""Dylan """"Sarge"""" Clarke""];}";
 						description="Sarge@PAPA";
 						isPlayer=1;
 					};
@@ -509,7 +509,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this setVariable [""mab_playerName"",""Jan Kava""];}";
+						init="call{this setVariable [""mab_playerName"",""Jan """"Doc"""" Kava""];}";
 						description="Doc";
 						isPlayable=1;
 					};

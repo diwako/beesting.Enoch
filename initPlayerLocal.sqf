@@ -16,6 +16,11 @@ if (!isMultiplayer) then {
     [["<t color='#ffff00'>[ ACE Arsenal ]</t>", {[player, player] call ace_arsenal_fnc_openBox}, 0, -85, false, true, "", ""]] call CBA_fnc_addPlayerAction;
     {
         _x call loadout_fnc_applyPlayerLoadout;
+        [{
+            private _customName = _this getVariable ["mab_playerName", name _this];
+            _this setVariable ["ACE_Name", _customName, true];
+            _this setVariable ["ACE_NameRaw", _customName, true];
+        }, _x, 5] call CBA_fnc_waitAndExecute;
     } forEach (switchableUnits - (entities "HeadlessClient_F" + [player] + allCurators));
 };
 
@@ -36,7 +41,17 @@ diw_camoCoef = [0.5,0.625,0.75] select diw_difficulty;
 player setUnitTrait ["camouflageCoef", diw_camoCoef];
 player addEventHandler ["Respawn", {
     player setUnitTrait ["camouflageCoef", diw_camoCoef];
+    [{
+        private _customName = player getVariable ["mab_playerName", name player];
+        player setVariable ["ACE_Name", _customName, true];
+        player setVariable ["ACE_NameRaw", _customName, true];
+    }, [], 5] call CBA_fnc_waitAndExecute;
 }];
+[{
+    private _customName = player getVariable ["mab_playerName", name player];
+    player setVariable ["ACE_Name", _customName, true];
+    player setVariable ["ACE_NameRaw", _customName, true];
+}, [], 5] call CBA_fnc_waitAndExecute;
 
 if (!isnil "zen_custom_modules_fnc_register") then{
     [] execVM "scripts\CR_fnc_ares.sqf";
