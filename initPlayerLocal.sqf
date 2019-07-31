@@ -247,3 +247,12 @@ onMapSingleClick "_shift";
         sleep 1;
     };
 };
+
+[] spawn {
+    while {true} do {
+        if (alive ace_player && {(random 100) < 15}) then {
+            playSound format["flies%1", ceil random 5];
+        };
+        sleep 10;
+    };
+};

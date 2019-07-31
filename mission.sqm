@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=245;
+		nextID=252;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=24;
+		nextID=36;
 	};
 	class Camera
 	{
-		pos[]={7652.3359,85.043793,5220.3857};
-		dir[]={-0.5354805,-0.57352346,-0.61995518};
-		up[]={-0.37489578,0.81918597,-0.43403739};
-		aside[]={-0.75679231,2.8230716e-008,0.65367174};
+		pos[]={9018.291,184.82256,4369.083};
+		dir[]={0.71731776,-0.33564529,0.61059403};
+		up[]={0.25560027,0.94198042,0.21757299};
+		aside[]={0.64819348,-9.406358e-008,-0.76149023};
 	};
 };
 binarizationWanted=0;
@@ -64,13 +64,15 @@ addons[]=
 	"A3_Soft_F_Enoch_Tractor_01",
 	"A3_Soft_F_Orange_Van_02",
 	"A3_Soft_F_Enoch_Truck_02",
-	"A3_Structures_F_Orange_Signs_Mines"
+	"A3_Structures_F_Orange_Signs_Mines",
+	"A3_Structures_F_Kart_Civ_SportsGrounds",
+	"A3_Structures_F_Items_Stationery"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=25;
+		items=26;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -240,6 +242,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item25
+		{
+			className="A3_Structures_F_Kart";
+			name="Arma 3 Karts - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 class DynamicSimulation
@@ -291,14 +300,18 @@ class Mission
 		timeOfChanges=1800.0002;
 		startWeather=0.4322263;
 		startFog=0.60000002;
-		startWind=0;
+		startWind=0.11453747;
+		startWindDir=-90;
 		startLightnings=0.45764157;
 		startWaves=0.1;
+		startGust=0.20772617;
 		forecastWeather=0.42799053;
 		forecastFog=0.60000002;
-		forecastWind=0;
+		forecastWind=0.11453747;
 		forecastWaves=0.1;
 		forecastLightnings=0.44917002;
+		forecastGust=0.20772617;
+		forecastWindDir=-90;
 		rainForced=1;
 		lightningsForced=1;
 		wavesForced=1;
@@ -315,7 +328,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=23;
+		items=29;
 		class Item0
 		{
 			dataType="Layer";
@@ -5037,6 +5050,183 @@ class Mission
 					};
 				};
 				nAttributes=2;
+			};
+		};
+		class Item23
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7632.707,76.729218,5204.8696};
+				angles[]={0.0032018756,2.4085543,6.278389};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				health=0.32209438;
+				ammo=0;
+				lock="LOCKED";
+				fuel=0.097594045;
+				textures="BlueOlive";
+				createAsSimpleObject=1;
+				disableSimulation=1;
+			};
+			id=245;
+			type="C_Truck_02_covered_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[10]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item24
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7634.6479,74.349373,5202.251};
+				angles[]={0.0079936078,2.0943952,6.2735863};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=247;
+			type="Oil_Spill_F";
+		};
+		class Item25
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7634.0127,74.348297,5203.1475};
+				angles[]={0.0080009829,1.8151425,6.2735858};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=248;
+			type="Oil_Spill_F";
+		};
+		class Item26
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7633.3833,74.35318,5203.2925};
+				angles[]={0.0080009829,0.82030487,6.2735858};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=249;
+			type="Oil_Spill_F";
+		};
+		class Item27
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8365.7061,140.2594,5031.9585};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_1";
+				createAsSimpleObject=1;
+				disableSimulation=1;
+			};
+			id=250;
+			type="Land_PencilBlue_F";
+			atlOffset=13.906906;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item28
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9072.6514,178.01021,4407.5493};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_2";
+			};
+			id=251;
+			type="Land_PencilBlue_F";
+			atlOffset=7.3710022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
 			};
 		};
 	};

@@ -81,6 +81,8 @@ class mission{
 		class ambientAnimCombat{};
 		class ambientFog{};
 		class coverMap{};
+		class ambientSounds{};
 	};
 };
 #include "cbrn\funcs.hpp"
+#include "crows\funcs.hpp"

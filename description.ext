@@ -69,6 +69,37 @@ class CfgSounds {
 		sound[] = {"sounds\Hitsound.ogg", 1.5, 0.25, 50};
 		titles[] = {};
 	};
+  class flies1 {
+		name = "flies1";
+		sound[] = {"sounds\flies1.ogg", 1, 1, 25};
+		titles[] = {};
+	};
+  class flies2 {
+		name = "flies2";
+		sound[] = {"sounds\flies2.ogg", 1, 1, 25};
+		titles[] = {};
+	};
+  class flies3 {
+		name = "flies3";
+		sound[] = {"sounds\flies3.ogg", 1, 1, 25};
+		titles[] = {};
+	};
+  class flies4 {
+		name = "flies4";
+		sound[] = {"sounds\flies4.ogg", 1, 1, 25};
+		titles[] = {};
+	};
+  class flies5 {
+		name = "flies5";
+		sound[] = {"sounds\flies5.ogg", 1, 1, 25};
+		titles[] = {};
+	};
+  class crows_takeoff {
+		name = "crows_takeoff";
+		sound[] = {"sounds\takeoff.ogg", 1.5, 1, 250};
+		titles[] = {};
+	};
+  #include "sounds\ambient.hpp"
 };
 class CfgMusic {
   tracks[]={};

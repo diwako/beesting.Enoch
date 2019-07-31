@@ -85,3 +85,30 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 		ace_weather_badWeatherShift = 0;
 		ace_weather_temperatureShift = 35;
 },[], 1] call CBA_fnc_waitAndExecute;
+
+private _ambient_snds = [];
+for "_i" from 0 to 27 do {
+  _ambient_snds pushback format["ambient%1",_i];
+};
+for "_i" from 0 to 5 do {
+	_ambient_snds pushBack "ambient12";
+	_ambient_snds pushBack "ambient13";
+	_ambient_snds pushBack "ambient14";
+	_ambient_snds pushBack "ambient15";
+	_ambient_snds pushBack "ambient16";
+	_ambient_snds pushBack "ambient17";
+	_ambient_snds pushBack "ambient18";
+};
+[_ambient_snds] call Mission_fnc_ambientSounds;
+
+{
+	_x addEventHandler ["FiredNear", {
+		params ["_nest"];
+		if !(_nest getVariable ["active", false]) then {
+			_nest setVariable ["active", true];
+			_nest removeEventHandler ["FiredNear", _thisEventhandler];
+			["crows_spawn", ["Crowe", getpos _nest,1 + (ceil random 5), 0, 29, _nest]] call CBA_fnc_globalevent;
+			[{deleteVehicle _this}, _nest, 30] call CBA_fnc_waitAndExecute;
+		};
+	}];
+} forEach [crows_1,crows_2,crows_3];
