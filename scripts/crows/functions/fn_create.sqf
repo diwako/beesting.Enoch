@@ -22,6 +22,7 @@ for "_i" from 1 to _flockCount do {
 		_flockPos select 2
 	];
 
+	_crow setDir random 360;
 	_crowList pushBack _crow;
 
 	sleep (random 0.01);

@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=253;
+		nextID=261;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=40;
+		nextID=44;
 	};
 	class Camera
 	{
-		pos[]={9061.6797,177.21478,4379.4331};
-		dir[]={0.021427149,-0.35100946,0.93613398};
-		up[]={0.0080324346,0.93636936,0.35092261};
-		aside[]={0.99974477,2.5844201e-008,-0.022883074};
+		pos[]={9896.2021,199.80849,4277.9009};
+		dir[]={-0.70309508,-0.63389909,0.32225111};
+		up[]={-0.576258,0.77341515,0.26411697};
+		aside[]={0.41665733,-3.3411197e-008,0.90907216};
 	};
 };
 binarizationWanted=0;
@@ -328,7 +328,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=30;
+		items=37;
 		class Item0
 		{
 			dataType="Layer";
@@ -5268,6 +5268,262 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item30
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9142.0342,174.11584,4390.395};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_4";
+				disableSimulation=1;
+			};
+			id=253;
+			type="Land_PencilBlue_F";
+			atlOffset=7.3710022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item31
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9294.8682,184.23846,4341.6548};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_5";
+				disableSimulation=1;
+			};
+			id=254;
+			type="Land_PencilBlue_F";
+			atlOffset=14.711243;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item32
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9465.749,190.69872,4346.8262};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_6";
+				disableSimulation=1;
+			};
+			id=255;
+			type="Land_PencilBlue_F";
+			atlOffset=14.711304;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item33
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9770.6035,197.71503,4306.8589};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_7";
+				disableSimulation=1;
+			};
+			id=256;
+			type="Land_PencilBlue_F";
+			atlOffset=14.732025;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item34
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10083.249,193.76804,4271.2974};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_8";
+				disableSimulation=1;
+			};
+			id=257;
+			type="Land_PencilBlue_F";
+			atlOffset=18.086304;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item35
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9969.874,194.03909,3799.4817};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="crows_9";
+				disableSimulation=1;
+			};
+			id=258;
+			type="Land_PencilBlue_F";
+			atlOffset=12.472015;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item36
+		{
+			dataType="Trigger";
+			position[]={9886.4092,187.92365,4282.749};
+			class Attributes
+			{
+				condition="call{ace_player in Thislist}";
+				onActivation="call{[""Crowe"", position thisTrigger, 10, 1, 10, thisTrigger] spawn crows_fnc_create;}";
+				sizeA=250;
+				sizeB=250;
+				activationBy="ANYPLAYER";
+			};
+			id=260;
+			type="EmptyDetectorAreaR250";
+			atlOffset=1.5258789e-005;
 		};
 	};
 };

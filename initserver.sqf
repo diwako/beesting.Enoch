@@ -111,4 +111,4 @@ for "_i" from 0 to 5 do {
 			[{deleteVehicle _this}, _nest, 60*5] call CBA_fnc_waitAndExecute;
 		};
 	}];
-} forEach [crows_1,crows_2,crows_3];
+} forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9];
