@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=239;
+		nextID=245;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=16;
+		nextID=20;
 	};
 	class Camera
 	{
-		pos[]={7657.8623,79.423378,5215.9258};
-		dir[]={-0.82084197,-0.36669853,-0.43791091};
-		up[]={-0.32353887,0.93033522,-0.17260471};
-		aside[]={-0.47069925,1.7764978e-007,0.88230109};
+		pos[]={7642,99.32,5187};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -43,10 +43,10 @@ addons[]=
 	"A3_Structures_F_Mil_BagBunker",
 	"A3_Structures_F_Enoch_Military_Camps",
 	"A3_Soft_F_Enoch_Offroad_01",
-	"A3_Soft_F_Gamma_Van_01",
 	"A3_Structures_F_Enoch_Civilian_Camps",
 	"A3_Data_F_ParticleEffects",
 	"A3_Structures_F_Wrecks",
+	"A3_Soft_F_Gamma_Van_01",
 	"ace_refuel",
 	"A3_Soft_F_Gamma_Hatchback_01",
 	"CUP_CAMisc",
@@ -54,7 +54,6 @@ addons[]=
 	"ace_realisticnames",
 	"A3_Soft_F_Gamma_Truck_02",
 	"A3_Soft_F_Beta_Truck_02",
-	"A3_Soft_F_Kart_Kart_01",
 	"A3_Soft_F_Orange_Offroad_02",
 	"CUP_Shed_small",
 	"A3_Soft_F_Offroad_01",
@@ -71,7 +70,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=26;
+		items=25;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -151,29 +150,29 @@ class AddonsMetaData
 		};
 		class Item11
 		{
-			className="A3_Soft_F_Gamma";
-			name="Arma 3 - Unarmored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item12
-		{
 			className="A3_Structures_F_Enoch_Civilian";
 			name="Arma 3 Enoch - Civilian Buildings";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item12
 		{
 			className="A3_Data_F";
 			name="Arma 3 - Main Configuration";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item14
+		class Item13
 		{
 			className="A3_Structures_F_Wrecks";
 			name="Arma 3 - Vehicle Wrecks";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item14
+		{
+			className="A3_Soft_F_Gamma";
+			name="Arma 3 - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -205,43 +204,36 @@ class AddonsMetaData
 		};
 		class Item19
 		{
-			className="A3_Soft_F_Kart";
-			name="Arma 3 Karts - Unarmored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item20
-		{
 			className="A3_Soft_F_Orange";
 			name="Arma 3 Orange - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item21
+		class Item20
 		{
 			className="CUP_Shed_small";
 			name="CUP_Shed_small";
 		};
-		class Item22
+		class Item21
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item23
+		class Item22
 		{
 			className="A3_Structures_F_Enoch";
 			name="Arma 3 Enoch - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item23
 		{
 			className="CUP_Misc3_Config";
 			name="CUP_Misc3_Config";
 		};
-		class Item25
+		class Item24
 		{
 			className="A3_Structures_F_Orange";
 			name="Arma 3 Orange - Buildings and Structures";
@@ -457,6 +449,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
+						init="call{this setVariable [""mab_playerName"",""Dylan Clarke""];}";
 						description="Sarge@PAPA";
 						isPlayer=1;
 					};
@@ -516,6 +509,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Jan Kava""];}";
 						description="Doc";
 						isPlayable=1;
 					};
@@ -591,6 +585,7 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
+						init="call{this setVariable [""mab_playerName"",""Pawel Narleski""];}";
 						description="Pawel@TEAM 1";
 						isPlayable=1;
 					};
@@ -650,6 +645,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Jaroslaw Sternik""];}";
 						description="Jaroslaw";
 						isPlayable=1;
 					};
@@ -709,6 +705,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Stanislaw Orman""];}";
 						description="Stanislaw";
 						isPlayable=1;
 					};
@@ -768,6 +765,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Tomasz Sarna""];}";
 						description="Tomasz";
 						isPlayable=1;
 					};
@@ -843,6 +841,7 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
+						init="call{this setVariable [""mab_playerName"",""Andrey Pashinina""];}";
 						description="Andrey@TEAM 2";
 						isPlayable=1;
 					};
@@ -902,6 +901,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Valery Titovaa""];}";
 						description="Valery";
 						isPlayable=1;
 					};
@@ -961,6 +961,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Kamil Zimniak""];}";
 						description="Kamil";
 						isPlayable=1;
 					};
@@ -1020,6 +1021,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
+						init="call{this setVariable [""mab_playerName"",""Tymon Lem""];}";
 						description="Tymon";
 						isPlayable=1;
 					};
@@ -2472,7 +2474,7 @@ class Mission
 															"SCALAR"
 														};
 													};
-													value=1;
+													value=0;
 												};
 											};
 											class Item18
@@ -2738,48 +2740,6 @@ class Mission
 			};
 		};
 		class Item20
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={9039.6836,174.17093,4422.2637};
-				angles[]={6.2368116,2.9321532,6.252799};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				textures="Black";
-				dynamicSimulation=1;
-			};
-			id=149;
-			type="C_Van_01_transport_F";
-			atlOffset=-9.1552734e-005;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item21
 		{
 			dataType="Layer";
 			name="traffic jam";
@@ -3108,23 +3068,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9784.9277,183.86395,4297.292};
-						angles[]={0.0207968,1.5358897,6.2735858};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=210;
-					type="C_Kart_01_Fuel_F";
-					atlOffset=-6.1035156e-005;
-				};
-				class Item20
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={9922.7207,188.68126,4281.3765};
 						angles[]={6.2703872,1.6580628,6.2400126};
 					};
@@ -3136,7 +3079,7 @@ class Mission
 					id=229;
 					type="C_IDAP_Offroad_02_unarmed_F";
 				};
-				class Item21
+				class Item20
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3152,7 +3095,7 @@ class Mission
 					id=216;
 					type="Land_Shed_M02";
 				};
-				class Item22
+				class Item21
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3168,7 +3111,7 @@ class Mission
 					id=194;
 					type="Land_Wreck_Van_F";
 				};
-				class Item23
+				class Item22
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3185,7 +3128,7 @@ class Mission
 					id=168;
 					type="C_Offroad_01_F";
 				};
-				class Item24
+				class Item23
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3202,7 +3145,7 @@ class Mission
 					type="I_G_Offroad_01_F";
 					atlOffset=-0.0001373291;
 				};
-				class Item25
+				class Item24
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3219,7 +3162,7 @@ class Mission
 					type="C_Offroad_01_comms_F";
 					atlOffset=4.5776367e-005;
 				};
-				class Item26
+				class Item25
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3235,7 +3178,7 @@ class Mission
 					id=211;
 					type="C_Offroad_01_covered_F";
 				};
-				class Item27
+				class Item26
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3252,7 +3195,7 @@ class Mission
 					type="I_E_Offroad_01_covered_F";
 					atlOffset=-0.00079345703;
 				};
-				class Item28
+				class Item27
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3268,7 +3211,7 @@ class Mission
 					id=205;
 					type="C_Offroad_01_repair_F";
 				};
-				class Item29
+				class Item28
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3285,7 +3228,7 @@ class Mission
 					type="Land_Wreck_Offroad_F";
 					atlOffset=0.0015869141;
 				};
-				class Item30
+				class Item29
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3301,7 +3244,7 @@ class Mission
 					id=195;
 					type="Land_Wreck_Offroad2_F";
 				};
-				class Item31
+				class Item30
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3317,7 +3260,7 @@ class Mission
 					id=217;
 					type="Land_TrailerCistern_wreck_F";
 				};
-				class Item32
+				class Item31
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3333,7 +3276,7 @@ class Mission
 					id=188;
 					type="datsun02Wreck";
 				};
-				class Item33
+				class Item32
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3349,7 +3292,7 @@ class Mission
 					id=206;
 					type="C_Quadbike_01_F";
 				};
-				class Item34
+				class Item33
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3365,7 +3308,7 @@ class Mission
 					id=190;
 					type="SKODAWreck";
 				};
-				class Item35
+				class Item34
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3383,7 +3326,7 @@ class Mission
 					type="C_SUV_01_F";
 					atlOffset=-7.6293945e-005;
 				};
-				class Item36
+				class Item35
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3399,7 +3342,7 @@ class Mission
 					id=212;
 					type="C_SUV_01_F";
 				};
-				class Item37
+				class Item36
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3416,7 +3359,7 @@ class Mission
 					id=226;
 					type="C_SUV_01_F";
 				};
-				class Item38
+				class Item37
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3433,7 +3376,7 @@ class Mission
 					type="C_Tractor_01_F";
 					atlOffset=-0.97322083;
 				};
-				class Item39
+				class Item38
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3450,7 +3393,7 @@ class Mission
 					type="C_Tractor_01_F";
 					atlOffset=0.00019836426;
 				};
-				class Item40
+				class Item39
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3467,7 +3410,7 @@ class Mission
 					type="C_Tractor_01_F";
 					atlOffset=7.6293945e-005;
 				};
-				class Item41
+				class Item40
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3483,7 +3426,7 @@ class Mission
 					id=203;
 					type="C_Van_01_transport_F";
 				};
-				class Item42
+				class Item41
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3501,7 +3444,7 @@ class Mission
 					type="C_Van_01_transport_F";
 					atlOffset=-3.0517578e-005;
 				};
-				class Item43
+				class Item42
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3519,7 +3462,7 @@ class Mission
 					type="C_Van_01_box_F";
 					atlOffset=-0.00025939941;
 				};
-				class Item44
+				class Item43
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3535,7 +3478,7 @@ class Mission
 					id=208;
 					type="C_Van_01_box_F";
 				};
-				class Item45
+				class Item44
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3551,7 +3494,7 @@ class Mission
 					id=187;
 					type="UAZWreck";
 				};
-				class Item46
+				class Item45
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3567,7 +3510,7 @@ class Mission
 					id=186;
 					type="UralWreck";
 				};
-				class Item47
+				class Item46
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3583,7 +3526,7 @@ class Mission
 					id=191;
 					type="Land_V3S_wreck_F";
 				};
-				class Item48
+				class Item47
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3599,7 +3542,7 @@ class Mission
 					id=219;
 					type="Land_V3S_wreck_F";
 				};
-				class Item49
+				class Item48
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3640,7 +3583,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item50
+				class Item49
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3680,7 +3623,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item51
+				class Item50
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3697,7 +3640,7 @@ class Mission
 					type="C_Van_02_vehicle_F";
 					atlOffset=1.5258789e-005;
 				};
-				class Item52
+				class Item51
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3714,7 +3657,7 @@ class Mission
 					type="C_Van_02_vehicle_F";
 					atlOffset=-6.1035156e-005;
 				};
-				class Item53
+				class Item52
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3731,7 +3674,7 @@ class Mission
 					type="C_Van_02_service_F";
 					atlOffset=-0.00044250488;
 				};
-				class Item54
+				class Item53
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3748,7 +3691,7 @@ class Mission
 					type="C_Van_02_transport_F";
 					atlOffset=-6.1035156e-005;
 				};
-				class Item55
+				class Item54
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3764,7 +3707,7 @@ class Mission
 					id=222;
 					type="I_E_Truck_02_Ammo_F";
 				};
-				class Item56
+				class Item55
 				{
 					dataType="Marker";
 					position[]={10033.572,186.16229,4263.2422};
@@ -3776,7 +3719,7 @@ class Mission
 					id=24;
 					atlOffset=6.9785461;
 				};
-				class Item57
+				class Item56
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3792,7 +3735,7 @@ class Mission
 					id=185;
 					type="LADAWreck";
 				};
-				class Item58
+				class Item57
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3808,7 +3751,7 @@ class Mission
 					id=172;
 					type="I_E_Offroad_01_comms_F";
 				};
-				class Item59
+				class Item58
 				{
 					dataType="Object";
 					class PositionInfo
@@ -3824,11 +3767,27 @@ class Mission
 					id=238;
 					type="Crater";
 				};
+				class Item59
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9784.9326,184.38077,4297.3027};
+						angles[]={0.020804325,1.5358897,6.2735863};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=244;
+					type="C_Offroad_02_unarmed_F";
+				};
 			};
 			id=236;
-			atlOffset=-4.5609436;
+			atlOffset=-3.9001617;
 		};
-		class Item22
+		class Item21
 		{
 			dataType="Layer";
 			name="mine signs";
@@ -4370,6 +4329,715 @@ class Mission
 			};
 			id=237;
 			atlOffset=-0.30447388;
+		};
+		class Item22
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9040.1777,173.83505,4419.9951};
+				angles[]={6.2368116,3.0368729,6.252799};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				textures="Black";
+				dynamicSimulation=1;
+			};
+			id=243;
+			type="C_Van_02_vehicle_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['bis_fnc_initVehicle_customization',_value]} else {([_this] + _value + [true]) call (uinamespace getvariable 'bis_fnc_initVehicle');};};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=44;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Enable_Cargo";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item2
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_1_source";
+												};
+											};
+											class Item3
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item4
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_2_source";
+												};
+											};
+											class Item5
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item6
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_3_source";
+												};
+											};
+											class Item7
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item8
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_4_source";
+												};
+											};
+											class Item9
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item10
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_1_source";
+												};
+											};
+											class Item11
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item12
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_2_source";
+												};
+											};
+											class Item13
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item14
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_3_source";
+												};
+											};
+											class Item15
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item16
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_4_source";
+												};
+											};
+											class Item17
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item18
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="lights_em_hide";
+												};
+											};
+											class Item19
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item20
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ladder_hide";
+												};
+											};
+											class Item21
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item22
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="spare_tyre_holder_hide";
+												};
+											};
+											class Item23
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item24
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="spare_tyre_hide";
+												};
+											};
+											class Item25
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item26
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="reflective_tape_hide";
+												};
+											};
+											class Item27
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item28
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="roof_rack_hide";
+												};
+											};
+											class Item29
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item30
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="LED_lights_hide";
+												};
+											};
+											class Item31
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item32
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="sidesteps_hide";
+												};
+											};
+											class Item33
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item34
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="rearsteps_hide";
+												};
+											};
+											class Item35
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item36
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="side_protective_frame_hide";
+												};
+											};
+											class Item37
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item38
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="front_protective_frame_hide";
+												};
+											};
+											class Item39
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item40
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="beacon_front_hide";
+												};
+											};
+											class Item41
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item42
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="beacon_rear_hide";
+												};
+											};
+											class Item43
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 };
