@@ -18,13 +18,13 @@ removeAllWeapons _man;
 // _man linkItem "ItemRadio";
 // _man linkItem "ItemMap";
 // _man linkItem "ItemCompass";
-_man linkItem "ItemWatch";
+// _man linkItem "ItemWatch";
 
 group _man setBehaviour "CARELESS";
 //Add uniform
-_man forceAddUniform "Stalker_Jacket";
-_man addItemToUniform "FirstAidKit";
-_man addItemToUniform "FirstAidKit";
-_man addVest "Sunrise_Vest";
-_man addHeadgear "rhs_xmas_antlers";
-_man addGoggles "gluv_AAF";
+_man forceAddUniform selectRandom ["U_C_Poor_1", "U_I_C_Soldier_Para_1_F", "U_I_C_Soldier_Para_4_F", "U_I_C_Soldier_Para_5_F"];
+// _man addItemToUniform "FirstAidKit";
+// _man addItemToUniform "FirstAidKit";
+_man addVest selectRandom ["V_BandollierB_blk", "V_BandollierB_khk", "V_TacChestrig_grn_F", "V_TacChestrig_oli_F"];
+_man addHeadgear selectRandom ["H_Booniehat_taiga", "H_Booniehat_wdl", "H_Cap_blk", "H_Cap_oli", "H_Hat_Safari_olive_F", "H_Hat_Safari_sand_F"];
+_man addGoggles selectRandom ["G_AirPurifyingRespirator_01_F", "G_AirPurifyingRespirator_02_sand_F", "G_AirPurifyingRespirator_02_olive_F", "G_AirPurifyingRespirator_02_black_F"];

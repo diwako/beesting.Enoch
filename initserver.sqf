@@ -112,3 +112,13 @@ for "_i" from 0 to 10 do {
 		};
 	}];
 } forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9];
+
+private _scrvgrp = createGroup [civilian, true];
+private _dude = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_1", [], 0, "CAN_COLLIDE"];
+private _dude2 = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_2", [], 0, "CAN_COLLIDE"];
+removeFromRemainsCollector [_dude, _dude2];
+_dude enableDynamicSimulation true;
+_dude2 enableDynamicSimulation true;
+_scrvgrp enableDynamicSimulation true;
+_dude setDamage 1;
+_dude2 setDamage 1;
