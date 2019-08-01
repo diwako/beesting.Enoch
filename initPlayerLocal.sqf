@@ -254,3 +254,15 @@ onMapSingleClick "_shift";
         sleep 10;
     };
 };
+
+
+["diw_cinmaticCorwsRoad", {
+    [] spawn {
+        private _start = getMarkerPos "crow_start";
+        private _target = createSimpleObject ["building", getMarkerPos "crow_end", true];
+        private _crows = ["Crowe", _start, 25, 1, 25, _target] call crows_fnc_create; 
+        [{((_this select 0) select 0) distance2d (_this select 1) < 100}, {
+            deleteVehicle (_this select 1);
+        }, [_crows, _target]] call CBA_fnc_waitUntilAndExecute
+    };
+}] call CBA_fnc_addEventHandler;

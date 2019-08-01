@@ -34,3 +34,5 @@ _veh say3D ["crows_takeoff", 250];
 [{deleteVehicle _this}, _veh, 10] call CBA_fnc_waitAndExecute;
 
 [_crowList, _flockHeight, _target] call crows_fnc_loop;
+
+_crowList

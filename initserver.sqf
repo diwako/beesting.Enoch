@@ -90,7 +90,7 @@ private _ambient_snds = [];
 for "_i" from 0 to 27 do {
   _ambient_snds pushback format["ambient%1",_i];
 };
-for "_i" from 0 to 5 do {
+for "_i" from 0 to 10 do {
 	_ambient_snds pushBack "ambient12";
 	_ambient_snds pushBack "ambient13";
 	_ambient_snds pushBack "ambient14";
