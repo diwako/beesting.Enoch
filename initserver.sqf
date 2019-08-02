@@ -122,3 +122,8 @@ _dude2 enableDynamicSimulation true;
 _scrvgrp enableDynamicSimulation true;
 _dude setDamage 1;
 _dude2 setDamage 1;
+
+private _holder = createVehicle ["groundWeaponHolder", getmarkerpos "promet_mrk", [], 0, "CAN_COLLIDE"];
+_holder setdir random 360;
+_holder addWeaponCargoGlobal ["arifle_MSBS65_F", 1];
+_holder addMagazineCargoGlobal ["30Rnd_65x39_caseless_msbs_mag", 3];

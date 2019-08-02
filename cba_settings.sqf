@@ -261,3 +261,12 @@ force EM_STAMINA_COEF = 1;
 // DUI - Squad Radar - Radar
 force diwako_dui_radar_sortType = "fireteam2";
 force diwako_dui_radar_sqlFirst = true;
+
+// ACEX Field Rations
+force acex_field_rations_affectAdvancedFatigue = false;
+force acex_field_rations_enabled = true;
+force acex_field_rations_hungerSatiated = 10;
+force acex_field_rations_thirstQuenched = 10;
+force acex_field_rations_timeWithoutFood = 6;
+force acex_field_rations_timeWithoutWater = 1;
+force acex_field_rations_hudShowLevel = 60;

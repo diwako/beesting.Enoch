@@ -32,6 +32,8 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
     player enableStamina false;
     player setCaptive true;
     [player, true] remoteExec ["hideObjectGlobal", 2];
+    acex_field_rations_timeWithoutFood = 9999;
+    acex_field_rations_timeWithoutWater = 9999;
 } else {
     disableRemoteSensors true;
 };
@@ -47,10 +49,15 @@ player addEventHandler ["Respawn", {
         player setVariable ["ACE_NameRaw", _customName, true];
     }, [], 5] call CBA_fnc_waitAndExecute;
 }];
+
+private _tile = parseText format ["<t font='PuristaBold' color='#ffffff' size='1' align='center'>Your name is</t><br/><t color='#ffffff' size='2' align='center'>%1</t>",player getVariable ["mab_playerName", name player]];
+[_tile, true, nil, 10, 0.7, 0] spawn BIS_fnc_textTiles;
+cutText  ["", "BLACK FADED", 10, true];
 [{
     private _customName = player getVariable ["mab_playerName", name player];
     player setVariable ["ACE_Name", _customName, true];
     player setVariable ["ACE_NameRaw", _customName, true];
+    cutText  ["", "BLACK IN", 2, true];
 }, [], 5] call CBA_fnc_waitAndExecute;
 
 if (!isnil "zen_custom_modules_fnc_register") then{
@@ -232,7 +239,7 @@ onMapSingleClick "_shift";
                     for "_a" from 1 to 20 do {
                         if (_maxIter <= _curIter) exitWith {};
                         _pos = [[_roadPos, 6, 50, _dir, true]] call CBA_fnc_randPosArea;
-                        if ((_campos distance2D _pos) >= 50 && {_surfacetype isEqualTo (surfaceType _pos)}) then {
+                        if ((_campos distance2D _pos) >= 60 && {_surfacetype isEqualTo (surfaceType _pos)}) then {
                             _pos = _pos vectorAdd [0,0,-0.5];
                             drop [["\A3\data_f\ParticleEffects\Universal\Refract.p3d", 1, 0, 1], "", "Billboard", 1, 5, _pos, [0, 0, 0.25], 0, 11, 7.9, 0, [0.01, 5, 5, 0.01], [[0.1, 0.1, 0.1, 0.5]], [0.08], 1, 0, "", "", ""];
                             _cur = _cur + 1;

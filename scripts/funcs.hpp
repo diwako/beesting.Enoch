@@ -84,5 +84,17 @@ class mission{
 		class ambientSounds{};
 	};
 };
+class Second_primary{
+	tag="second_primary";
+	class functions{
+		file = "scripts\second_primary";
+		class init{postInit=1;};
+		class toggle{};
+		class drop{};
+		class toggleCondition{};
+		class fill{};
+		class renderPFH{};
+	};
+};
 #include "cbrn\funcs.hpp"
 #include "crows\funcs.hpp"
