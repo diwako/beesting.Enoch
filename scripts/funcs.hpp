@@ -82,6 +82,7 @@ class mission{
 		class ambientFog{};
 		class coverMap{};
 		class ambientSounds{};
+		class setUpLoot{};
 	};
 };
 class Second_primary{

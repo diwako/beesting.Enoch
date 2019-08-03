@@ -127,3 +127,7 @@ private _holder = createVehicle ["groundWeaponHolder", getmarkerpos "promet_mrk"
 _holder setdir random 360;
 _holder addWeaponCargoGlobal ["arifle_MSBS65_F", 1];
 _holder addMagazineCargoGlobal ["30Rnd_65x39_caseless_msbs_mag", 3];
+
+
+[[11054.366,4307.835]] call mission_fnc_setUpLoot;
+[[11519.837,4602.323]] call mission_fnc_setUpLoot;
