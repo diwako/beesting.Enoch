@@ -14,9 +14,8 @@ private _arr = [];
 		if(isNil "_dir") then {
 			_up = [0,0,0];
 		};
-		_tmp = [_type,_pos,[_dir,_up]];
-		_arr pushBack _tmp;
+		_arr pushBack [_type, _pos, [_dir, _up], getObjectTextures _x];
 	};
 	false
-} count (getMissionLayerEntities "layer name here")#0;
+} count (getMissionLayerEntities "traffic jam")#0;
 _arr

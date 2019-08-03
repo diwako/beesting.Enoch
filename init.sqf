@@ -75,4 +75,4 @@ setTerrainGrid 25;
 enableEnvironment [false, false];
 // enableEnvironment [false, true];
 
-GOM_fnc_temperature = -20;
+[] execvm "scripts\mission\trafficJamObjects.sqf";
