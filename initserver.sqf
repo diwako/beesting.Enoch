@@ -111,7 +111,7 @@ for "_i" from 0 to 10 do {
 			[{deleteVehicle _this}, _nest, 60*5] call CBA_fnc_waitAndExecute;
 		};
 	}];
-} forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9];
+} forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9,crows_10,crows_11,crows_12];
 
 private _scrvgrp = createGroup [civilian, true];
 private _dude = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_1", [], 0, "CAN_COLLIDE"];
@@ -129,5 +129,6 @@ _holder addWeaponCargoGlobal ["arifle_MSBS65_F", 1];
 _holder addMagazineCargoGlobal ["30Rnd_65x39_caseless_msbs_mag", 3];
 
 
-[[11054.366,4307.835]] call mission_fnc_setUpLoot;
-[[11519.837,4602.323]] call mission_fnc_setUpLoot;
+[[11054.366,4307.835], nil, 3] call mission_fnc_setUpLoot;
+[[11519.837,4602.323], nil, 3] call mission_fnc_setUpLoot;
+[getMarkerPos "destr1", nil, 1] call mission_fnc_setUpLoot;

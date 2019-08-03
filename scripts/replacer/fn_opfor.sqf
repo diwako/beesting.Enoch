@@ -44,6 +44,7 @@ _man linkItem "ItemWatch";
 _man forceAddUniform "U_I_E_CBRN_Suit_01_EAF_F";
 _man addVest selectRandom ["V_CarrierRigKBT_01_light_EAF_F","V_CarrierRigKBT_01_heavy_Olive_F","V_CarrierRigKBT_01_heavy_EAF_F","V_CarrierRigKBT_01_light_Olive_F","V_CarrierRigKBT_01_EAF_F"];
 // _man addBackpack selectRandom ["B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_RadioBag_01_eaf_F"];
+// _man addBackpack "B_CombinationUnitRespirator_01_F";
 _man addBackpack "B_SCBA_01_F";
 // _man addHeadgear selectRandom ["H_HelmetHBK_headset_F","H_HelmetHBK_chops_F","H_HelmetHBK_ear_F","H_HelmetHBK_F","H_Booniehat_eaf"];
 _man addHeadgear selectRandom ["H_HelmetHBK_headset_F","H_HelmetHBK_ear_F","H_HelmetHBK_F"];

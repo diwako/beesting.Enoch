@@ -55,9 +55,11 @@ if(_side == west) exitWith {
 		_man addVest "V_Chestrig_rgr";
 		_man addHeadgear "H_HelmetB_light_wdl";
 
-		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_545x39_Mag_F";};
+		// for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_545x39_Mag_F";};
+		for "_i" from 1 to 5 do {_man addItemToVest "30Rnd_762x39_AK12_Mag_F";};
 
-		_man addWeapon "arifle_AKS_F";
+		// _man addWeapon "arifle_AKS_F";
+		_man addWeapon "arifle_AK12U_F";
 		_man addWeapon "Binocular";
 	};
 

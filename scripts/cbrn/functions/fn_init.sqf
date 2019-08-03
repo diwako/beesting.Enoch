@@ -58,7 +58,7 @@ cbrn_maxOxygenTime = 60 * 30;
 
 cbrn_loadouteh = ["cba_events_loadoutEvent",{
     params ["_unit", "_oldLoadout"];
-    if (_unit != ace_player) exitWith {};
+    if (_unit != player) exitWith {};
     private _goggles = goggles _unit;
     private _backpack = backpack _unit;
     private _uniform = uniform _unit;

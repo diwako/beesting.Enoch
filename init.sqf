@@ -76,3 +76,4 @@ enableEnvironment [false, false];
 // enableEnvironment [false, true];
 
 [] execvm "scripts\mission\trafficJamObjects.sqf";
+[] execvm "scripts\mission\nigelsCookOff.sqf";
