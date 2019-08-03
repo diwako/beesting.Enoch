@@ -28,6 +28,7 @@ player addEventHandler["Respawn",{
 	player setVariable ["second_primary_info", nil, true];
 }];
 
+/*
 second_primary_units = [];
 second_primary_renderLimit = 10;
 
@@ -40,10 +41,12 @@ second_primary_renderLimit = 10;
 		_weaponHolder = "Weapon_Empty" createVehicleLocal [0, 0, 0];
 		_weaponHolder attachTo [_unit, [0, 0, 0], "proxy:\a3\characters_f\proxies\launcher.001"];
 		_unit setVariable ["second_primary_weaponHolder", _weaponHolder];
-		// _weaponHolder enableSimulation false;
+		_weaponHolder setVariable ["second_primary_backpack", true];
 	};
 	clearWeaponCargo _weaponHolder;
+	_weaponHolder enableSimulation true;
 	[_weaponHolder, _weaponsinfo, true] call second_primary_fnc_fill;
+	_weaponHolder enableSimulation false;
 	second_primary_units pushBackUnique _unit;
 }] call CBA_fnc_addEventHandler;
 
@@ -55,6 +58,31 @@ second_primary_renderLimit = 10;
 	deleteVehicle _weaponHolder;
 }] call CBA_fnc_addEventHandler;
 
+player addEventHandler ["InventoryOpened", {
+	params ["_unit", "_container"];
+	if (_container getVariable ["second_primary_backpack", false]) exitWith {
+		true;
+	};
+}];
+
+player addEventHandler ["Put", {
+	params ["_unit", "_container", "_item"];
+	if !(_unit isEqualTo ace_player) exitWith {};
+	if (_container getVariable ["second_primary_backpack", false]) then {
+		_unit additem _item;
+		_container removeitem _item;
+	};
+}];
+
+player addEventHandler ["Take", {
+	params ["_unit", "_container", "_item"];
+	if !(_unit isEqualTo ace_player) exitWith {};
+	if (_container getVariable ["second_primary_backpack", false]) then {
+		_unit removeitem _item;
+	};
+}];
+
 if (isNil "second_primary_renderPFH") then {
     second_primary_renderPFH = [second_primary_fnc_renderPFH, 0, []] call CBA_fnc_addPerFrameHandler;
 };
+*/
