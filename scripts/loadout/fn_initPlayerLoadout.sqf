@@ -1,4 +1,4 @@
-player spawn loadout_fnc_applyPlayerLoadout;
+player call loadout_fnc_applyPlayerLoadout;
 
 player addEventHandler["Respawn",{
     player call loadout_fnc_applyPlayerLoadout;

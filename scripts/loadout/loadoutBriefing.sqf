@@ -21,11 +21,12 @@ private _getPicture = {
 //GET ROLE NAME
 private _lobbyName = if !(((roleDescription player) find "@") isEqualto -1) then {((roleDescription player) splitString "@") select 0} else {roleDescription player};
 if (_lobbyName isEqualto "") then {_lobbyName = getText (configFile >> "CfgVehicles" >> typeOf player >> "displayName")};
+_lobbyName = "Survivor";
 
 //START ADDING TO THE BRIEFING TEXT (FIRST INFO LINE)
 _textToDisplay = _textToDisplay +
 	format ["<img image='\A3\Ui_f\data\GUI\Cfg\Ranks\%4_gs.paa' width='16' height='16'/> <font face='PuristaBold' color='#FFBA26' size='14'>%1 - %2</font><font color='#D7DBD5'> - %3kg</font><br/>",
-		name player,
+		player getVariable ["mab_playerName", name player],
 		_lobbyName,
 		round ((loadAbs player) *0.1 * 0.45359237 * 10) / 10,
 		toLower rank player
