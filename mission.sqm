@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=553;
+	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=891;
+		nextID=929;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=105;
+		nextID=111;
 	};
 	class Camera
 	{
-		pos[]={9909.2813,206.64514,3772.6052};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={9065.2598,180.41017,4386.5078};
+		dir[]={-0.81160474,-0.42328194,0.40291467};
+		up[]={-0.37921709,0.90595013,0.18825866};
+		aside[]={0.44471219,1.4919788e-006,0.89579272};
 	};
 };
 binarizationWanted=0;
@@ -51,13 +51,28 @@ addons[]=
 	"CUP_Buildings_Config",
 	"CUP_CABuildings_Misc",
 	"A3_Structures_F_Enoch_Military_Flags",
-	"A3_Modules_F_Curator_Curator"
+	"A3_Modules_F_Curator_Curator",
+	"CUP_Editor_Plants_Config",
+	"A3_Soft_F_Offroad_01",
+	"A3_Soft_F_Gamma_SUV_01",
+	"A3_Soft_F_Orange_Offroad_01",
+	"A3_Soft_F_Gamma_Truck_02",
+	"A3_Soft_F_Gamma_Hatchback_01",
+	"A3_Soft_F_Gamma_Van_01",
+	"A3_Structures_F_Wrecks",
+	"CUP_Shed_small",
+	"A3_Structures_F_Enoch_Wrecks",
+	"A3_Signs_F",
+	"ace_interaction",
+	"ace_cargo",
+	"ace_dragging",
+	"A3_Soft_F_Enoch_Van_02"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=19;
+		items=29;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -185,6 +200,72 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item19
+		{
+			className="CUP_Editor_Plants_Config";
+			name="CUP_Editor_Plants_Config";
+		};
+		class Item20
+		{
+			className="A3_Soft_F";
+			name="Arma 3 Alpha - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item21
+		{
+			className="A3_Soft_F_Gamma";
+			name="Arma 3 - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item22
+		{
+			className="A3_Structures_F_Wrecks";
+			name="Arma 3 - Vehicle Wrecks";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item23
+		{
+			className="CUP_Shed_small";
+			name="CUP_Shed_small";
+		};
+		class Item24
+		{
+			className="A3_Structures_F_Enoch";
+			name="Arma 3 Enoch - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item25
+		{
+			className="A3_Signs_F";
+			name="Arma 3 - Signs";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item26
+		{
+			className="ace_interaction";
+			name="ACE3 - Interaction";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item27
+		{
+			className="ace_cargo";
+			name="ACE3 - Cargo";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item28
+		{
+			className="ace_dragging";
+			name="ACE3 - Dragging";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
 	};
 };
 class DynamicSimulation
@@ -264,7 +345,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=81;
+		items=82;
 		class Item0
 		{
 			dataType="Layer";
@@ -1328,7 +1409,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9046.3818,173.45174,4411.5396};
+				position[]={9049.0273,173.40289,4411.2793};
 				angles[]={6.2097197,1.9547688,6.271987};
 			};
 			side="Empty";
@@ -1340,7 +1421,6 @@ class Mission
 			};
 			id=148;
 			type="I_E_Offroad_01_covered_F";
-			atlOffset=7.6293945e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2469,8 +2549,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9040.1777,173.83505,4419.9951};
-				angles[]={6.2368116,3.0368729,6.252799};
+				position[]={9045.6016,173.0629,4406.4355};
+				angles[]={6.2192712,2.7750735,6.2623916};
 			};
 			side="Empty";
 			flags=4;
@@ -2481,6 +2561,7 @@ class Mission
 			};
 			id=243;
 			type="C_Van_02_vehicle_F";
+			atlOffset=-0.00035095215;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2600,7 +2681,7 @@ class Mission
 															"SCALAR"
 														};
 													};
-													value=0;
+													value=1;
 												};
 											};
 											class Item4
@@ -5381,6 +5462,656 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item81
+		{
+			dataType="Layer";
+			name="Layer 106";
+			class Entities
+			{
+				items=37;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9877.4053,188.48428,4275.1187};
+						angles[]={0.006394445,5.4628806,0.028793031};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=891;
+					type="CUP_kmen_1_buk";
+					atlOffset=1.5258789e-005;
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9712.7227,184.29436,4296.4897};
+						angles[]={0,2.3387413,6.2767911};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=892;
+					type="CUP_kmen_1_buk";
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9639.8916,185.64688,4304.4487};
+						angles[]={0.10046153,2.4085543,0.025594741};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						textures="BlueOlive";
+					};
+					id=894;
+					type="C_Truck_02_covered_F";
+					atlOffset=-0.010528564;
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9394.8916,175.22397,4335.4902};
+						angles[]={0.0015822123,2.3561945,0.033584893};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=895;
+					type="C_Offroad_01_F";
+				};
+				class Item4
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9239.7783,168.2486,4357.314};
+						angles[]={6.2815661,5.4628806,0.039979152};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=896;
+					type="CUP_kmen_1_buk";
+				};
+				class Item5
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9276.4141,169.72226,4371.894};
+						angles[]={0.0032018756,5.2534413,0.039977662};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=897;
+					type="CUP_kmen_1_buk";
+				};
+				class Item6
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9494.8555,178.15088,4319.0664};
+						angles[]={0.028793031,0.47123909,0.039979152};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=898;
+					type="CUP_kmen_1_buk";
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9573.2031,182.28484,4330.1255};
+						angles[]={0.004796607,1.7104228,0.043172773};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=899;
+					type="C_Van_02_service_F";
+					atlOffset=-0.00061035156;
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9043.6494,172.44533,4395.0488};
+						angles[]={6.2336264,2.0594885,6.2591896};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						textures="Orange";
+					};
+					id=900;
+					type="C_SUV_01_F";
+					atlOffset=-0.00038146973;
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9039.3203,172.88168,4417.4922};
+						angles[]={2.1019125,1.2240857,5.7257795};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						disableSimulation=1;
+					};
+					id=903;
+					type="C_IDAP_Offroad_01_F";
+					atlOffset=-0.83966064;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ammoBox";
+							expression="[_this,_value] call bis_fnc_initAmmoBox;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item10
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9033.9189,173.58052,4411.4658};
+						angles[]={6.2304349,3.0543261,6.278389};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=905;
+					type="C_Tractor_01_F";
+					atlOffset=1.5258789e-005;
+				};
+				class Item11
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9038.498,173.87299,4405.6104};
+						angles[]={6.2288389,2.9670596,6.2655869};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=902;
+					type="C_Truck_02_box_F";
+					atlOffset=-0.00022888184;
+				};
+				class Item12
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9032.7422,173.86949,4422.4336};
+						angles[]={6.2304349,3.0194197,6.278389};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=906;
+					type="C_Hatchback_01_F";
+					atlOffset=1.5258789e-005;
+				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9034.3877,175.51654,4436.3594};
+						angles[]={6.2320313,3.0543261,6.2671833};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=907;
+					type="C_Truck_02_transport_F";
+					atlOffset=-3.0517578e-005;
+				};
+				class Item14
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9035.8555,173.20851,4388.9434};
+						angles[]={6.2352223,1.134464,6.2800021};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=908;
+					type="C_Truck_02_fuel_F";
+					atlOffset=-0.00050354004;
+				};
+				class Item15
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9028.8701,175.18208,4443.1914};
+						angles[]={6.2256494,3.0368729,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=909;
+					type="C_Offroad_01_repair_F";
+					atlOffset=7.6293945e-005;
+				};
+				class Item16
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9035.1973,172.97289,4399.2124};
+						angles[]={6.2400112,2.6005406,6.2687874};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=904;
+					type="C_Van_02_transport_F";
+				};
+				class Item17
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9044.5459,172.50749,4388.9165};
+						angles[]={6.259192,1.8151424,6.2480001};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=901;
+					type="C_Van_01_box_F";
+					atlOffset=-3.0517578e-005;
+				};
+				class Item18
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9036.5352,173.12051,4425.6846};
+						angles[]={6.2304349,6.1610126,6.2719922};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=910;
+					type="Land_Wreck_Skodovka_F";
+					atlOffset=0.00088500977;
+				};
+				class Item19
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9030.7344,173.96503,4432.4014};
+						angles[]={6.2272429,6.1261058,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=911;
+					type="Land_Wreck_Van_F";
+					atlOffset=0.0015869141;
+				};
+				class Item20
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9029.707,171.62679,4389.7651};
+						angles[]={6.2352223,3.8746312,6.2703872};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=912;
+					type="Land_Wreck_Car3_F";
+				};
+				class Item21
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9030.2178,176.4892,4466.2485};
+						angles[]={6.2256494,6.1784658,6.2735858};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=919;
+					type="Land_Shed_M02";
+				};
+				class Item22
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9027.4014,176.91273,4482.4233};
+						angles[]={6.2240553,6.1784658,6.278389};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=917;
+					type="Land_Wreck_Offroad_F";
+				};
+				class Item23
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9030.2725,171.40845,4380.2231};
+						angles[]={6.2464032,3.7350049,0.019199125};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=914;
+					type="Land_Wreck_Offroad2_F";
+				};
+				class Item24
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9024.5234,175.95659,4468.0425};
+						angles[]={6.2208662,6.1784658,6.2767816};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=918;
+					type="Land_Wreck_UAZ_F";
+					atlOffset=0.0016784668;
+				};
+				class Item25
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9027.6221,175.31078,4452.6123};
+						angles[]={6.2208662,6.0737457,6.2799835};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=916;
+					type="Land_Wreck_Truck_dropside_F";
+					atlOffset=0.002243042;
+				};
+				class Item26
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9032.5742,175.17195,4448.5552};
+						angles[]={6.2256484,6.1086526,6.2527928};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=913;
+					type="Land_V3S_wreck_F";
+				};
+				class Item27
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9011.8525,170.71768,4355.8926};
+						angles[]={6.2639894,3.8920844,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=915;
+					type="Land_Wreck_CarDismantled_F";
+					atlOffset=0.00015258789;
+				};
+				class Item28
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9044.0576,172.51508,4417.0708};
+						angles[]={6.2543964,0.57595867,6.271987};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=920;
+					type="RoadBarrier_F";
+				};
+				class Item29
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9043.4971,171.80647,4402.8413};
+						angles[]={6.2288389,1.5358897,6.2655869};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=921;
+					type="RoadBarrier_F";
+					atlOffset=-7.6293945e-005;
+				};
+				class Item30
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9046.9561,172.47014,4416.7778};
+						angles[]={6.2575908,0.22689295,6.2687831};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=922;
+					type="RoadBarrier_F";
+					atlOffset=-6.1035156e-005;
+				};
+				class Item31
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9046.8643,172.44119,4415.5977};
+						angles[]={6.2543964,3.1590462,6.271987};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=923;
+					type="RoadBarrier_F";
+				};
+				class Item32
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9044.9658,171.5343,4398.8311};
+						angles[]={6.219274,3.1241398,6.251195};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=924;
+					type="RoadBarrier_F";
+					atlOffset=-3.0517578e-005;
+				};
+				class Item33
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9053.626,171.41901,4401.4131};
+						angles[]={6.2176785,4.5204029,6.2495971};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=925;
+					type="RoadBarrier_F";
+				};
+				class Item34
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9055.252,171.19844,4398.9341};
+						angles[]={6.2144952,0.61086524,6.2495971};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=926;
+					type="RoadBarrier_F";
+				};
+				class Item35
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9020.25,173.21281,4400.5142};
+						angles[]={6.2559919,1.7104226,6.2671871};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=928;
+					type="I_E_Van_02_transport_F";
+				};
+				class Item36
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={9025.8623,173.26646,4405.458};
+						angles[]={6.2416096,2.1991148,0.0016194459};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=927;
+					type="I_E_Offroad_01_comms_F";
+					atlOffset=-0.0005645752;
+				};
+			};
+			id=893;
+			atlOffset=-0.097427368;
 		};
 	};
 };
