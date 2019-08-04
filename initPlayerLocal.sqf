@@ -34,11 +34,20 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
     [player, true] remoteExec ["hideObjectGlobal", 2];
     acex_field_rations_timeWithoutFood = 9999;
     acex_field_rations_timeWithoutWater = 9999;
+    player addEventHandler ["Respawn", {
+        [{[player] call zeus_fnc_createDynamicZeus;}, [], 5] call CBA_fnc_waitAndExecute;
+        player setVariable ["fpz_zombies_ignore",true,true];
+        player allowDamage false;
+        player setVariable ["ace_medical_allowDamage", false, true];
+        player enableStamina false;
+        player setCaptive true;
+        [player, true] remoteExec ["hideObjectGlobal", 2];
+    }];
 } else {
     disableRemoteSensors true;
 };
 
-diw_camoCoef = [0.5,0.625,0.75] select diw_difficulty;
+diw_camoCoef = [0.4,0.6,0.7] select diw_difficulty;
 
 player setUnitTrait ["camouflageCoef", diw_camoCoef];
 player addEventHandler ["Respawn", {

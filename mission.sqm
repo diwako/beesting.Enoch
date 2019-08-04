@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=545;
+	toggles=553;
 	class ItemIDProvider
 	{
-		nextID=889;
+		nextID=891;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=97;
+		nextID=105;
 	};
 	class Camera
 	{
-		pos[]={10942.413,182.42917,4144.3838};
-		dir[]={0.66873145,-0.31901282,0.671606};
-		up[]={0.22509943,0.94774884,0.22606753};
-		aside[]={0.70863205,2.3964094e-007,-0.70560092};
+		pos[]={9909.2813,206.64514,3772.6052};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -264,7 +264,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=79;
+		items=81;
 		class Item0
 		{
 			dataType="Layer";
@@ -1312,13 +1312,13 @@ class Mission
 			class PositionInfo
 			{
 				position[]={10096.63,180.5968,4208.4819};
-				angles[]={0.0015822123,4.8345618,6.278389};
+				angles[]={0.0015882496,4.8345618,6.2783856};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				health=0;
+				health=0.49576423;
 			};
 			id=147;
 			type="Land_DeconTent_01_white_F";
@@ -3860,7 +3860,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9057.6924,173.21548,4408.1084};
+				position[]={9057.6924,173.51143,4408.1084};
 				angles[]={0,1.6755161,0};
 			};
 			side="Empty";
@@ -3870,7 +3870,7 @@ class Mission
 			};
 			id=493;
 			type="Land_VillageStore_01_F";
-			atlOffset=-0.62840271;
+			atlOffset=-0.3324585;
 		};
 		class Item32
 		{
@@ -3881,7 +3881,7 @@ class Mission
 			};
 			title="store";
 			id=494;
-			atlOffset=0.62840271;
+			atlOffset=0.3324585;
 		};
 		class Item33
 		{
@@ -3892,7 +3892,7 @@ class Mission
 			};
 			title="Random Survivor Note #3";
 			id=495;
-			atlOffset=0.6282196;
+			atlOffset=0.33227539;
 		};
 		class Item34
 		{
@@ -4282,7 +4282,7 @@ class Mission
 			flags=1;
 			id=700;
 			type="ModuleHideTerrainObjects_F";
-			atlOffset=0.00021362305;
+			atlOffset=0.33000183;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5262,6 +5262,120 @@ class Mission
 									};
 								};
 							};
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item79
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={9936.1221,181.62132,3812.113};
+				angles[]={6.2751913,0.052359879,6.2799911};
+			};
+			areaSize[]={11.244,0,0.83899999};
+			areaIsRectangle=1;
+			flags=1;
+			id=889;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=1.5258789e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item80
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={9868.6875,181.67642,3814.0903};
+				angles[]={0.001544081,0.017453294,0};
+			};
+			areaSize[]={11.243974,0,1.2061909};
+			areaIsRectangle=1;
+			flags=1;
+			id=890;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=-0.0010223389;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
 						};
 					};
 				};

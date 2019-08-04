@@ -17,12 +17,17 @@ if( (currentWeapon _unit) == primaryWeapon _unit) then {
 
 // gather informatino of current primary weapon
 private _gunClass = (primaryWeapon _unit);
-private _tmpSecondWeapon = [
-	_gunClass,
-	primaryWeaponItems _unit,
-	_unit ammo primaryWeapon _unit,
-	primaryWeaponMagazine _unit
-];
+private _tmpSecondWeapon = [];
+if (_gunClass isEqualTo "") then {
+	_tmpSecondWeapon = nil;
+} else {
+	_tmpSecondWeapon = [
+		_gunClass,
+		primaryWeaponItems _unit,
+		_unit ammo primaryWeapon _unit,
+		primaryWeaponMagazine _unit
+	];
+};
 
 // remove current primary and get stored secondary primaries info
 _unit removeWeapon (primaryWeapon _unit);
@@ -66,10 +71,15 @@ if(_gunWeight == 0)then {
 	_unit setUnitTrait ["loadCoef", _coef , true];
 };
 
-//save new secondary primary information 
-_unit setVariable ["second_primary_info",_tmpSecondWeapon, true];
 _unit selectWeapon primaryWeapon _unit;
-_weaponHolder = "groundWeaponHolder" createVehicleLocal [0, 0, 0];
-["second_primary_add", [[_unit, _tmpSecondWeapon]]] call CBA_fnc_globalEvent;
+//save new secondary primary information
+if (isNil "_tmpSecondWeapon") then {
+	_unit setVariable ["second_primary_info", nil, true];
+	["second_primary_add", [[_unit]]] call CBA_fnc_globalEvent;
+} else {
+	_unit setVariable ["second_primary_info", _tmpSecondWeapon, true];
+	["second_primary_add", [[_unit, _tmpSecondWeapon]]] call CBA_fnc_globalEvent;
+};
+sleep 1.85;
 sleep 1.85;
 _unit setVariable ["second_primary_can_toggle",true];

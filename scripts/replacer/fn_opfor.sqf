@@ -46,6 +46,7 @@ _man addVest selectRandom ["V_CarrierRigKBT_01_light_EAF_F","V_CarrierRigKBT_01_
 // _man addBackpack selectRandom ["B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_Carryall_eaf_F","B_AssaultPack_eaf_F","B_RadioBag_01_eaf_F"];
 // _man addBackpack "B_CombinationUnitRespirator_01_F";
 _man addBackpack "B_SCBA_01_F";
+(backpackContainer _man) setVariable ["cbrn_oxygen", 300 + (random (10*60)), true];
 // _man addHeadgear selectRandom ["H_HelmetHBK_headset_F","H_HelmetHBK_chops_F","H_HelmetHBK_ear_F","H_HelmetHBK_F","H_Booniehat_eaf"];
 _man addHeadgear selectRandom ["H_HelmetHBK_headset_F","H_HelmetHBK_ear_F","H_HelmetHBK_F"];
 _man addGoggles "G_AirPurifyingRespirator_02_olive_F";

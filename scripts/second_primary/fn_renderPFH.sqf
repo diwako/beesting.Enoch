@@ -28,7 +28,7 @@ private _renderedUnits = 0;
 {
     private _weaponHolder = _x getVariable ["second_primary_weaponHolder", objNull];
 
-    if (_renderedUnits != _renderLimit) then {
+    if (_renderedUnits != _renderLimit && {isNull objectParent _x}) then {
         _weaponHolder hideObject false;
 
         // Don't update orientation if not on screen

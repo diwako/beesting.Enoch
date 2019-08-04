@@ -34,6 +34,7 @@ _man forceAddUniform "U_O_R_Gorka_01_black_F";
 _man addVest selectRandom ["V_Pocketed_black_F","","V_BandollierB_blk","","V_Chestrig_blk","","V_LegStrapBag_black_F","","V_PlateCarrier1_blk",""];
 if (_man distance2d [11333.326,4390.927] < 1000) then {
 	_man addBackpack "B_SCBA_01_F";
+	(backpackContainer _man) setVariable ["cbrn_oxygen", 300 + (random (10*60)), true];
 } else {
 	_man addBackpack selectRandom ["B_Messenger_Black_F","B_LegStrapBag_black_F","B_AssaultPack_blk","B_FieldPack_blk","B_TacticalPack_blk","B_ViperLightHarness_blk_F"];
 };

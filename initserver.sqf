@@ -76,7 +76,7 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 
 ["marker_0", 300, 32] call msc_fnc_destroyCity;
 ["destr1", 300, 32] call msc_fnc_destroyCity;
-["destr4", 300, 668.569, [], true] call msc_fnc_destroyCity;
+["destr4", 300, 668.569] call msc_fnc_destroyCity;
 ["destr2", 300, 32] call msc_fnc_destroyCity;
 ["destr3", 300, 15] call msc_fnc_destroyCity;
 
