@@ -1,6 +1,6 @@
 params["_unit"];
 private _weaponInfo = _unit getVariable ["second_primary_info", []];
-if ((count _weaponInfo) isEqualTo []) exitWith {};
+if (_weaponInfo isEqualTo []) exitWith {};
 if !(isServer) exitWith {[_unit] remoteExec ["second_primary_fnc_drop",2]};
 
 private _groundHolder = createVehicle ["groundWeaponHolder", getPosATL _unit, [], 0.5, "CAN_COLLIDE"];

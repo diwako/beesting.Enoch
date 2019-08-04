@@ -1,6 +1,8 @@
 params["_container", "_weaponInfo", ["_local", false]];
 
-_weaponInfo params ["_gun","_attachments","_ammo","_mag"];
+if (_weaponInfo isEqualTo []) exitWith {};
+_weaponInfo params [["_gun", "", [""]],"_attachments","_ammo","_mag"];
+if (_gun isEqualTo "") exitWith {};
 _attachments params [["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], ["_bipod", ""]];
 _mag params [["_primaryMag", ""], ["_secondaryMag", ""]];
 

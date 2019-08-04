@@ -14,10 +14,12 @@
 private _units = second_primary_units;
 
 if (_units isEqualTo []) exitWith {};
+private _player = ACE_player;
+private _renderLimit = second_primary_renderLimit;
 
 // Sort units by distance if there is a render limit greater than 0
-if (second_primary_renderLimit > 0) then {
-    private _unitsWithDistance = second_primary_units apply {[ACE_player distance _x, _x]};
+if (_renderLimit > 0) then {
+    private _unitsWithDistance = second_primary_units apply {[_player distance _x, _x]};
     _unitsWithDistance sort true;
     _units = _unitsWithDistance apply {_x#1};
 };
@@ -26,11 +28,11 @@ private _renderedUnits = 0;
 {
     private _weaponHolder = _x getVariable ["second_primary_weaponHolder", objNull];
 
-    if (_renderedUnits != second_primary_renderLimit) then {
+    if (_renderedUnits != _renderLimit) then {
         _weaponHolder hideObject false;
 
         // Don't update orientation if not on screen
-        if !(worldToScreen ASLToAGL getPosWorld _weaponHolder isEqualTo []) then {
+        if (_player isEqualTo _x || {!(worldToScreen ASLToAGL getPosWorld _weaponHolder isEqualTo [])}) then {
             private _lShoulder = _x selectionPosition "leftshoulder";
             private _rShoulder = _x selectionPosition "rightshoulder";
             private _lUpLeg    = _x selectionPosition "leftupleg";

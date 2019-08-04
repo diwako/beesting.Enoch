@@ -30,19 +30,21 @@ private _oldSecondWeapon = _unit getVariable ["second_primary_info",[""]];
 
 // give unit the secndary primary
 if(count _oldSecondWeapon != 0 && {(_oldSecondWeapon select 0) != ""}) then {
-	_oldSecondWeapon params ["_gun","_attachments","_ammo","_mag"];
-	{
-		_unit addMagazine [_x, _ammo];
-	} forEach _mag;
-	if(count _mag == 0) then {
-		_unit setAmmo [primaryWeapon _unit, _ammo];
-	};
-	_unit addWeapon _gun;
-	{
-		if(_x != "") then {
-			_unit addPrimaryWeaponItem _x;
+	_oldSecondWeapon params [["_gun", "", [""]],"_attachments","_ammo","_mag"];
+	if !(_gun isEqualTo "") then {
+		{
+			_unit addMagazine [_x, _ammo];
+		} forEach _mag;
+		if(count _mag == 0) then {
+			_unit setAmmo [primaryWeapon _unit, _ammo];
 		};
-	} forEach _attachments;
+		_unit addWeapon _gun;
+		{
+			if(_x != "") then {
+				_unit addPrimaryWeaponItem _x;
+			};
+		} forEach _attachments;
+	}
 };
 
 // calculate weight
@@ -68,6 +70,6 @@ if(_gunWeight == 0)then {
 _unit setVariable ["second_primary_info",_tmpSecondWeapon, true];
 _unit selectWeapon primaryWeapon _unit;
 _weaponHolder = "groundWeaponHolder" createVehicleLocal [0, 0, 0];
-["second_primary_add", [_unit, _tmpSecondWeapon]] call CBA_fnc_globalEvent;
+["second_primary_add", [[_unit, _tmpSecondWeapon]]] call CBA_fnc_globalEvent;
 sleep 1.85;
 _unit setVariable ["second_primary_can_toggle",true];
