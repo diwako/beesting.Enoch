@@ -17,5 +17,5 @@ private _arr = [];
 		_arr pushBack [_type, _pos, [_dir, _up], getObjectTextures _x];
 	};
 	false
-} count (getMissionLayerEntities "Checkpoint_simple")#0;
+} count (getMissionLayerEntities "Layer 106")#0;
 _arr
