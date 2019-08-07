@@ -129,6 +129,45 @@ _holder addWeaponCargoGlobal ["arifle_MSBS65_F", 1];
 _holder addMagazineCargoGlobal ["30Rnd_65x39_caseless_msbs_mag", 3];
 
 
+diw_genericLoot = [
+	["ACE_packingBandage","ACE_elasticBandage","ACE_packingBandage","ACE_elasticBandage"],
+	["ACE_packingBandage","ACE_elasticBandage","ACE_morphine"],
+	["ACE_packingBandage","ACE_elasticBandage"],
+	["ACE_morphine","ACE_morphine","ACE_epinephrine"],
+	["ACE_morphine","ACE_morphine"],
+	["ACE_Can_Franta","ACE_Can_RedGull"],
+	["ACE_Can_Franta"],
+	["ACE_Can_RedGull"],
+	["ACE_Can_Spirit"],
+	["ACE_Can_Spirit","ACE_Humanitarian_Ration"],
+	["ACE_WaterBottle","ACE_Humanitarian_Ration"],
+	["ACE_WaterBottle"],
+	["ACE_WaterBottle","ACE_WaterBottle"],
+	["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
+	["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
+	// ["75Rnd_762x39_Mag_F","75Rnd_762x39_Mag_F"],
+	["ACE_WaterBottle_Half"]
+];
+
+{
+	private _box = createVehicle ["groundWeaponHolder", getPosAtl _x, [], 0, "CAN_COLLIDE"];
+	{
+		_box addItemCargoGlobal [_x, 1];
+	} forEach (selectRandom diw_genericLoot);
+	deleteVehicle _x;
+	_box enableDynamicSimulation true;
+} forEach ((getMissionLayerEntities "traffic jam building pos")#0);
+
 [[11054.366,4307.835], nil, 3] call mission_fnc_setUpLoot;
 [[11519.837,4602.323], nil, 3] call mission_fnc_setUpLoot;
 [getMarkerPos "destr1", nil, 1] call mission_fnc_setUpLoot;
+
+{
+	private _pos = _x;
+	{
+		if (alive _x) then {
+			[_x, 1] call Mission_fnc_doorAction;
+		};
+	} forEach nearestObjects [_pos, ["House", "Building"], 350];
+	
+} forEach [getMarkerPos "destr1", getMarkerPos "destr2", getMarkerPos "destr3"];

@@ -4,25 +4,7 @@ if !(isServer) exitWith {};
 private _pos = [];
 private _box = objNull;
 
-private _lootTable = [
-	["ACE_packingBandage","ACE_elasticBandage","ACE_packingBandage","ACE_elasticBandage"],
-	["ACE_packingBandage","ACE_elasticBandage","ACE_morphine"],
-	["ACE_packingBandage","ACE_elasticBandage"],
-	["ACE_morphine","ACE_morphine","ACE_epinephrine"],
-	["ACE_morphine","ACE_morphine"],
-	["ACE_Can_Franta","ACE_Can_RedGull"],
-	["ACE_Can_Franta"],
-	["ACE_Can_RedGull"],
-	["ACE_Can_Spirit"],
-	["ACE_Can_Spirit","ACE_Humanitarian_Ration"],
-	["ACE_WaterBottle","ACE_Humanitarian_Ration"],
-	["ACE_WaterBottle"],
-	["ACE_WaterBottle","ACE_WaterBottle"],
-	["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
-	["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
-	// ["75Rnd_762x39_Mag_F","75Rnd_762x39_Mag_F"],
-	["ACE_WaterBottle_Half"]
-];
+private _lootTable = diw_genericLoot;
 
 {
 	private _usedPos = [];

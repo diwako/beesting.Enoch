@@ -83,6 +83,7 @@ class mission{
 		class coverMap{};
 		class ambientSounds{};
 		class setUpLoot{};
+		class doorAction{};
 	};
 };
 class Second_primary{
