@@ -284,3 +284,5 @@ onMapSingleClick "_shift";
         }, [_crows, _target]] call CBA_fnc_waitUntilAndExecute
     };
 }] call CBA_fnc_addEventHandler;
+
+player setVariable ["ace_medical_unitDamageThreshold", [ace_medical_playerDamageThreshold, ace_medical_playerDamageThreshold,ace_medical_playerDamageThreshold * 15]];

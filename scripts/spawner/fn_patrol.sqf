@@ -20,12 +20,12 @@ if (_activate) then {
 
 	private _activeGroups = [];
 	if (isNil "_groups") then {
-		// _amount = _amount + ([0,1,2] select diw_difficulty);
+		_amount = _amount + ([0,1,2] select diw_difficulty);
 		// spawn new dudes!
 		for "_i" from 1 to _amount do {
 			private _rndPos = [[_pos, _patrolRadius, 30, 0, false]] call CBA_fnc_randPosArea;
       		// private _grp = [_rndPos, "riflesquad"] call spawner_fnc_spawnGroup;
-      		private _grp = [_rndPos, "sentry", independent] call spawner_fnc_spawnGroup;
+      		private _grp = [_rndPos, "aa", independent] call spawner_fnc_spawnGroup;
 
 			_grp deleteGroupWhenEmpty true;
 			_grp enableDynamicSimulation true;

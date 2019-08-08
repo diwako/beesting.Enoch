@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1036;
+		nextID=1041;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=131;
+		nextID=141;
 	};
 	class Camera
 	{
-		pos[]={10025.451,184.96407,4263.1577};
-		dir[]={0.34896788,-0.77476817,-0.52743322};
-		up[]={0.42751715,0.6322248,-0.6461525};
-		aside[]={-0.83406693,1.6617123e-006,-0.55184162};
+		pos[]={9039.6631,228.44199,4347.0122};
+		dir[]={0.30274612,-0.6622951,0.68553489};
+		up[]={0.26757231,0.74918258,0.60589451};
+		aside[]={0.91485047,2.3122411e-006,-0.40402594};
 	};
 };
 binarizationWanted=0;
@@ -272,7 +272,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=82;
+		items=87;
 		class Item0
 		{
 			dataType="Layer";
@@ -5437,7 +5437,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9170.5801,166.35703,4374.0605};
-						angles[]={-0,0,6.2816033};
+						angles[]={0,0,6.2816033};
 					};
 					side="Empty";
 					flags=4;
@@ -5694,7 +5694,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9877.7422,190.29089,4292.7715};
-						angles[]={-0,6.2657323,0};
+						angles[]={0,6.2657323,0};
 					};
 					side="Empty";
 					class Attributes
@@ -5819,6 +5819,173 @@ class Mission
 			};
 			id=1010;
 			atlOffset=-0.031585693;
+		};
+		class Item82
+		{
+			dataType="Trigger";
+			position[]={9113.3057,170.05307,4425.7979};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 2, 100] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1036;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item83
+		{
+			dataType="Trigger";
+			position[]={9893.5381,187.95935,4282.7612};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 1, 100] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1037;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item84
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10914.257,176.35364,4114.5493};
+				angles[]={0.047963165,6.0425744,0.0080009829};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=1038;
+			type="DeconShower_01_F";
+			atlOffset=-1.5258789e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Decon_Shower_DisableUserActions";
+					expression="if(_value)then{_this setVariable ['bin_deconshower_disableAction',true]};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="Decon_Shower";
+					expression="if(_value)then{[_this,1.5,9] spawn bin_fnc_deconShowerAnim;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item85
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10904.691,178.10237,4128.106};
+				angles[]={0.028797932,1.5009831,6.2671809};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				createAsSimpleObject=1;
+			};
+			id=1039;
+			type="DeconShower_02_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Decon_Shower_DisableUserActions";
+					expression="if(_value)then{_this setVariable ['bin_deconshower_disableAction',true]};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="Decon_Shower";
+					expression="if(_value)then{[_this,5.4,4,2,true] spawn bin_fnc_deconShowerAnimLarge;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item86
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={10918.255,174.78349,4121.0767};
+				angles[]={0.052748401,0,6.2703872};
+			};
+			title="Decon Camp";
+			description="set up decontamiation stuff here";
+			id=1040;
 		};
 	};
 };

@@ -32,27 +32,29 @@ second_primary_renderLimit = 10;
     // params [["_unitInfos", [],[[]]]];
     {
         _x params ["_unit", ["_weaponsinfo", []]];
-        if (_weaponsinfo isEqualTo []) then {
-            _weaponsinfo = _unit getVariable ["second_primary_info", []];
-        };
-
-        if (_weaponsinfo isEqualTo [] || {(_weaponsinfo # 0) isEqualTo ""}) then {
-            ["second_primary_drop", [_unit]] call CBA_fnc_localEvent;
-        } else {
-            private _weaponHolder = _unit getVariable ["second_primary_weaponHolder", objNull];
-            if (isNull _weaponHolder) then {
-                // _weaponHolder = "GroundWeaponHolder_Scripted" createVehicleLocal [0, 0, 0];
-                // _weaponHolder = "WeaponHolderSimulated_Scripted" createVehicleLocal [0, 0, 0];
-                _weaponHolder = "Weapon_Empty" createVehicleLocal [0, 0, 0];
-                _weaponHolder attachTo [_unit, [0, 0, 0], "proxy:\a3\characters_f\proxies\launcher.001"];
-                _unit setVariable ["second_primary_weaponHolder", _weaponHolder];
-                _weaponHolder setVariable ["second_primary_backpack", true];
+        if !(_unit isEqualTo player) then {
+            if (_weaponsinfo isEqualTo []) then {
+                _weaponsinfo = _unit getVariable ["second_primary_info", []];
             };
-            clearWeaponCargo _weaponHolder;
-            _weaponHolder enableSimulation true;
-            [_weaponHolder, _weaponsinfo, true] call second_primary_fnc_fill;
-            _weaponHolder enableSimulation false;
-            second_primary_units pushBackUnique _unit;
+
+            if (_weaponsinfo isEqualTo [] || {(_weaponsinfo # 0) isEqualTo ""}) then {
+                ["second_primary_drop", [_unit]] call CBA_fnc_localEvent;
+            } else {
+                private _weaponHolder = _unit getVariable ["second_primary_weaponHolder", objNull];
+                if (isNull _weaponHolder) then {
+                    // _weaponHolder = "GroundWeaponHolder_Scripted" createVehicleLocal [0, 0, 0];
+                    // _weaponHolder = "WeaponHolderSimulated_Scripted" createVehicleLocal [0, 0, 0];
+                    _weaponHolder = "Weapon_Empty" createVehicleLocal [0, 0, 0];
+                    _weaponHolder attachTo [_unit, [0, 0, 0], "proxy:\a3\characters_f\proxies\launcher.001"];
+                    _unit setVariable ["second_primary_weaponHolder", _weaponHolder];
+                    _weaponHolder setVariable ["second_primary_backpack", true];
+                };
+                // clearWeaponCargo _weaponHolder;
+                // _weaponHolder enableSimulation true;
+                [_weaponHolder, _weaponsinfo, true] call second_primary_fnc_fill;
+                _weaponHolder enableSimulation false;
+                second_primary_units pushBackUnique _unit;
+            };
         };
     } forEach _this;
 }] call CBA_fnc_addEventHandler;
@@ -78,10 +80,15 @@ player addEventHandler ["InventoryOpened", {
         diw_debug = _box;
     };
     {
-        _weaponHolder = _x getVariable ["second_primary_weaponHolder", objNull];
-        detach _weaponHolder;
-        deleteVehicle _weaponHolder;
-        _x setVariable ["second_primary_weaponHolder", nil];
+        if (_x isEqualTo ace_player) then {
+            _weaponHolder = _x getVariable ["second_primary_weaponHolder", objNull];
+            clearWeaponCargo _weaponHolder;
+        } else {
+            _weaponHolder = _x getVariable ["second_primary_weaponHolder", objNull];
+            detach _weaponHolder;
+            deleteVehicle _weaponHolder;
+            _x setVariable ["second_primary_weaponHolder", nil];
+        };
     } forEach second_primary_units;
     _overwrite
 }];

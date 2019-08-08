@@ -59,9 +59,11 @@
             sleep (2.5 + random 5);
             [_proxy, ("choke_" + str( (floor random 9) + 1))] remoteExec ["say3D"];
             sleep 10;
+            detach _proxy;
             deleteVehicle _proxy;
         } else {
             sleep 10;
+            detach _proxy;
             deleteVehicle _proxy;
         };
     };
