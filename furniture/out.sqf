@@ -1,6 +1,6 @@
 #include "buildings.hpp";
 
-_house = screenToWorld getMousePosition nearestObject "House_F";
+_house = screenToWorld getMousePosition nearestObject "Building";
 _objects = (get3DENSelected "object") - [_house];
 _type = typeOf _house;
 _objectArray = [];

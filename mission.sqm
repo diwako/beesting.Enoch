@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=545;
+	toggles=553;
 	class ItemIDProvider
 	{
-		nextID=1041;
+		nextID=1149;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=141;
+		nextID=154;
 	};
 	class Camera
 	{
-		pos[]={9039.6631,228.44199,4347.0122};
-		dir[]={0.30274612,-0.6622951,0.68553489};
-		up[]={0.26757231,0.74918258,0.60589451};
-		aside[]={0.91485047,2.3122411e-006,-0.40402594};
+		pos[]={11584.712,245.57272,4676.1724};
+		dir[]={-0.66748452,-0.71465808,-0.20971368};
+		up[]={-0.68180698,0.69943565,-0.21421793};
+		aside[]={-0.29977149,1.6691047e-006,0.95412058};
 	};
 };
 binarizationWanted=0;
@@ -272,7 +272,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=87;
+		items=91;
 		class Item0
 		{
 			dataType="Layer";
@@ -4554,6 +4554,29 @@ class Mission
 			id=831;
 			type="Land_Zavora";
 			atlOffset=1.5258789e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item75
 		{
@@ -5394,6 +5417,7 @@ class Mission
 		{
 			dataType="Layer";
 			name="traffic jam building pos";
+			state=1;
 			class Entities
 			{
 				items=26;
@@ -5841,11 +5865,11 @@ class Mission
 		class Item83
 		{
 			dataType="Trigger";
-			position[]={9893.5381,187.95935,4282.7612};
+			position[]={9893.5381,187.95937,4282.7612};
 			class Attributes
 			{
 				condition="call{this}";
-				onActivation="call{[thisTrigger, true, 1, 100] call spawner_fnc_spawnPatrol;}";
+				onActivation="call{[thisTrigger, true, 2, 100] call spawner_fnc_spawnPatrol;}";
 				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
 				sizeA=400;
 				sizeB=400;
@@ -5855,14 +5879,15 @@ class Mission
 			};
 			id=1037;
 			type="EmptyDetectorAreaR250";
+			atlOffset=1.5258789e-005;
 		};
 		class Item84
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10914.257,176.35364,4114.5493};
-				angles[]={0.047963165,6.0425744,0.0080009829};
+				position[]={10919.967,176.74423,4106.7534};
+				angles[]={0.038379833,4.5939512,0.011214594};
 			};
 			side="Empty";
 			flags=4;
@@ -5872,7 +5897,7 @@ class Mission
 			};
 			id=1038;
 			type="DeconShower_01_F";
-			atlOffset=-1.5258789e-005;
+			atlOffset=0.022460938;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5918,26 +5943,44 @@ class Mission
 		};
 		class Item85
 		{
+			dataType="Trigger";
+			position[]={11128.83,176.2,4298.7236};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 3, 100] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1041;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item86
+		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10904.691,178.10237,4128.106};
-				angles[]={0.028797932,1.5009831,6.2671809};
+				position[]={10924.152,177.78984,4133.686};
+				angles[]={0.054349553,2.7052603,6.2496047};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				createAsSimpleObject=1;
+				dynamicSimulation=1;
 			};
-			id=1039;
-			type="DeconShower_02_F";
+			id=1050;
+			type="Land_Zavora";
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="Decon_Shower_DisableUserActions";
-					expression="if(_value)then{_this setVariable ['bin_deconshower_disableAction',true]};";
+					property="allowDamage";
+					expression="_this allowdamage _value;";
 					class Value
 					{
 						class data
@@ -5953,10 +5996,63 @@ class Mission
 						};
 					};
 				};
+				nAttributes=1;
+			};
+		};
+		class Item87
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10938.175,178.54498,4128.292};
+				angles[]={0,1.1434176,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=1075;
+			type="Land_Cargo_Patrol_V1_F";
+		};
+		class Item88
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={11485.165,159.83374,4666.875};
+				angles[]={-0,0,6.2816415};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=1105;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=13;
+						};
+					};
+				};
 				class Attribute1
 				{
-					property="Decon_Shower";
-					expression="if(_value)then{[_this,5.4,4,2,true] spawn bin_fnc_deconShowerAnimLarge;};";
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
 					class Value
 					{
 						class data
@@ -5968,24 +6064,1982 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=0;
+							value=1;
 						};
 					};
 				};
 				nAttributes=2;
 			};
 		};
-		class Item86
+		class Item89
 		{
-			dataType="Comment";
+			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10918.255,174.78349,4121.0767};
-				angles[]={0.052748401,0,6.2703872};
+				position[]={11503.455,161.47816,4638.7539};
+				angles[]={6.2816491,3.2637656,0};
 			};
-			title="Decon Camp";
-			description="set up decontamiation stuff here";
-			id=1040;
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="van_van";
+				textures="Black";
+				dynamicSimulation=1;
+			};
+			id=1118;
+			type="C_Van_02_vehicle_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['bis_fnc_initVehicle_customization',_value]} else {([_this] + _value + [true]) call (uinamespace getvariable 'bis_fnc_initVehicle');};};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=44;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Enable_Cargo";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item2
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_1_source";
+												};
+											};
+											class Item3
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item4
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_2_source";
+												};
+											};
+											class Item5
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item6
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_3_source";
+												};
+											};
+											class Item7
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item8
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Door_4_source";
+												};
+											};
+											class Item9
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item10
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_1_source";
+												};
+											};
+											class Item11
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item12
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_2_source";
+												};
+											};
+											class Item13
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item14
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_3_source";
+												};
+											};
+											class Item15
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item16
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Hide_Door_4_source";
+												};
+											};
+											class Item17
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item18
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="lights_em_hide";
+												};
+											};
+											class Item19
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item20
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="ladder_hide";
+												};
+											};
+											class Item21
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item22
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="spare_tyre_holder_hide";
+												};
+											};
+											class Item23
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item24
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="spare_tyre_hide";
+												};
+											};
+											class Item25
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item26
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="reflective_tape_hide";
+												};
+											};
+											class Item27
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item28
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="roof_rack_hide";
+												};
+											};
+											class Item29
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item30
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="LED_lights_hide";
+												};
+											};
+											class Item31
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item32
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="sidesteps_hide";
+												};
+											};
+											class Item33
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item34
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="rearsteps_hide";
+												};
+											};
+											class Item35
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item36
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="side_protective_frame_hide";
+												};
+											};
+											class Item37
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item38
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="front_protective_frame_hide";
+												};
+											};
+											class Item39
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item40
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="beacon_front_hide";
+												};
+											};
+											class Item41
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item42
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="beacon_rear_hide";
+												};
+											};
+											class Item43
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item90
+		{
+			dataType="Layer";
+			name="Medical Tents";
+			state=1;
+			class Entities
+			{
+				items=16;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11485.154,161.20456,4653.4565};
+						angles[]={-0,4.5204034,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1102;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11487.282,161.19902,4642.0195};
+						angles[]={6.2799835,4.5204034,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1103;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11483.528,161.20477,4662.6309};
+						angles[]={6.2816415,4.5204034,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1104;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11526.105,161.16721,4637.3325};
+						angles[]={6.2816033,0.59341264,6.2767911};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1106;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item4
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11514.083,161.20279,4642.644};
+						angles[]={6.2816415,3.054327,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1107;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item5
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11488.835,161.14987,4632.3647};
+						angles[]={6.2751846,4.5204034,0.004796607};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1108;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item6
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11490.627,161.16351,4622.5327};
+						angles[]={0.0015822123,4.5204034,0.004796607};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1109;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11480.328,161.2175,4673.7388};
+						angles[]={-0,6.1784663,6.2799835};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1110;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11489.778,161.20456,4674.9165};
+						angles[]={-0,6.1784663,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1111;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11499.149,161.20456,4675.8491};
+						angles[]={-0,6.1784663,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1112;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item10
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11476.395,161.18617,4694.1353};
+						angles[]={0.0015822123,6.1784663,0.0015822123};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1113;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item11
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11485.561,161.21246,4695.8911};
+						angles[]={6.2816033,6.1784663,0.0080009829};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1114;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item12
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11495.032,161.28593,4696.5513};
+						angles[]={6.271987,6.1784663,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1115;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11486.893,161.31743,4710.8174};
+						angles[]={6.2735858,0.85521221,0.0015822123};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1116;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item14
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11508.163,161.43755,4711.5654};
+						angles[]={0.0032018756,6.1784663,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1117;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+				class Item15
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={10926.805,174.34407,4153.7588};
+						angles[]={0.031991884,6.143559,6.2719803};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						dynamicSimulation=1;
+					};
+					id=1082;
+					type="Land_MedicalTent_01_wdl_closed_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Door_Hide";
+							expression="_this animateSource ['Door_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="SolarPanel2_Hide";
+							expression="_this animateSource ['SolarPanel2_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="SolarPanel1_Hide";
+							expression="_this animateSource ['SolarPanel1_Hide',_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=3;
+					};
+				};
+			};
+			id=1148;
+			atlOffset=1.7638397;
 		};
 	};
 };

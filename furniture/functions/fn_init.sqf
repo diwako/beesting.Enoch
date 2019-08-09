@@ -43,7 +43,7 @@ tint_activeHouses = [];
   while {tint_houses} do {
     // _player = [] call CBA_fnc_currentUnit;
     _player = positionCameraToWorld [0,0,0];
-    _buildings = (_player nearObjects ["House_F", RANGE]) select {!(isObjectHidden _x) && {!(_x getVariable ["tint_house_blacklisted", false])} && {alive _x}};
+    _buildings = (_player nearObjects ["Building", RANGE]) select {!(isObjectHidden _x) && {!(_x getVariable ["tint_house_blacklisted", false])} && {alive _x}};
 
     //Remove all buildings not a child of the chosen classes
     {
