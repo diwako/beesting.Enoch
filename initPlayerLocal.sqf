@@ -286,3 +286,6 @@ onMapSingleClick "_shift";
 }] call CBA_fnc_addEventHandler;
 
 player setVariable ["ace_medical_unitDamageThreshold", [ace_medical_playerDamageThreshold, ace_medical_playerDamageThreshold,ace_medical_playerDamageThreshold * 15]];
+
+//READABLES (or at least debug for now)
+[] execVM "scripts\mission\readables.sqf";
