@@ -204,6 +204,8 @@
 
 }] call CBA_fnc_addEventHandler;
 
+if !(hasInterface) exitWith {};
+
 ["diw_alarm", {
 	if !(hasInterface) exitWith {};
 	{
