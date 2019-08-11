@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1262;
+		nextID=1269;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=190;
+		nextID=197;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={10998.276,200.0085,4191.6592};
+		dir[]={0.3764762,-0.894997,-0.23936114};
+		up[]={0.75526512,0.4460687,-0.48019218};
+		aside[]={-0.53654402,-7.9837628e-007,-0.84389949};
 	};
 };
 binarizationWanted=0;
@@ -324,7 +324,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=95;
+		items=98;
 		class Item0
 		{
 			dataType="Layer";
@@ -5950,7 +5950,7 @@ class Mission
 		class Item81
 		{
 			dataType="Trigger";
-			position[]={9893.5381,187.95937,4282.7612};
+			position[]={9864.5039,187.11029,4285.2881};
 			class Attributes
 			{
 				condition="call{this}";
@@ -5964,7 +5964,6 @@ class Mission
 			};
 			id=1037;
 			type="EmptyDetectorAreaR250";
-			atlOffset=1.5258789e-005;
 		};
 		class Item82
 		{
@@ -8294,7 +8293,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={7668.6245,74.24192,5203.6338};
-						angles[]={-0,0.47123891,-0};
+						angles[]={0,0.47123891,0};
 					};
 					side="Empty";
 					flags=4;
@@ -9208,6 +9207,73 @@ class Mission
 			title="Military Note #4";
 			id=1251;
 			atlOffset=0.00016784668;
+		};
+		class Item95
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10091.642,178.79585,4238.2705};
+				angles[]={0.073460907,0.34906584,6.2639866};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=1262;
+			type="C_Offroad_01_covered_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item96
+		{
+			dataType="Trigger";
+			position[]={10088.504,176.48923,4253.5498};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 0, 50] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1263;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item97
+		{
+			dataType="Marker";
+			position[]={9385.1445,173.24921,4344.7754};
+			name="scav_2";
+			type="Empty";
+			id=1264;
+			atlOffset=-0.00047302246;
 		};
 	};
 };

@@ -36,7 +36,9 @@ if (_man distance2d [11333.326,4390.927] < 1000) then {
 	_man addBackpack "B_SCBA_01_F";
 	(backpackContainer _man) setVariable ["cbrn_oxygen", 300 + (random (10*60)), true];
 } else {
-	_man addBackpack selectRandom ["B_Messenger_Black_F","B_LegStrapBag_black_F","B_AssaultPack_blk","B_FieldPack_blk","B_TacticalPack_blk","B_ViperLightHarness_blk_F"];
+	if (random 100 < 50) then {
+		_man addBackpack selectRandom ["B_Messenger_Black_F","B_LegStrapBag_black_F","B_AssaultPack_blk","B_FieldPack_blk","B_TacticalPack_blk","B_ViperLightHarness_blk_F"];
+	};
 };
 _man addHeadgear selectRandom ["","H_Bandanna_gry","","H_Beret_blk","","H_Cap_blk","","H_EarProtectors_black_F","","H_Construction_earprot_black_F","","H_Tank_black_F","","H_PASGT_basic_black_F",""];
 _man addGoggles selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
