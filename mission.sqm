@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=176;
+		nextID=190;
 	};
 	class Camera
 	{
@@ -4019,11 +4019,10 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={9101.4873,171.144,4432.6982};
+				position[]={9048.9658,175.2285,4420.3975};
 			};
 			title="Random Survivor Note #4";
 			id=496;
-			atlOffset=9.1552734e-005;
 		};
 		class Item35
 		{
@@ -4173,7 +4172,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={9824.4395,184.07555,4295.4312};
+				position[]={9824.3643,184.08644,4294.8887};
 				angles[]={0.027193764,0,0.051154058};
 			};
 			title="The Crowded “Evacuation Zones”  (Newspaper)";
@@ -8150,7 +8149,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9101.2412,171.14645,4432.623};
+						position[]={9048.7842,175.24423,4420.5493};
 						angles[]={0,4.1015239,0};
 					};
 					side="Empty";
@@ -8161,7 +8160,7 @@ class Mission
 					};
 					id=1172;
 					type="Leaflet_05_New_F";
-					atlOffset=0.35699463;
+					atlOffset=0.013061523;
 				};
 				class Item1
 				{
@@ -8294,8 +8293,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7671.4102,74.24192,5204.3037};
-						angles[]={0,0.47123891,0};
+						position[]={7668.6245,74.24192,5203.6338};
+						angles[]={-0,0.47123891,-0};
 					};
 					side="Empty";
 					flags=4;
@@ -8458,8 +8457,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9824.583,184.08618,4295.7485};
-						angles[]={3.169996,4.3810644,6.2518253};
+						position[]={9824.1064,184.08252,4294.9878};
+						angles[]={3.1351388,4.3800716,6.2169333};
 					};
 					side="Empty";
 					flags=4;
