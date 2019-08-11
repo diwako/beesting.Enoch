@@ -3,7 +3,7 @@ _array =
 ;
 
 
-_house = screenToWorld getMousePosition nearestObject "Building";
+_house = screenToWorld getMousePosition nearestObject "House";
 {
   _x params ["_type", "_pos", "_dir", "_up"];
   _obj = create3DENEntity ["Object", _type, _house modelToWorld _pos];
