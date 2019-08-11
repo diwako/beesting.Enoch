@@ -99,6 +99,11 @@ class CfgSounds {
 		sound[] = {"sounds\takeoff.ogg", 1.5, 1, 250};
 		titles[] = {};
 	};
+	class bees {
+		name = "bees";
+		sound[] = {"sounds\beeeeeeeeeeeeeeeeees.ogg", 1.5, 1, 50};
+		titles[] = {};
+	};
   #include "sounds\ambient.hpp"
 };
 class CfgMusic {

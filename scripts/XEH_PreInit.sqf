@@ -289,8 +289,9 @@ if !(hasInterface) exitWith {};
         [[1,0,0,0]] //randomizations I dont need  
     ];
 
-    _bees setDropInterval 0.005;
+    _bees setDropInterval 0.002;
     _bees attachTo [_poorFuck, [0,0,0], "pelvis"];
+	_bees say3d "bees";
     [{
         params ["_args", "_idPFH"];
         _args params ["_beeMan", "_stopTime", "_particleSource"];
