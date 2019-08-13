@@ -61,6 +61,9 @@ _validBuildings = [
   "Land_House_1W11_F",
   "Land_House_1W07_F",
   "Land_House_1W09_F",
+  "Land_House_1B01_F",
+  "Land_House_2W03_F",
+  "Land_House_2W04_F",
   "Land_MedicalTent_01_wdl_closed_F"
 ];
 

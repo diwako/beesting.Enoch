@@ -8,7 +8,7 @@ private _index = _validBuildings findif {_house isKindOf _x};
 if (_index != -1) then {
   _type = _validBuildings#_index;
 };
-_newClass = tint_translationNamespace getVariable [_type, ""];
+private _newClass = tint_translationNamespace getVariable [_type, ""];
 
 if (!(_newClass == "")) then {
   _type = _newClass;
