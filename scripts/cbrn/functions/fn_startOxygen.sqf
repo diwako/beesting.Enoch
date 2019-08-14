@@ -5,7 +5,8 @@ if (!alive _unit || {_unit getVariable ["cbrn_oxygen", false]}) exitWith {};
 _unit setVariable ["cbrn_oxygen", true, true];
 [{
     params ["_args", "_idPFH"];
-    _args params ["_unit", "_backpack", "_lastTimeUpdated"];
+    _args params ["_unit", "_lastTimeUpdated"];
+    private _backpack = backpackContainer _unit;
     if (!alive _unit || {!(_unit getVariable ["cbrn_oxygen", false]) || {!(_unit getVariable ["cbrn_mask_on", false]) || !(_unit getVariable ["cbrn_backpack_on", false])}}) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         _backpack setVariable ["cbrn_oxygen", _backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime], true];
@@ -37,5 +38,5 @@ _unit setVariable ["cbrn_oxygen", true, true];
         }, _proxy, 15] call CBA_fnc_waitAndExecute;
     };
 
-    _args set [2, CBA_missionTime];
-}, 1, [_unit, backpackContainer _unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+    _args set [1, CBA_missionTime];
+}, 1, [_unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;

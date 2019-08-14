@@ -172,10 +172,10 @@ onLoadMissionTime = 0;
 // Clean up settings
 corpseManagerMode = 1;
 corpseLimit = 10;
-corpseRemovalMinTime = 120;
-corpseRemovalMaxTime = 300;
+corpseRemovalMinTime = 300;
+corpseRemovalMaxTime = 600;
 
 wreckManagerMode = 1;
 wreckLimit = 5;
-wreckRemovalMinTime = 200;
+wreckRemovalMinTime = 300;
 wreckRemovalMaxTime = 600;
