@@ -2,13 +2,13 @@ version=53;
 class EditorData
 {
 	moveGridStep=1;
-	angleGridStep=0.017453292;
+	angleGridStep=1.5707964;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=545;
+	toggles=522;
 	class ItemIDProvider
 	{
-		nextID=1274;
+		nextID=1341;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=213;
+		nextID=221;
 	};
 	class Camera
 	{
-		pos[]={11502.651,188.13205,4695.0806};
-		dir[]={-0.19503962,-0.65273631,-0.73207253};
-		up[]={-0.1680446,0.75757205,-0.63074815};
-		aside[]={-0.96631122,-8.4633939e-008,0.25744495};
+		pos[]={7642,99.32,5187};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -8034,7 +8034,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9058.3535,173.6059,4459.5601};
+						position[]={9058.3379,173.61427,4459.7134};
 						angles[]={3.1415927,3.7873645,0};
 					};
 					side="Empty";
@@ -8046,7 +8046,7 @@ class Mission
 					};
 					id=1156;
 					type="Newspaper_01_F";
-					atlOffset=0.00039672852;
+					atlOffset=0.0085754395;
 				};
 				class Item12
 				{
