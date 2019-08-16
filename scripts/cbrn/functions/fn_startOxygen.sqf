@@ -7,14 +7,15 @@ _unit setVariable ["cbrn_oxygen", true, true];
     params ["_args", "_idPFH"];
     _args params ["_unit", "_lastTimeUpdated"];
     private _backpack = backpackContainer _unit;
-    if (!alive _unit || {!(_unit getVariable ["cbrn_oxygen", false]) || {!(_unit getVariable ["cbrn_mask_on", false]) || !(_unit getVariable ["cbrn_backpack_on", false])}}) exitWith {
+    private _curOxygen = _backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime];
+    if (!alive _unit || {!(_unit getVariable ["cbrn_oxygen", false]) || {!(_unit getVariable ["cbrn_mask_on", false]) || !(_unit getVariable ["cbrn_backpack_on", false]) || {_curOxygen <= 0}}}) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
-        _backpack setVariable ["cbrn_oxygen", _backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime], true];
+        _backpack setVariable ["cbrn_oxygen", _curOxygen, true];
         _unit setVariable ["cbrn_oxygen", false, true];
     };
 
     private _delta = CBA_missionTime - _lastTimeUpdated;
-    private _reserve = ((_backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime]) - _delta) max 0;
+    private _reserve = (_curOxygen - _delta) max 0;
     _backpack setVariable ["cbrn_oxygen", _reserve];
 
     if (!(_backpack getVariable ["cbrn_5min_warning", false]) && {_reserve < 300 && _reserve >= 30 }) then {
