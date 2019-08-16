@@ -74,12 +74,13 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
         100 cutRsc ["gasmask", "PLAIN", 1, false];
         cbrn_breath_handle = [_unit] spawn {
             params ["_unit"];
+            private _fat = 0;
             while{alive _unit && _unit getVariable ["cbrn_mask_on", false]} do {
-                private _fat = getFatigue player;
+                _fat = [_unit] call cbrn_fnc_getFatigue;
                 sleep (0.75 + (3 - (3 * _fat)) + (random (2 - (2 * _fat))));
                 if !(alive _unit && _unit getVariable ["cbrn_mask_on", false]) exitWith {};
                 playSound format ["gas_breath_in_%1", floor (random 4) + 1];
-                _fat = getFatigue player;
+                _fat = [_unit] call cbrn_fnc_getFatigue;
                 sleep (0.75 + (2 - (2 * _fat)) + (random (2 - (2 * _fat))));
                 if !(alive _unit && _unit getVariable ["cbrn_mask_on", false]) exitWith {};
                 playSound format ["gas_breath_out_%1", floor (random 4) + 1];

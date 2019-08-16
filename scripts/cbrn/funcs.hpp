@@ -10,5 +10,6 @@ class cbrn{
 		class handleDamage{};
 		class toggleShower{};
 		class setUpDeconShower{};
+		class getFatigue{};
 	};
 };
