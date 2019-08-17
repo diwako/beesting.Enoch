@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1461;
+		nextID=1464;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=285;
+		nextID=341;
 	};
 	class Camera
 	{
@@ -70,7 +70,7 @@ addons[]=
 	"CUP_Misc_e_Config",
 	"A3_Air_F_Enoch_UAV_06",
 	"A3_Props_F_Enoch_Military_Supplies",
-	"A3_Supplies_F_Enoch_Ammoboxes"
+	"A3_Characters_F_Enoch"
 };
 class AddonsMetaData
 {
@@ -263,8 +263,8 @@ class AddonsMetaData
 		};
 		class Item28
 		{
-			className="A3_Supplies_F_Enoch";
-			name="Arma 3 Enoch - Ammoboxes and Supplies";
+			className="A3_Characters_F_Enoch";
+			name="Arma 3 Enoch - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -347,7 +347,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=84;
+		items=85;
 		class Item0
 		{
 			dataType="Layer";
@@ -9854,39 +9854,32 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9854.7764,182.44035,3782.3015};
+				position[]={9854.7344,183.4809,3781.8623};
+				angles[]={0,0,0.00048828125};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
-				dynamicSimulation=1;
 			};
-			id=1458;
-			type="Box_EAF_Uniforms_F";
-			class CustomAttributes
+			id=1462;
+			type="Item_U_C_CBRN_Suit_01_Blue_F";
+			atlOffset=0.76081848;
+		};
+		class Item84
+		{
+			dataType="Object";
+			class PositionInfo
 			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[],[]],[[],[]],[[""U_I_E_Uniform_01_officer_F"",""H_MilCap_eaf"",""G_Aviator""],[1,1,1]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
+				position[]={9854.7314,183.48088,3782.4211};
+				angles[]={0,0,0.00048828125};
 			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=1463;
+			type="Item_U_C_CBRN_Suit_01_Blue_F";
+			atlOffset=0.76080322;
 		};
 	};
 };
