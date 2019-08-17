@@ -63,6 +63,7 @@ cbrn_mask_damage ppEffectCommit 5;
 if (cba_missionTime > (_unit getVariable ["cbrn_nextCough", -1])) then {
     _unit setVariable ["cbrn_nextCough", cba_missionTime + (20 / _threadLevel)];
     [_unit, ("choke_" + str( (floor random 9) + 1))] remoteExec ["say3D"];
+    _unit setVariable ["cbrn_damage", _curDamage + _actualThreat, true];
 };
 
 private _pain = _unit getVariable ["ace_medical_pain", 0];

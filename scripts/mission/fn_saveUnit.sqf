@@ -1,5 +1,5 @@
 if !(isServer) exitWith {};
-params ["_unit", ["_uid", getPosWorld _unit]];
+params ["_unit", ["_uid", getPlayerUID _unit, [""]]];
 
 if !(isPlayer _unit) exitWith {};
 
@@ -42,15 +42,10 @@ if !((_loadout # 5) isEqualTo []) then {
     };
 } forEach (_loadout # 9);
 
-if (isNil "diw_persistence") then {
-    diw_persistence = [true] call CBA_fnc_createNamespace;
-    publicVariable "diw_persistence";
-};
-
-//ace_medical
-private _medical = [];
+//various variables
+private _variables = [];
 {
-    _medical pushBack (+[_x#0, (_unit getVariable [_x#0, _x#1])]);
+    _variables pushBack (+[_x#0, (_unit getVariable [_x#0, _x#1])]);
 } forEach [
     ["ace_medical_pain", 0],
     ["ace_medical_morphine", 0],
@@ -76,13 +71,23 @@ private _medical = [];
     ["ace_medical_hasPain", false],
     ["ace_medical_painSuppress", 0],
     ["ace_medical_allUsedMedication", []],
-    ["ACE_isUnconscious", false]
+    ["ACE_isUnconscious", false],
+    ["cbrn_damage", 0],
+    ["second_primary_info", []],
+    ["acex_field_rations_hunger", 0],
+    ["acex_field_rations_thirst", 0]
 ];
+
+if (isNil "diw_persistence") then {
+    diw_persistence = [true] call CBA_fnc_createNamespace;
+    publicVariable "diw_persistence";
+};
+
 diw_persistence setVariable [_uid, [
     _pos,
     _loadout,
     _dir,
-    _medical
+    _variables
 ], true];
 
 nil
