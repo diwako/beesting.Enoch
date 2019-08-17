@@ -309,3 +309,15 @@ if !(hasInterface) exitWith {};
 
     }, 0.5, [_poorFuck, _stopTime, _bees]] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_addEventHandler;
+
+["diw_carAlarm", {
+	params ["_car"];
+	private _time = cba_missiontime + 120;
+	[_car, _time] spawn {
+		params ["_car", "_time"];
+		while {_time > cba_missiontime} do {
+			_car say3D "AlarmCar";
+			sleep 2;
+		};
+	};
+}] call CBA_fnc_addEventHandler;

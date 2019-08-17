@@ -74,7 +74,7 @@ private _clickIconEH = addMissionEventHandler ["GroupIconClick",{
 		//GET ARRAY WITH UNIT NAMES FROM GROUP
 		private _nameArray = [];
 		{
-			_nameArray pushBack name _x;
+			_nameArray pushBack (_x getVariable ["mab_playerName", name _x]);
 		} forEach units _group;
 
 		private _nameList = _nameArray joinString "<br/>";

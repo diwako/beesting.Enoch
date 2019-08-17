@@ -28,6 +28,7 @@ _man linkItem "ItemWatch";
 
 	_man setVariable ["ACE_Name", format ["%1 %2",_name,_famName], true];
 	_man setVariable ["ACE_NameRaw", format ["%1 %2",_name,_famName], true];
+	_man addGoggles selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 }, [_man], 0.5] call CBA_fnc_waitAndExecute;
 
 _man forceAddUniform "U_O_R_Gorka_01_black_F";
@@ -41,7 +42,7 @@ if (_man distance2d [11333.326,4390.927] < 1000) then {
 	};
 };
 _man addHeadgear selectRandom ["","H_Bandanna_gry","","H_Beret_blk","","H_Cap_blk","","H_EarProtectors_black_F","","H_Construction_earprot_black_F","","H_Tank_black_F","","H_PASGT_basic_black_F",""];
-_man addGoggles selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
+// _man addGoggles selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 
 private _lootWeaps = ["hgun_PDW2000_F","SMG_03C_black","SMG_02_F","SMG_05_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","sgun_HunterShotgun_01_sawedoff_F","srifle_DMR_06_hunter_F","srifle_DMR_06_hunter_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_02_F","hgun_Rook40_F","hgun_Rook40_F","hgun_Rook40_F","hgun_ACPC2_F","hgun_ACPC2_F"];
 [_man, selectRandom _lootWeaps, 3, 0] call BIS_fnc_addWeapon;
