@@ -84,6 +84,8 @@ class mission{
 		class ambientSounds{};
 		class setUpLoot{};
 		class doorAction{};
+		class saveUnit{};
+		class restoreUnit{};
 	};
 };
 class Second_primary{

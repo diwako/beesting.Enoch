@@ -171,3 +171,11 @@ diw_genericLoot = [
 	} forEach nearestObjects [_pos, ["House", "Building"], 350];
 	
 } forEach [getMarkerPos "destr1", getMarkerPos "destr2", getMarkerPos "destr3"];
+
+addMissionEventHandler ["HandleDisconnect", {
+	params ["_unit", "_id", "_uid", "_name"];
+	[_unit, _uid] call mission_fnc_saveUnit;
+
+	// We don't want the unit to live on as AI
+	false
+}];

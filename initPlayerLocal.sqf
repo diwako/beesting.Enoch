@@ -289,3 +289,5 @@ player setVariable ["ace_medical_unitDamageThreshold", [ace_medical_playerDamage
 
 //READABLES (or at least debug for now)
 [] execVM "scripts\mission\readables.sqf";
+
+[player] call mission_fnc_restoreUnit;

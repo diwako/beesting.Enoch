@@ -148,7 +148,7 @@ force ace_refuel_hoseLength = 20;
 
 // ACE Respawn
 force ace_respawn_savePreDeathGear = false;
-force ace_respawn_removeDeadBodiesDisconnected = false;
+force ace_respawn_removeDeadBodiesDisconnected = true;
 
 // ACE Repair
 force ace_repair_engineerSetting_repair = 0;
