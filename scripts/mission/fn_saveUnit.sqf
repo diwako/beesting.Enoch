@@ -1,7 +1,7 @@
 if !(isServer) exitWith {};
-params ["_unit", ["_uid", getPlayerUID _unit, [""]]];
+params ["_unit", "_uid"];
 
-if !(isPlayer _unit) exitWith {};
+// if !(isPlayer _unit) exitWith {};
 
 // private _uid = getPlayerUID _unit;
 private _pos = getPosWorld _unit;
