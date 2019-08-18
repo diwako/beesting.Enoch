@@ -179,3 +179,5 @@ addMissionEventHandler ["HandleDisconnect", {
 	// We don't want the unit to live on as AI
 	false
 }];
+
+publicVariable "van_van";

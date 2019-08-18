@@ -204,6 +204,38 @@
 
 }] call CBA_fnc_addEventHandler;
 
+["diw_carAlarm", {
+	params ["_car"];
+	private _time = cba_missiontime + 120;
+	if (hasInterface) then {
+		[_car, _time] spawn {
+			params ["_car", "_time"];
+			private _proxy = "building" createVehicleLocal position _car;
+			while {_time > cba_missiontime && {alive _car}} do {
+				if ((_proxy getVariable ["playNext", -1]) < cba_missiontime) then {
+					_proxy say3D ["caralarm", 750];
+					_proxy setVariable ["playNext", cba_missiontime + 31.833]
+				};
+				// _car say3D "AlarmCar";
+				// sleep 2;
+				sleep 1;
+			};
+			deleteVehicle _proxy;
+		};
+	};
+	if (local _car) then {
+		[_car, _time] spawn {
+			params ["_car", "_time"];
+			while {_time > cba_missiontime && {alive _car}} do {
+				_car setPilotLight true;
+				sleep 1;
+				_car setPilotLight false;
+				sleep 1;
+			};
+		};
+	};
+}] call CBA_fnc_addEventHandler;
+
 if !(hasInterface) exitWith {};
 
 ["diw_alarm", {
@@ -251,42 +283,42 @@ if !(hasInterface) exitWith {};
     params ["_poorFuck", ["_stopTime", CBA_missionTime + 30 + (random 30)]];
 
     private _bees = "#particlesource" createVehicleLocal ((getposATL _poorFuck) vectorAdd [0,0,2]);
-    _bees setParticleRandom [ 
-        0, // lifeTimeVar, 
-        [1, 1, 1],// positionVar, 
-        [2, 2, 2], // moveVelocityVar, 
-        0, // rotationVelocityVar, 
-        0, // sizeVar, 
-        [0, 0, 0, 0], // colorVar, 
-        0, // randomDirectionPeriodVar, 
-        0, // randomDirectionIntensityVar, 
-        0, // angleVar, 
-        0// bounceOnSurfaceVar 
-    ]; 
-    _bees setParticleParams  
-    [  
-        ["\A3\animals_f\honeybee.p3d", 1, 0, 1], //shape name  
-        "", //animation name  
-        "SpaceObject", //type  
-        0, 1, //timer period & life time  
-        [0, 0, 0], //position  
-        [0, 0, 0], //moveVeocity  
-        1, //rotation velocity  
-        0.13, // weight  
-        0.1, // volume,   
-        0, // rubbing  
-        [1], //size  
-        [[1,1,1,1]], //color  
-        [10], //animationPhase (animation speed in config)  
-        0.1, //randomdirection period  
-        0.05, //random direction intensity  
-        "", //onTimer  
-        "", //before destroy  
-        "", //object  
-        0, //angle  
-        false, //on surface  
-        0.4, //bounce on surface  
-        [[1,0,0,0]] //randomizations I dont need  
+    _bees setParticleRandom [
+        0, // lifeTimeVar,
+        [1, 1, 1],// positionVar,
+        [2, 2, 2], // moveVelocityVar,
+        0, // rotationVelocityVar,
+        0, // sizeVar,
+        [0, 0, 0, 0], // colorVar,
+        0, // randomDirectionPeriodVar,
+        0, // randomDirectionIntensityVar,
+        0, // angleVar,
+        0// bounceOnSurfaceVar
+    ];
+    _bees setParticleParams
+    [
+        ["\A3\animals_f\honeybee.p3d", 1, 0, 1], //shape name
+        "", //animation name
+        "SpaceObject", //type
+        0, 1, //timer period & life time
+        [0, 0, 0], //position
+        [0, 0, 0], //moveVeocity
+        1, //rotation velocity
+        0.13, // weight
+        0.1, // volume,
+        0, // rubbing
+        [1], //size
+        [[1,1,1,1]], //color
+        [10], //animationPhase (animation speed in config)
+        0.1, //randomdirection period
+        0.05, //random direction intensity
+        "", //onTimer
+        "", //before destroy
+        "", //object
+        0, //angle
+        false, //on surface
+        0.4, //bounce on surface
+        [[1,0,0,0]] //randomizations I dont need
     ];
 
     _bees setDropInterval 0.002;
@@ -308,16 +340,4 @@ if !(hasInterface) exitWith {};
         };
 
     }, 0.5, [_poorFuck, _stopTime, _bees]] call CBA_fnc_addPerFrameHandler;
-}] call CBA_fnc_addEventHandler;
-
-["diw_carAlarm", {
-	params ["_car"];
-	private _time = cba_missiontime + 120;
-	[_car, _time] spawn {
-		params ["_car", "_time"];
-		while {_time > cba_missiontime} do {
-			_car say3D "AlarmCar";
-			sleep 2;
-		};
-	};
 }] call CBA_fnc_addEventHandler;

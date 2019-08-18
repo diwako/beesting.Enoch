@@ -8,22 +8,22 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1464;
+		nextID=1483;
 	};
 	class MarkerIDProvider
 	{
-		nextID=30;
+		nextID=31;
 	};
 	class LayerIndexProvider
 	{
-		nextID=341;
+		nextID=365;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={10438.899,220.84473,4191.9473};
+		dir[]={-0.91624725,-0.37451568,0.14233096};
+		up[]={-0.37008142,0.92721432,0.057488605};
+		aside[]={0.15350106,1.4563557e-007,0.98815924};
 	};
 };
 binarizationWanted=0;
@@ -347,7 +347,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=85;
+		items=92;
 		class Item0
 		{
 			dataType="Layer";
@@ -1472,13 +1472,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9049.0273,173.40289,4411.2793};
-				angles[]={6.2097197,1.9547688,6.271987};
+				position[]={9049.0273,173.40295,4411.2798};
+				angles[]={6.2097239,1.9547688,6.2719803};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				health=0.95323604;
+				fuel=0.40681121;
 				textures="Black";
 				dynamicSimulation=1;
 			};
@@ -2612,19 +2614,20 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={9045.6016,173.0629,4406.4355};
-				angles[]={6.2192712,2.7750735,6.2623916};
+				position[]={9045.6016,173.06328,4406.436};
+				angles[]={6.2192717,2.7750735,6.2623982};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				health=0.96170801;
+				fuel=0.38986808;
 				textures="Black";
 				dynamicSimulation=1;
 			};
 			id=243;
 			type="C_Van_02_vehicle_F";
-			atlOffset=-0.00035095215;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4518,6 +4521,8 @@ class Mission
 			flags=4;
 			class Attributes
 			{
+				health=0.92782116;
+				fuel=0.5;
 				textures="Black";
 				dynamicSimulation=1;
 			};
@@ -5888,6 +5893,8 @@ class Mission
 			flags=4;
 			class Attributes
 			{
+				health=0.91511339;
+				fuel=0.53812242;
 				name="van_van";
 				textures="Black";
 				dynamicSimulation=1;
@@ -8481,6 +8488,8 @@ class Mission
 			flags=4;
 			class Attributes
 			{
+				health=0.89393449;
+				fuel=0.44493365;
 				dynamicSimulation=1;
 			};
 			id=1262;
@@ -9091,6 +9100,8 @@ class Mission
 			flags=4;
 			class Attributes
 			{
+				health=0.72026426;
+				fuel=0.27549976;
 				textures="ParkRanger";
 				dynamicSimulation=1;
 			};
@@ -9113,7 +9124,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+							value="[[[[""FirstAidKit""],[10]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -9880,6 +9891,66 @@ class Mission
 			id=1463;
 			type="Item_U_C_CBRN_Suit_01_Blue_F";
 			atlOffset=0.76080322;
+		};
+		class Item85
+		{
+			dataType="Marker";
+			position[]={12774.921,61.500999,3833.012};
+			name="flyby_1_1";
+			type="Empty";
+			id=1476;
+			atlOffset=0.00010681152;
+		};
+		class Item86
+		{
+			dataType="Marker";
+			position[]={10885.248,175.05217,4128.8252};
+			name="flyby_2";
+			type="Empty";
+			id=1477;
+			atlOffset=0.00010681152;
+		};
+		class Item87
+		{
+			dataType="Marker";
+			position[]={10096.141,173.60913,4252.5195};
+			name="flyby_3";
+			type="Empty";
+			id=1478;
+			atlOffset=-2.6439209;
+		};
+		class Item88
+		{
+			dataType="Marker";
+			position[]={9019.4277,165.00684,4398.1152};
+			name="flyby_4";
+			type="Empty";
+			id=1479;
+			atlOffset=-6.4289246;
+		};
+		class Item89
+		{
+			dataType="Marker";
+			position[]={7725.8086,203.37956,3787.4302};
+			name="flyby_5";
+			type="Empty";
+			id=1480;
+		};
+		class Item90
+		{
+			dataType="Marker";
+			position[]={2967.7922,347.42307,2018.4944};
+			name="flyby_6";
+			type="Empty";
+			id=1481;
+		};
+		class Item91
+		{
+			dataType="Marker";
+			position[]={13298.645,93.500519,3793.7629};
+			name="flyby_1_2";
+			type="Empty";
+			id=1482;
 		};
 	};
 };

@@ -25,7 +25,15 @@ if (!isMultiplayer) then {
 };
 
 if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722", "76561197997590271"]) then {
-    [{[player] call zeus_fnc_createDynamicZeus;}, [], 5] call CBA_fnc_waitAndExecute;
+    [{
+        [player] call zeus_fnc_createDynamicZeus;
+        if (isMultiplayer) then {
+            // assume mission is being played, set shit up so zeus does not suffer from fog and stuff
+            diwako_ambientFogglets = false;
+            setViewDistance 2000;
+            setObjectViewDistance 1500;
+        };
+    }, [], 5] call CBA_fnc_waitAndExecute;
     player setVariable ["fpz_zombies_ignore",true,true];
     player allowDamage false;
     player setVariable ["ace_medical_allowDamage", false, true];
@@ -291,3 +299,28 @@ player setVariable ["ace_medical_unitDamageThreshold", [ace_medical_playerDamage
 [] execVM "scripts\mission\readables.sqf";
 
 [player] call mission_fnc_restoreUnit;
+
+
+private _van = missionnameSpace getVariable ["van_van", objNull];
+if (alive _van) then {
+    private _crates = [];
+    private _obj = createSimpleObject ["C_IDAP_supplyCrate_F", [0,0,0], true];
+    _obj attachTo [_van, [0,1,0]];
+    _crates pushBack _obj;
+    _obj = createSimpleObject ["C_IDAP_supplyCrate_F", [0,0,0], true];
+    _obj attachTo [_van, [0,-0.5,0]];
+    _crates pushBack _obj;
+    _obj = createSimpleObject ["C_IDAP_supplyCrate_F", [0,0,0], true];
+    _obj attachTo [_van, [0,-2,0]];
+    _crates pushBack _obj;
+
+    _van setVariable ["crates", _crates];
+    _van addEventHandler ["Killed", {
+        params ["_van"];
+        private _arr = _van getVariable ["crates", []];
+        {
+            detach _x;
+            deleteVehicle _x;
+        } forEach _arr;
+    }];
+};

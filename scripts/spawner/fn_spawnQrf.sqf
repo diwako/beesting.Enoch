@@ -9,11 +9,11 @@ if !(["diw_spawnQrf", _this] call spawner_fnc_isSpawner) exitWith {};
 params["_pos", ["_type","apc"], ["_amount",1], ["_side", opfor]];
 
 private _class = switch (tolower (_type)) do {
-	case "truck": { "C_Van_01_transport_F" };
+	case "truck": { if (_side isEqualTo opfor) then {"I_E_Offroad_01_covered_F"} else {"C_Offroad_01_covered_F"} };
 	case "tank": { "O_MBT_04_cannon_F" };
-	case "helitransport": { "O_Heli_Light_02_dynamicLoadout_F" };
+	case "helitransport": { "I_E_Heli_light_03_unarmed_F" };
 	case "infantry": { "" };
-	default { "B_APC_Wheeled_01_cannon_F" };
+	default { "I_E_APC_tracked_03_cannon_F" };
 };
 _pos = _pos call CBA_fnc_getPos;
 
@@ -42,14 +42,14 @@ for "_i" from 1 to _amount do {
 		_veh = createVehicle[_class,_pos,[],100,"FORM"];
 		[_veh] call bis_fnc_initVehicle;
 	};
-	if (_class == "C_Van_01_transport_F") then {
-		_grp = [[0,0,0], "weaponssquad", _side] call spawner_fnc_spawnGroup;
+	if (_class == "C_Offroad_01_covered_F" || _class == "I_E_Offroad_01_covered_F") then {
+		_grp = [[0,0,0], "fireteam", _side] call spawner_fnc_spawnGroup;
 		(leader _grp) moveInDriver _veh;
 		{
 			_x moveInCargo _veh;
 		} forEach ((units _grp) - [leader _grp]);
 	};
-	if (_class == "B_APC_Wheeled_01_cannon_F" || {_class == "O_MBT_04_cannon_F"}) then {
+	if (_class == "I_E_APC_tracked_03_cannon_F" || {_class == "O_MBT_04_cannon_F"}) then {
 		_grp = createGroup [_side, true];
 
 		_grp addVehicle _veh;
@@ -63,10 +63,10 @@ for "_i" from 1 to _amount do {
 		_unit = _grp createUnit [_crew,[0,0,0],[],0,"NONE"];
 		_unit moveInCommander _veh;
 
-		if (_class isEqualTo "B_APC_Wheeled_01_cannon_F") then {
+		if (_class isEqualTo "I_E_APC_tracked_03_cannon_F") then {
 			[_veh,_grp,_side] spawn {
 				params ["_veh" , "_grp", "_side"];
-				private _grp2 = [[0,0,0], "riflesquad", _side] call spawner_fnc_spawnGroup;
+				private _grp2 = [[0,0,0], "fireteam", _side] call spawner_fnc_spawnGroup;
 				{
 					_x moveInCargo _veh;
 				} forEach units _grp2;
@@ -85,8 +85,8 @@ for "_i" from 1 to _amount do {
 		};
 	};
 
-	if (_class == "O_Heli_Light_02_dynamicLoadout_F") then {
-		_veh setObjectTextureGlobal [0, "a3\air_f\heli_light_02\data\heli_light_02_ext_co.paa"];
+	if (_class == "I_E_Heli_light_03_unarmed_F") then {
+		// _veh setObjectTextureGlobal [0, "a3\air_f\heli_light_02\data\heli_light_02_ext_co.paa"];
 		_veh flyInHeight 50;
 		// pilot
 		_grp = createGroup [_side, true];
@@ -96,7 +96,7 @@ for "_i" from 1 to _amount do {
         _grp addVehicle _veh;
 
         //PASSENGERS
-        private _grp2 = [[0,0,0], "weaponssquad", _side] call spawner_fnc_spawnGroup;
+        private _grp2 = [[0,0,0], "fireteam", _side] call spawner_fnc_spawnGroup;
         _grp2 deleteGroupWhenEmpty true;
         {_x moveInCargo _veh;} forEach units _grp2;
 
