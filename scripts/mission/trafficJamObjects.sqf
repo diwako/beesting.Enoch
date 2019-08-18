@@ -28,10 +28,11 @@ if (isServer) then {
     {
         _x params ["_type", "_pos", "_upDir", "_texures"];
         _obj = _type createVehicle [0,0,0];
+        _obj setVariable ["BIS_enableRandomization", false, true];
         _obj setPosWorld _pos;
         _obj setVectorDirAndUp _upDir;
         {
-            _obj setObjectTexture [_forEachIndex, _x];
+            _obj setObjectTextureGlobal [_forEachIndex, _x];
         } forEach _texures;
         _obj lock 2;
         _obj enableDynamicSimulation true;

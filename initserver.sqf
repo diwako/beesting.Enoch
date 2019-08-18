@@ -7,18 +7,68 @@ diw_difficulty = paramsArray select 0;
 [blufor,
 ["task_1"],
 [
-	"Infiltrate the camp known as Xiaojian stealthily, leave no withness and search for documents/files about their main base",
-	"Infiltrate Camp Xiaojian",
+	"Scavenge the area, your main group needs all the resources you can find!",
+	"Scavange",
 	"XIAOJIAN"
 ],
 objNull,
 true,2,false,"",false] call BIS_fnc_taskCreate;
 
 [blufor,
-["task_1_1","task_1"],
+["task_2"],
 [
-	"Kill all inhabitants of camp xiaojian",
-	"Leave no Witnesses",
+	"Find oxygen tanks in order to survive in Gieraltów and the area around it. The area is full of dangerious chemical residue, traversing the area will require the use of CBRN gear.",
+	"Oxygen Tanks",
+	"XIAOJIAN"
+],
+objNull,
+false,2,false,"",false] call BIS_fnc_taskCreate;
+
+[blufor,
+["task_3"],
+[
+	"Gieraltów seems to be ripe for the taking now. It is a town that has not been scavanged as it is int he middle of a chemical heavy zone. However, with a gas mask and fresh air supply it will be possible to traverse",
+	"Gieraltów",
+	"XIAOJIAN"
+],
+objNull,
+false,2,false,"",false] call BIS_fnc_taskCreate;
+
+[blufor,
+["task_4"],
+[
+	"You left your family at the main camp, make sure you come back alive and bring something back.",
+	"Survive!",
+	"XIAOJIAN"
+],
+objNull,
+false,2,false,"",false] call BIS_fnc_taskCreate;
+
+[blufor,
+["task_5"],
+[
+	"Everything in this category is optional",
+	"Optional",
+	"XIAOJIAN"
+],
+objNull,
+false,2,false,"",false] call BIS_fnc_taskCreate;
+
+[blufor,
+["task_5_1","task_5"],
+[
+	"You are on foot as your truck just broke down. Find a car you can bring back.",
+	"Vehicle",
+	"XIAOJIAN"
+],
+objNull,
+false,2,false,"",false] call BIS_fnc_taskCreate;
+
+[blufor,
+["task_5_2","task_5"],
+[
+	"Find out if there is a livable area to settle in nearby. Gieraltów has a lot in it, maybe it is possible to live of the town for a while?",
+	"Settlment Area",
 	"XIAOJIAN"
 ],
 objNull,

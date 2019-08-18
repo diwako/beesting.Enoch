@@ -191,7 +191,7 @@
 
 ["Respawn - JRM", "Respawn ALL units at pos", {
   params ["_pos"];
-  private _players = [] call ace_spectator_fnc_players;
+  private _players = ([] call ace_spectator_fnc_players) select {_x isKindOf "CAManBase"};
   if (count _players == 0) exitWith {["ERROR: No dead players"] call zen_common_fnc_showMessage};
   [_pos] remoteExecCall ["respawn_fnc_forceRespawn", _players];
   ["Respawned %1 players at %2", count _players, mapGridPosition _pos] call zen_common_fnc_showMessage;
@@ -200,7 +200,7 @@
 ["Respawn - JRM", "Respawn SINGLE unit at pos", {
   params ["_pos", "_obj"];
 
-  private _players = [] call ace_spectator_fnc_players;
+  private _players = ([] call ace_spectator_fnc_players) select {_x isKindOf "CAManBase"};
   if (count _players == 0) exitWith {["ERROR: No dead players"] call zen_common_fnc_showMessage};
   private _names = _players apply {name _x};
 
@@ -222,7 +222,7 @@
   if (isNull _veh) exitWith {["ERROR: Select vehicle with cargo"] call zen_common_fnc_showMessage};
 
   private _maxAmount = (_veh emptyPositions "cargo");
-  private _plrs = [] call ace_spectator_fnc_players;
+  private _plrs = ([] call ace_spectator_fnc_players) select {_x isKindOf "CAManBase"};
 
   if (_maxAmount <= 0 || {_plrs isEqualTo []}) exitWith {["ERROR: No cargo slots / no dead players"] call zen_common_fnc_showMessage};
   _plrs = _plrs select [0, _maxAmount];

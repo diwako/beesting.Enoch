@@ -24,6 +24,7 @@
 
 params ["_posOrCode", ["_reset", false]];
 
+if (typeOf player == "ace_spectator_virtual") exitWith {};
 if (!hasInterface || {!ACE_spectator_isSet}) exitWith {};
 
 // civilians are considered spectators, do not touch them
