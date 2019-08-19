@@ -69,7 +69,9 @@ _validBuildings = [
   "Land_VillageStore_01_F",
   "Land_House_2B01_F",
   "Land_Barracks_03_F",
-  "Land_Barracks_04_F"
+  "Land_Barracks_04_F",
+  "Land_House_1W12_F",
+  "Land_House_1W02_F"
 ];
 
 tint_translationNamespace = [] call CBA_fnc_createNamespace;

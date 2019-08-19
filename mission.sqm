@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1523;
+		nextID=1571;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=381;
+		nextID=389;
 	};
 	class Camera
 	{
-		pos[]={7653.1812,82.008438,5218.52};
-		dir[]={-0.77103209,-0.45124769,-0.44932738};
-		up[]={-0.38987872,0.89239514,-0.2272056};
-		aside[]={-0.50350368,-8.5507054e-008,0.86399782};
+		pos[]={7642,99.32,5187};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -8126,11 +8126,10 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={11277.019,146.73589,4517.2539};
-						angles[]={3.141598,4.1713381,4.2048782e-009};
+						position[]={11277.21,147.28667,4517.4531};
+						angles[]={6.178195,1.7453303,0.032205753};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
 						name="readable_4";
@@ -8138,7 +8137,7 @@ class Mission
 					};
 					id=1159;
 					type="Newspaper_01_F";
-					atlOffset=0.00076293945;
+					atlOffset=0.55154419;
 				};
 				class Item15
 				{
