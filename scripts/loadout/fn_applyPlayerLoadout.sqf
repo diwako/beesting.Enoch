@@ -49,6 +49,11 @@ if(_side == civilian) exitWith {
 };
 
 if(_side == west) exitWith {
+	private _noDLC = getDLCs 2;
+	private _ownsApex = !(395180 in _noDLC);
+	private _ownsMarksmen = !(332350 in _noDLC);
+	private _ownsLow = !(571710 in _noDLC);
+
 	//Sarge
 	if (_type == "B_officer_F") then {
 		_man forceAddUniform "U_B_CombatUniform_tshirt_mcam_wdL_f";
@@ -67,7 +72,11 @@ if(_side == west) exitWith {
 	if (_type == "B_medic_F") then {
 		_man forceAddUniform "U_Marshal";
 		_man addVest "V_Rangemaster_belt";
-		_man addHeadgear "H_PASGT_basic_blue_F";
+		if (_ownsLow) then {
+			_man addHeadgear "H_PASGT_basic_blue_F";
+		} else {
+			_man addHeadgear "H_Booniehat_khk";
+		};
 
 		for "_i" from 1 to 4 do {_man addItemToVest "11Rnd_45ACP_Mag";};
 
@@ -89,13 +98,25 @@ if(_side == west) exitWith {
 
 	//Jaroslaw
 	if (_type == "B_HeavyGunner_F") then {
-		_man forceAddUniform "U_I_C_Soldier_Bandit_3_F";
+		if (_ownsApex) then {
+			_man forceAddUniform "U_I_C_Soldier_Bandit_3_F";
+		} else {
+			if (_ownsLow) then {
+				_man forceAddUniform "U_C_Mechanic_01_F";
+			} else {
+				_man forceAddUniform "U_C_Poor_1";
+			}
+		};
 		_man addVest "V_Chestrig_rgr";
 		_man addHeadgear "H_Bandanna_sgg";
 
-		for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
-
-		_man addWeapon "arifle_AKM_F";
+		if (_ownsApex) then {
+			for "_i" from 1 to 4 do {_man addItemToVest "75Rnd_762x39_Mag_F";};
+			_man addWeapon "arifle_AKM_F";
+		} else {
+			for "_i" from 1 to 4 do {_man addItemToVest "75rnd_762x39_AK12_Mag_Tracer_F";};
+			_man addWeapon "arifle_AK12U_F";
+		};
 	};
 
 	//Stanislaw
@@ -112,9 +133,17 @@ if(_side == west) exitWith {
 
 	//Tomasz and Tymon
 	if (_type == "B_Soldier_F") then {
-		_man forceAddUniform selectRandom ["U_C_Mechanic_01_F","U_I_L_Uniform_01_tshirt_sport_F","U_I_L_Uniform_01_tshirt_olive_F","U_I_L_Uniform_01_tshirt_black_F","U_C_Uniform_Farmer_01_F"];
-		_man addVest selectRandom ["V_Pocketed_black_F","V_Pocketed_coyote_F","V_Pocketed_olive_F"];
-		_man addHeadgear selectRandom ["H_Cap_oli","H_Watchcap_camo","H_Booniehat_mgrn","H_MilCap_gry","H_Construction_earprot_black_F"];
+		private _uniforms = ["U_I_L_Uniform_01_tshirt_sport_F","U_I_L_Uniform_01_tshirt_olive_F","U_I_L_Uniform_01_tshirt_black_F","U_C_Uniform_Farmer_01_F"];
+		private _vests = ["V_TacVest_blk_POLICE"];
+		private _hats = ["H_Cap_oli","H_Watchcap_camo","H_Booniehat_mgrn","H_MilCap_gry"];
+		if (_ownsLow) then {
+			_uniforms pushback "U_C_Mechanic_01_F";
+			_vests = ["V_Pocketed_black_F","V_Pocketed_coyote_F","V_Pocketed_olive_F"];
+			_hats pushBack "H_Construction_earprot_black_F";
+		};
+		_man forceAddUniform selectRandom _uniforms;
+		_man addVest selectRandom _vests;
+		_man addHeadgear selectRandom _hats;
 
 		for "_i" from 1 to 5 do {_man addItemToVest "2Rnd_12Gauge_Pellets";};
 		for "_i" from 1 to 6 do {_man addItemToVest "2Rnd_12Gauge_Slug";};
@@ -172,11 +201,13 @@ if(_side == west) exitWith {
 
 	//Add backpacks with mask and medical for doc
 	if (_type != "B_medic_F") then {
-		_man addBackpack selectRandom ["B_AssaultPack_blk","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk","B_AssaultPack_wdl_F","B_AssaultPack_sgg","B_AssaultPack_eaf_F","B_Messenger_Black_F","B_Messenger_Coyote_F","B_Messenger_Gray_F","B_Messenger_Olive_F"];
-		_man addItemToBackpack selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
+		private _backpacks = ["B_AssaultPack_blk","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk","B_AssaultPack_wdl_F","B_AssaultPack_sgg","B_AssaultPack_eaf_F"];
+		if (_ownsLow) then {
+			_backpacks append ["B_Messenger_Black_F","B_Messenger_Coyote_F","B_Messenger_Gray_F","B_Messenger_Olive_F"];
+		};
+		_man addBackpack selectRandom _backpacks;
 	} else {
 		_man addBackpack selectRandom ["B_Kitbag_cbr","B_Kitbag_rgr","B_Kitbag_mcamo","B_Kitbag_sgg","B_Kitbag_tan"];
-		_man addItemToBackpack selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 		_man addItemToBackpack "ACE_personalAidKit";
 		for "_i" from 1 to 25 do {_man addItemToBackpack "ACE_packingBandage";};
 		for "_i" from 1 to 25 do {_man addItemToBackpack "ACE_elasticBandage";};
@@ -185,4 +216,6 @@ if(_side == west) exitWith {
 		for "_i" from 1 to 6 do {_man addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 5 do {_man addItemToBackpack "ACE_salineIV";};
 	};
+
+	_man addItemToBackpack selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 };
