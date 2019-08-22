@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=389;
+		nextID=397;
 	};
 	class Camera
 	{
 		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -325,14 +325,14 @@ class Mission
 	{
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
-		startWeather=0.4322263;
+		startWeather=0;
 		startFog=0.60000002;
 		startWind=0.11453747;
 		startWindDir=-90;
 		startLightnings=0.45764157;
 		startWaves=0.1;
 		startGust=0.20772617;
-		forecastWeather=0.42799053;
+		forecastWeather=0;
 		forecastFog=0.60000002;
 		forecastWind=0.11453747;
 		forecastWaves=0.1;
