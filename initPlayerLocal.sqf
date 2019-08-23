@@ -278,7 +278,7 @@ onMapSingleClick "_shift";
     [] spawn {
         private _start = getMarkerPos "crow_start";
         private _target = createSimpleObject ["building", getMarkerPos "crow_end", true];
-        private _crows = ["Crowe", _start, 25, 1, 25, _target] call crows_fnc_create; 
+        private _crows = ["Crowe", _start, 25, 1, 25, _target] call crows_fnc_create;
         [{((_this select 0) select 0) distance2d (_this select 1) < 100}, {
             deleteVehicle (_this select 1);
         }, [_crows, _target]] call CBA_fnc_waitUntilAndExecute
@@ -316,3 +316,28 @@ if (alive _van) then {
         } forEach _arr;
     }];
 };
+
+// execVM "furniture\out.sqf"
+
+player addEventHandler ["Killed", {
+    params ["_unit"];
+    playSound "gameover";
+    [] spawn {
+        sleep 5;
+        [parseText "<t font='PuristaBold' align='center' size='2' valign='middle'>You are dead</t>", [0,0.5,1,1], [10,10], 11, 5, 0] spawn BIS_fnc_textTiles;
+    };
+    private _pos = (ASLToAGL eyePos _unit);
+    private _cam = "camera" camCreate _pos;
+    _cam camSetDir [0,0,-1];
+    _cam camCommit 0;
+    _cam camSetPos (_unit modelToWorld [0,0,15]);
+    _cam camSetTarget _pos;
+    _cam cameraEffect ["INTERNAL", "BACK"];
+    _cam camCommit 15;
+    [_cam] spawn {
+        params ["_cam"];
+        waitUntil {camCommitted _cam};
+        _cam cameraEffect ["terminate","back"];
+        camDestroy _cam;
+    };
+}];

@@ -19,7 +19,7 @@ author="diwako | G4rrus";
 respawn = BASE;
 //respawnTemplates[] = {"MenuPosition", "Tickets"};
 //respawnTemplates[] = {"ace_spectator"};
-respawnDelay = 4;
+respawnDelay = 18;
 respawnDialog = 0;
 
 class CfgFunctions {
@@ -107,6 +107,11 @@ class CfgSounds {
 	class caralarm {
 		name = "caralarm";
 		sound[] = {"sounds\caralarm.ogg", 1.5, 1, 500};
+		titles[] = {};
+	};
+	class gameover {
+		name = "gameover";
+		sound[] = {"sounds\gameover.ogg", 1, 1, 5};
 		titles[] = {};
 	};
   #include "sounds\ambient.hpp"
