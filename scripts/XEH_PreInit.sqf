@@ -80,6 +80,11 @@
 		["diw_setUpUnit", [_unit, selectRandom ["RussianHead_4","LivonianHead_5","WhiteHead_24","WhiteHead_25","LivonianHead_2","WhiteHead_26","RussianHead_1","LivonianHead_7","LivonianHead_6","WhiteHead_28","LivonianHead_3","RussianHead_3","LivonianHead_1","RussianHead_2","LivonianHead_10","WhiteHead_32","WhiteHead_29","WhiteHead_30","LivonianHead_8","LivonianHead_4","WhiteHead_31","RussianHead_5","LivonianHead_9"],selectRandom ["Male01POL","Male02POL","Male03POL"]]] call CBA_fnc_globalEvent;
 	},[_unit],0.5] call CBA_fnc_waitAndExecute;
 
+	_id = _unit addEventHandler ["FiredNear", {
+		_this call Ai_fnc_firedNearEH;
+	}];
+	_unit setvariable ["lmf_ai_firedNear_EH", _id];
+
 	//LOKAL EH (To remove and reapply all EHs if locality changes.)
 	_id = _unit addEventHandler ["Local", {
 		params ["_unit"];
@@ -89,6 +94,7 @@
 		};
 		_unit removeEventHandler ["Local", _unit getVariable ["lmf_ai_local_EH" ,-1]];
 		_unit removeEventHandler ["Reloaded", _unit getVariable ["lmf_ai_reloaded_EH" ,-1]];
+		_unit removeEventHandler ["FiredNear", _unit getVariable ["lmf_ai_firedNear_EH" ,-1]];
 		//REAPPLY EHS
 		["lmf_ai_listener", [_unit], _unit] call CBA_fnc_targetEvent;
 	}];
