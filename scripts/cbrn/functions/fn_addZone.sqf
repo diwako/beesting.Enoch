@@ -1,4 +1,4 @@
-params["_trigger", ["_unit", acre_player], ["_add", false]];
+params["_trigger", ["_unit", ace_player], ["_add", false]];
 
 private _zones = _unit getVariable ["cbrn_zones", []];
 

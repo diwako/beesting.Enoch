@@ -17,10 +17,6 @@ private _roadlist = _pos nearRoads _patrolRadius;
 
 private _cnt = count _roadlist;
 if(_cnt > 0 && !_forceRandomWp) then {
-  // _roadlist = _roadlist call BIS_fnc_arrayShuffle;
-
-  private _mod = 5;
-
   for "_i" from 1 to (_cnt * 5) do {
       _roadlist pushBack (_roadlist deleteAt floor random _cnt);
   };
@@ -42,17 +38,27 @@ if(_cnt > 0 && !_forceRandomWp) then {
   };
 
 } else {
-	[
-		_grp,
-		_pos,
-		_patrolRadius,
-		_waypointCount,
-		_waypointType,
-		_cachedBevaiour,
-		_combatMode,
-		_speedMode,
-		_formation,
-		_codeToRun,
-		_timeout
-	] call CBA_fnc_taskPatrol;
+	// [
+	// 	_grp,
+	// 	_pos,
+	// 	_patrolRadius,
+	// 	_waypointCount,
+	// 	_waypointType,
+	// 	_cachedBevaiour,
+	// 	_combatMode,
+	// 	_speedMode,
+	// 	_formation,
+	// 	_codeToRun,
+	// 	_timeout
+	// ] call CBA_fnc_taskPatrol;
+  [
+    _grp,
+    [_pos, _patrolRadius, _patrolRadius, 0, false],
+    _cachedBevaiour,
+    "NO CHANGE",
+    _speedMode,
+    _formation,
+    "",
+    _timeout
+  ] call CBA_fnc_taskSearchArea;
 }

@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=1925;
+		nextID=1928;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=461;
+		nextID=469;
 	};
 	class Camera
 	{
-		pos[]={11492.837,207.71985,4550.6948};
-		dir[]={-0.51971686,-0.80509776,0.28628659};
-		up[]={-0.70517564,0.59301925,0.38845116};
-		aside[]={0.48255453,2.1707383e-006,0.87600166};
+		pos[]={9052.0049,176.53999,4407.917};
+		dir[]={0.29503375,-0.53383929,0.79246199};
+		up[]={0.18625981,0.84558481,0.500296};
+		aside[]={0.93717313,-4.3772161e-008,-0.34890875};
 	};
 };
 binarizationWanted=0;
@@ -98,13 +98,14 @@ addons[]=
 	"A3_Props_F_Exp_Military_Camps",
 	"A3_Structures_F_Bootcamp_Items_Sport",
 	"A3_Structures_F_Bootcamp_Training",
-	"A3_Structures_F_Mark_Items_Sport"
+	"A3_Structures_F_Mark_Items_Sport",
+	"A3_Supplies_F_Enoch_Ammoboxes"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=44;
+		items=45;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -395,6 +396,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item44
+		{
+			className="A3_Supplies_F_Enoch";
+			name="Arma 3 Enoch - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 class DynamicSimulation
@@ -474,7 +482,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=383;
+		items=386;
 		class Item0
 		{
 			dataType="Layer";
@@ -5784,11 +5792,11 @@ class Mission
 		class Item52
 		{
 			dataType="Trigger";
-			position[]={9113.3057,170.05307,4425.7979};
+			position[]={9089.5947,170.44141,4415.8052};
 			class Attributes
 			{
 				condition="call{this}";
-				onActivation="call{[thisTrigger, true, 2, 100] call spawner_fnc_spawnPatrol;}";
+				onActivation="call{[thisTrigger, true, 2, 50, true] call spawner_fnc_spawnPatrol;}";
 				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
 				sizeA=400;
 				sizeB=400;
@@ -5880,14 +5888,14 @@ class Mission
 		class Item55
 		{
 			dataType="Trigger";
-			position[]={11128.83,176.2,4298.7236};
+			position[]={11060.72,176.10947,4314.6152};
 			class Attributes
 			{
 				condition="call{this}";
-				onActivation="call{[thisTrigger, true, 3, 100] call spawner_fnc_spawnPatrol;}";
+				onActivation="call{[thisTrigger, true, 5, 100, true] call spawner_fnc_spawnPatrol;}";
 				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
-				sizeA=400;
-				sizeB=400;
+				sizeA=500;
+				sizeB=500;
 				repeatable=1;
 				activationBy="ANYPLAYER";
 				isServerOnly=1;
@@ -15337,7 +15345,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11466.14,160.97354,4562.2461};
-				angles[]={0,1.0123219,-0};
+				angles[]={0,1.0123219,0};
 			};
 			side="Empty";
 			flags=4;
@@ -15366,6 +15374,85 @@ class Mission
 			};
 			id=1924;
 			type="Land_HumanSkeleton_F";
+		};
+		class Item383
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9052.5967,172.89752,4422.292};
+				angles[]={0,3.0543261,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=1925;
+			type="Box_EAF_Uniforms_F";
+			atlOffset=0.00048828125;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[""B_SCBA_01_F""],[20]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item384
+		{
+			dataType="Trigger";
+			position[]={9497.9395,177.31882,4332.103};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 1, 100] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1926;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item385
+		{
+			dataType="Trigger";
+			position[]={9051.5684,172.51599,4422.4829};
+			angle=0.10471976;
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{deleteVehicle thisTrigger;[""task_2"", ""SUCCEEDED"", true] call BIS_fnc_taskSetState;}";
+				sizeA=1;
+				sizeB=2;
+				sizeC=2;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=1927;
+			type="EmptyDetector";
+			atlOffset=0.00048828125;
 		};
 	};
 };

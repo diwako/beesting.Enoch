@@ -25,7 +25,7 @@ private _lootTable = diw_genericLoot;
 					} forEach selectRandom _lootTable;
 
 					// systemChat "created";
-					_marker =_box call bis_fnc_boundingboxmarker; _marker setmarkercolor "colorred";
+					// _marker =_box call bis_fnc_boundingboxmarker; _marker setmarkercolor "colorred";
 				}
 			}
 		}

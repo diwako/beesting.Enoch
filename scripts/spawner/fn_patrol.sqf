@@ -10,7 +10,7 @@ if (_activate) then {
 	private _timeout = [3,6,10];
 	private _waypointCount = 6;
 	private _waypointType = "MOVE";
-	private _behaviour = ["SAFE", "AWARE"] select diw_called_for_help;
+	private _behaviour = "SAFE";
 	private _combatMode = "GREEN";
 	private _speedMode = "LIMITED";
 	private _formation = "STAG COLUMN";
