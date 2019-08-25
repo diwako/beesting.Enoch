@@ -296,3 +296,17 @@
     _aircraft setDriveOnPath [_startPos, _2ndPos, _3rdPos, _4thPos, _5thPos, _endPos];
   };
 }] call zen_custom_modules_fnc_register;
+
+["Mission", "Mine under feet", {
+  params ["_pos", ["_dude", objNull]];
+  if (isNull _dude) exitWith {
+    ["ERROR: No Unit"] call zen_common_fnc_showMessage
+  };
+  // private _akbar = createMine ["APERSMineDispenser_Mine_F", position _dude, [], 0];
+  private _akbar = createMine ["BombCluster_03_UXO1_F", position _dude, [], 0];
+  _akbar setPosWorld ((getPosWorld _dude) vectorAdd [0, 0, 0.1]);
+  _akbar setDamage 1;
+  if !(isPlayer _dude) then {
+    _dude spawn {sleep 0.5; _this setDamage 1};
+  };
+}] call zen_custom_modules_fnc_register;

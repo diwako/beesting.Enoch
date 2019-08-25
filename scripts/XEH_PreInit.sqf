@@ -37,7 +37,7 @@
 	_unit setSkill ["spotDistance", 1];
 	_unit setSkill ["spotTime", 1];
 	_unit setSkill ["courage",1];
-/*	{
+	{
 		_unit setskill _x;
 	} forEach [
 		// ['aimingAccuracy',0.75],
@@ -56,7 +56,7 @@
 		['spotTime',0.25]
 		// ['spotTime',0.85]
 	];
-*/
+
 	private _isMachineGun = getText(configFile >> "CfgWeapons" >> (primaryWeapon _unit) >> "UIPicture") == "\a3\weapons_f\data\ui\icon_mg_ca.paa";
 
 	private _id = _unit addEventHandler["Reloaded", {
@@ -202,6 +202,20 @@
 		[parseText _text, [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
 	},[],98] call CBA_fnc_waitAndExecute;
 
+}] call CBA_fnc_addEventHandler;
+
+["diw_setCarAlarms", {
+	params ["_cars"];
+	{
+		_x addEventHandler ["HitPart", {
+			(_this select 0) params ["_target"];
+			_target removeAllEventHandlers "HitPart";
+			if !(_target getVariable ["alarm", false]) then {
+				["diw_carAlarm", [_target]] call cba_fnc_globalEvent;
+				_target setVariable ["alarm", true, true];
+			};
+		}];
+	} forEach _cars;
 }] call CBA_fnc_addEventHandler;
 
 ["diw_carAlarm", {
