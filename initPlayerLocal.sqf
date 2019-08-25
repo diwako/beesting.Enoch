@@ -24,6 +24,8 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
             diwako_ambientFogglets = false;
             setViewDistance 2000;
             setObjectViewDistance 1500;
+            acex_field_rations_timeWithoutFood = 9999;
+            acex_field_rations_timeWithoutWater = 9999;
         };
     }, [], 5] call CBA_fnc_waitAndExecute;
     player setVariable ["fpz_zombies_ignore",true,true];
@@ -32,8 +34,6 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
     player enableStamina false;
     player setCaptive true;
     [player, true] remoteExec ["hideObjectGlobal", 2];
-    acex_field_rations_timeWithoutFood = 9999;
-    acex_field_rations_timeWithoutWater = 9999;
     player addEventHandler ["Respawn", {
         [{[player] call zeus_fnc_createDynamicZeus;}, [], 5] call CBA_fnc_waitAndExecute;
         player setVariable ["fpz_zombies_ignore",true,true];
@@ -230,7 +230,7 @@ onMapSingleClick "_shift";
     private _surfacetype = "";
     private _campos = [];
 
-    private _streets = ["#GdtKlTarmac", "#GdtKlWeatheredTarmac"];
+    private _streets = ["#GdtKlTarmac", "#GdtKlWeatheredTarmac", "#GdtKlSoil"];
     while {true} do {
         if (particlesQuality > 0) then {
             _campos = positionCameraToWorld [0,0,0];

@@ -268,5 +268,5 @@ force acex_field_rations_enabled = true;
 force acex_field_rations_hungerSatiated = 10;
 force acex_field_rations_thirstQuenched = 10;
 force acex_field_rations_timeWithoutFood = 6;
-force acex_field_rations_timeWithoutWater = 1;
+force acex_field_rations_timeWithoutWater = 2;
 force acex_field_rations_hudShowLevel = 60;
