@@ -15,12 +15,13 @@ _unit doMove _safePos;
 [_unit, _safePos, _gunner] spawn {
 	params ["_unit", "_safePos", "_gunner"];
 	// systemChat "DOBE0";
+	private _time = cba_missiontime + 15;
 	waitUntil {
 		if ((speed _unit) < 4) then {
 			_unit doMove _safePos;
 		};
 		sleep 0.1;
-		(!(alive _unit) || {(_unit distance _safePos) < 1.5})
+		(!(alive _unit) || {(_unit distance _safePos) < 1.5 || {cba_missiontime > _time}})
 	};
 	if !(alive _unit) exitWith {};
 	doStop _unit;

@@ -62,7 +62,7 @@
 	private _id = _unit addEventHandler["Reloaded", {
 		params ["_unit","","","_newMag"];
 		_newMag = _newMag select 0;
-		if (_newMag == "1Rnd_HE_Grenade_shell") exitWith {};
+		if (_newMag == "HandGrenade") exitWith {};
 		_unit additem _newMag;
 	}];
 
