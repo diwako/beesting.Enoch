@@ -9,12 +9,11 @@ if !(isGroupDeletedWhenEmpty group _man) then {
 	(group _man) deleteGroupWhenEmpty true;
 };
 
-private _set = _man getVariable "edited";
-if !(isNil "_set") exitWith {};
+if (_man getVariable ["edited", false]) exitWith {};
 _man setVariable ["edited", true];
 _man setVariable ["ace_medical_unitDamageThreshold", [ace_medical_AIDamageThreshold, ace_medical_AIDamageThreshold,ace_medical_AIDamageThreshold * 15], true];
 
-switch(side _man) do {
+switch(side group _man) do {
 	default {};
 	case west: {};
 	case east: {_man call replacer_fnc_opfor;};

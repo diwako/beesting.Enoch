@@ -50,77 +50,85 @@ class CfgSounds {
   #include "sounds\units\sounds.hpp"
   #include "scripts\cbrn\sounds\sounds.hpp"
   class Hitsound {
-		name = "Hitsound";
-		sound[] = {"sounds\Hitsound.ogg", 1, 0.75, 50};
-		titles[] = {};
-	};
+    name = "Hitsound";
+    sound[] = {"sounds\Hitsound.ogg", 1, 0.75, 50};
+    titles[] = {};
+  };
   class Hitsound_light {
-		name = "Hitsound";
-		sound[] = {"sounds\Hitsound.ogg", 1, 1, 50};
-		titles[] = {};
-	};
+    name = "Hitsound";
+    sound[] = {"sounds\Hitsound.ogg", 1, 1, 50};
+    titles[] = {};
+  };
   class Hitsound_heavy {
-		name = "Hitsound";
-		sound[] = {"sounds\Hitsound.ogg", 1, 0.5, 50};
-		titles[] = {};
-	};
+    name = "Hitsound";
+    sound[] = {"sounds\Hitsound.ogg", 1, 0.5, 50};
+    titles[] = {};
+  };
   class Hitsound_veryheavy {
-		name = "Hitsound";
-		sound[] = {"sounds\Hitsound.ogg", 1.5, 0.25, 50};
-		titles[] = {};
-	};
+    name = "Hitsound";
+    sound[] = {"sounds\Hitsound.ogg", 1.5, 0.25, 50};
+    titles[] = {};
+  };
   class flies1 {
-		name = "flies1";
-		sound[] = {"sounds\flies1.ogg", 1, 1, 25};
-		titles[] = {};
-	};
+    name = "flies1";
+    sound[] = {"sounds\flies1.ogg", 1, 1, 25};
+    titles[] = {};
+  };
   class flies2 {
-		name = "flies2";
-		sound[] = {"sounds\flies2.ogg", 1, 1, 25};
-		titles[] = {};
-	};
+    name = "flies2";
+    sound[] = {"sounds\flies2.ogg", 1, 1, 25};
+    titles[] = {};
+  };
   class flies3 {
-		name = "flies3";
-		sound[] = {"sounds\flies3.ogg", 1, 1, 25};
-		titles[] = {};
-	};
+    name = "flies3";
+    sound[] = {"sounds\flies3.ogg", 1, 1, 25};
+    titles[] = {};
+  };
   class flies4 {
-		name = "flies4";
-		sound[] = {"sounds\flies4.ogg", 1, 1, 25};
-		titles[] = {};
-	};
+    name = "flies4";
+    sound[] = {"sounds\flies4.ogg", 1, 1, 25};
+    titles[] = {};
+  };
   class flies5 {
-		name = "flies5";
-		sound[] = {"sounds\flies5.ogg", 1, 1, 25};
-		titles[] = {};
-	};
+    name = "flies5";
+    sound[] = {"sounds\flies5.ogg", 1, 1, 25};
+    titles[] = {};
+  };
   class crows_takeoff {
-		name = "crows_takeoff";
-		sound[] = {"sounds\takeoff.ogg", 1.5, 1, 250};
-		titles[] = {};
-	};
-	class bees {
-		name = "bees";
-		sound[] = {"sounds\beeeeeeeeeeeeeeeeees.ogg", 1.5, 1, 50};
-		titles[] = {};
-	};
-	class caralarm {
-		name = "caralarm";
-		sound[] = {"sounds\caralarm.ogg", 1.5, 1, 500};
-		titles[] = {};
-	};
-	class gameover {
-		name = "gameover";
-		sound[] = {"sounds\gameover.ogg", 1, 1, 5};
-		titles[] = {};
-	};
+    name = "crows_takeoff";
+    sound[] = {"sounds\takeoff.ogg", 1.5, 1, 250};
+    titles[] = {};
+  };
+  class bees {
+    name = "bees";
+    sound[] = {"sounds\beeeeeeeeeeeeeeeeees.ogg", 1.5, 1, 50};
+    titles[] = {};
+  };
+  class caralarm {
+    name = "caralarm";
+    sound[] = {"sounds\caralarm.ogg", 1.5, 1, 500};
+    titles[] = {};
+  };
+  class gameover {
+    name = "gameover";
+    sound[] = {"sounds\gameover.ogg", 1, 1, 5};
+    titles[] = {};
+  };
+  class ldf {
+    name = "ldf";
+    sound[] = {"sounds\ldf.ogg", 2, 1, 1500};
+    titles[] = {
+      0.2, "This is the LDF, you are trespassing in a restricted area! Vacate the area immediately or face death!",
+      7, "I repeat. Leave the area immediately or meet your doom!"
+    };
+  };
   #include "sounds\ambient.hpp"
 };
 class CfgMusic {
   tracks[]={};
   // class intro {
-  //   name	= "intro";
-  //   sound[]	= { "\sounds\intro.ogg", db + 0, 1.0 };
+  //   name  = "intro";
+  //   sound[]  = { "\sounds\intro.ogg", db + 0, 1.0 };
   // };
 };
 

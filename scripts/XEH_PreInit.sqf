@@ -256,6 +256,11 @@
 	};
 }] call CBA_fnc_addEventHandler;
 
+
+["diw_ldf", {
+	_this call mission_fnc_ldf;
+}] call CBA_fnc_addEventHandler;
+
 if !(hasInterface) exitWith {};
 
 ["diw_alarm", {

@@ -317,6 +317,16 @@ if (alive _van) then {
     }];
 };
 
+if (alive (missionNamespace getVariable ["oxygen_box", objNull])) then {
+    private _box = missionNamespace getVariable ["oxygen_box", objNull];
+    _box addEventHandler ["ContainerOpened", {
+        params ["_container", "_unit"];
+        if (_container getVariable ["opened", false]) exitWith {};
+        _container setVariable ["opened", true, true];
+        ["task_2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+    }];
+};
+
 // execVM "furniture\out.sqf"
 
 player addEventHandler ["Killed", {

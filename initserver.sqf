@@ -231,3 +231,5 @@ addMissionEventHandler ["HandleDisconnect", {
 }];
 
 publicVariable "van_van";
+publicVariable "oxygen_box";
+publicVariable "ldfSound";

@@ -87,6 +87,7 @@ class mission{
 		class doorAction{};
 		class saveUnit{};
 		class restoreUnit{};
+		class ldf{};
 	};
 };
 class Second_primary{
