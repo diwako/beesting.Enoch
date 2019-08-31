@@ -1,3 +1,5 @@
+if (missionNamespace getVariable ["second_primary_enabled", false]) exitWith {};
+second_primary_enabled = true;
 if (isServer) then {
     ["CAManBase", "Killed", {
         params ["_unit", "_killer", "_instigator", "_useEffects"];

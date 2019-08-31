@@ -7,6 +7,10 @@ _attachments params [["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], ["_b
 _mag params [["_primaryMag", ""], ["_secondaryMag", ""]];
 
 if (_local) then {
+	clearItemCargo _container;
+	clearWeaponCargo _container;
+	clearMagazineCargo _container;
+	clearBackpackCargo _container;
 	_container addWeaponWithAttachmentsCargo [[_gun, _muzzle, _flashlight, _optics, [_primaryMag, _ammo], [_secondaryMag, 0], _bipod], 1];
 } else {
 	_container addWeaponWithAttachmentsCargoGlobal [[_gun, _muzzle, _flashlight, _optics, [_primaryMag, _ammo], [_secondaryMag, 0], _bipod], 1];
