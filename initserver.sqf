@@ -131,9 +131,9 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 ["destr3", 300, 15] call msc_fnc_destroyCity;
 
 [{
-	ace_weather_humidityShift = 0;
-		ace_weather_badWeatherShift = 0;
-		ace_weather_temperatureShift = 35;
+	ace_weather_humidityShift = 1;
+	ace_weather_badWeatherShift = 0;
+	ace_weather_temperatureShift = 35;
 },[], 1] call CBA_fnc_waitAndExecute;
 
 private _ambient_snds = [];
@@ -233,3 +233,5 @@ addMissionEventHandler ["HandleDisconnect", {
 publicVariable "van_van";
 publicVariable "oxygen_box";
 publicVariable "ldfSound";
+LDF = false;
+publicVariable "LDF";

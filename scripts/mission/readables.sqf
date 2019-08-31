@@ -35,7 +35,7 @@ private _allReadables = [
 ];
 
 //DEBUG////////////////////////////////////////////////////////////////////////////////////////////
-private _debug = true;
+private _debug = false;
 if (_debug) then {
 	{
 		private _mrkr = createMarkerLocal [("marker_" + str _x), getPosASL _x];

@@ -126,10 +126,10 @@ class CfgSounds {
 };
 class CfgMusic {
   tracks[]={};
-  // class intro {
-  //   name  = "intro";
-  //   sound[]  = { "\sounds\intro.ogg", db + 0, 1.0 };
-  // };
+  class intro {
+    name  = "intro";
+    sound[]  = { "\sounds\intro.ogg", db + 0, 1.0 };
+  };
 };
 
 // === Debriefing

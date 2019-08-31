@@ -42,18 +42,19 @@
 	} forEach [
 		// ['aimingAccuracy',0.75],
 		['aimingAccuracy',0.1],
-		['aimingShake',0.50000001],
+		// ['aimingShake',0.50000001],
+		['aimingShake',0.20000001],
 		['aimingSpeed',0.12],
 		// ['aimingSpeed',0.50000001],
 		['commanding',0.1],
 		// ['commanding',1],
 		['courage',1],
 		['endurance',1],
-		['general',1],
-		['reloadSpeed',1],
-		['spotDistance',0.35],
+		// ['general',1],
+		['reloadSpeed',1]
+		// ['spotDistance',0.35],
 		// ['spotDistance',0.85],
-		['spotTime',0.25]
+		// ['spotTime',0.25]
 		// ['spotTime',0.85]
 	];
 
@@ -99,115 +100,6 @@
 		["lmf_ai_listener", [_unit], _unit] call CBA_fnc_targetEvent;
 	}];
 	_unit setvariable ["lmf_ai_local_EH", _id];
-}] call CBA_fnc_addEventHandler;
-
-["diw_intro",{
-	if (isServer) then {
-		diw_snowStormTime = cba_missiontime + (90 * 60);
-		publicVariable "diw_snowStormTime";
-		[] spawn {
-			{
-				if (!isNil _x) then {
-					publicVariable _x;
-				};
-			} forEach [
-				"grp_command",
-				"grp_bravo",
-				"grp_charlie",
-				"zeus1",
-				"zeus2"
-			];
-		};
-		[
-			{diw_snowStormTime < cba_missiontime},
-			{
-				["diw_Bliz", []] call CBA_fnc_globalEventJIP;
-			}
-		] call CBA_fnc_waitUntilAndExecute;
-	};
-	if !(hasInterface) exitWith {};
-	playMusic "intro";
-	private _time = 1;
-	["diw_infotext", []] call CBA_fnc_localEvent;
-	[{
-		[parseText "<t font='PuristaBold' align='center' size='2' valign='middle'>diwako presents</t>", [0,0,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
-	},[],15] call CBA_fnc_waitAndExecute;
-	[{
-		private _grp = missionNamespace getVariable ["grp_command", grpNull];
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in Alpha</t><br/>";
-		if (!isNull _grp && {count units _grp > 0}) then {
-			{
-				if (leader _x == _x) then {
-					_text = _text + "<t size = '1.2'>" + name _x + " as commander</t><br/>";
-				} else {
-					_text = _text + "<t size = '1'>" + name _x + "</t><br/>";
-				};
-			} forEach (units _grp);
-		} else {
-			_text = _text + "No one?!";
-		};
-		[parseText _text, [0,0.5,1,1], [10,1], 6, 1, 0] spawn BIS_fnc_textTiles;
-	},[],25] call CBA_fnc_waitAndExecute;
-	[{
-		private _grp = missionNamespace getVariable ["grp_bravo", grpNull];
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in Bravo</t><br/>";
-		if (!isNull _grp && {count units _grp > 0}) then {
-			{
-				if (leader _x == _x) then {
-					_text = _text + "<t size = '1.2'>" + name _x + " as squad leader</t><br/>";
-				} else {
-					_text = _text + "<t size = '1'>" + name _x + "</t><br/>";
-				};
-			} forEach (units _grp);
-		} else {
-			_text = _text + "No one?!";
-		};
-		[parseText _text, [0.5,0.5,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
-	},[],33] call CBA_fnc_waitAndExecute;
-	[{
-		private _grp = missionNamespace getVariable ["grp_charlie", grpNull];
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in Charlie</t><br/>";
-		if (!isNull _grp && {count units _grp > 0}) then {
-			{
-				if (leader _x == _x) then {
-					_text = _text + "<t size = '1.2'>" + name _x + " as squad leader</t><br/>";
-				} else {
-					_text = _text + "<t size = '1'>" + name _x + "</t><br/>";
-				};
-			} forEach (units _grp);
-		} else {
-			_text = _text + "No one?!";
-		};
-		[parseText _text, [1,0.5,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
-	},[],41] call CBA_fnc_waitAndExecute;
-
-	[{
-		["intro.paa", [0,0,1,1], [10,10], 15, 10, 0] spawn BIS_fnc_textTiles;
-		// cutRsc ["IntroTitle", "PLAIN", 1, false];
-	},[],56.5] call CBA_fnc_waitAndExecute;
-
-	[{
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Enemy Combatants</t><br/>";
-		_text = _text + "<t size = '1.2'>People's Liberation Army</t><br/>";
-		[parseText _text, [0,1,1,1], [10,1], 4, 1, 0] spawn BIS_fnc_textTiles;
-	},[],91] call CBA_fnc_waitAndExecute;
-	[{
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Guest Starring</t><br/>";
-		_text = _text + "<t size = '1.2'>The ""Censored Skulls"" Parasite Unit</t><br/>";
-		[parseText _text, [0,1,1,1], [10,1], 1, 0.1, 0] spawn BIS_fnc_textTiles;
-	},[],110] call CBA_fnc_waitAndExecute;
-
-	[{
-		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Directed by</t><br/>";
-		{
-			private _zeus = missionNamespace getVariable [_x, objNull];
-			if (!isNull _zeus) then {
-				_text = _text + "<t size = '1.2'>" + name _zeus + "</t><br/>";
-			};
-		} forEach ["zeus1", "zeus2"];
-		[parseText _text, [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
-	},[],98] call CBA_fnc_waitAndExecute;
-
 }] call CBA_fnc_addEventHandler;
 
 ["diw_setCarAlarms", {
@@ -262,6 +154,88 @@
 }] call CBA_fnc_addEventHandler;
 
 if !(hasInterface) exitWith {};
+
+["diw_intro",{
+	private _time = 4.29;
+	[parseText "<t font='PuristaBold' align='center' size='1.5' valign='middle'>diwako and G4rrus presents</t>", [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+	
+	[{
+		playMusic "intro";
+	},[],_time] call CBA_fnc_waitAndExecute;
+
+	[{
+		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>A COOP mission set on Livonia<br/>with %1 °C, %2%4 humidity and %3 m/s wind</t>", ace_weather_currentTemperature, [ace_weather_currentHumidity, 1, 2] call CBA_fnc_formatNumber, [[eyePos ACE_player, flase, false, flase] call ace_weather_fnc_calculateWindSpeed, 1, 2] call CBA_fnc_formatNumber, "%"], [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+	},[],_time+5.71] call CBA_fnc_waitAndExecute;
+	
+	[{
+		// [parseText format["<t font='PuristaBold' align='center' size='2' valign='middle'>Bee Sting</t>", ace_weather_currentTemperature], [0,0.5,1,1], [10,1], 12, 2, 0] spawn BIS_fnc_textTiles;
+		["intro.paa", [0,0,1,1], [10,10], 17, 2, 0] spawn BIS_fnc_textTiles;
+	},[],_time+22.68 - 1] call CBA_fnc_waitAndExecute;
+
+	[{
+		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>You are playing as %1</t>", player getVariable ["mab_playerName", "yourself"]], [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+	},[],_time+45.5] call CBA_fnc_waitAndExecute;
+
+	[{
+		private _grp = missionNamespace getVariable ["Grp_HQ", grpNull];
+		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in PAPA</t><br/>";
+		if (!isNull _grp && {count units _grp > 0}) then {
+			{
+				_text = _text + "<t size = '1'>" + name _x + " as " + (_x getVariable ["mab_playerName", "themselves"]) +"</t><br/>";
+			} forEach (units _grp);
+		} else {
+			_text = _text + "No one?!";
+		};
+		[parseText _text, [0,0.5,1,1], [10,1], 4, 0.5, 0] spawn BIS_fnc_textTiles;
+	},[],_time+56 ] call CBA_fnc_waitAndExecute;
+	[{
+		private _grp = missionNamespace getVariable ["Grp_1", grpNull];
+		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in TEAM 1</t><br/>";
+		if (!isNull _grp && {count units _grp > 0}) then {
+			{
+				_text = _text + "<t size = '1'>" + name _x + " as " + (_x getVariable ["mab_playerName", "themselves"]) + "</t><br/>";
+			} forEach (units _grp);
+		} else {
+			_text = _text + "No one?!";
+		};
+		[parseText _text, [0.5,0.5,1,1], [10,1], 4, 0.5, 0] spawn BIS_fnc_textTiles;
+	},[],_time+61.3] call CBA_fnc_waitAndExecute;
+	[{
+		private _grp = missionNamespace getVariable ["Grp_2", grpNull];
+		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Starring in TEAM 2</t><br/>";
+		if (!isNull _grp && {count units _grp > 0}) then {
+			{
+				_text = _text + "<t size = '1'>" + name _x + " as "+ (_x getVariable ["mab_playerName", "themselves"]) +"</t><br/>";
+			} forEach (units _grp);
+		} else {
+			_text = _text + "No one?!";
+		};
+		[parseText _text, [1,0.5,1,1], [10,1], 4, 0.5, 0] spawn BIS_fnc_textTiles;
+	},[],_time+67.2] call CBA_fnc_waitAndExecute;
+
+	// [{
+	// 	private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Enemy Combatants</t><br/>";
+	// 	_text = _text + "<t size = '1.2'>People's Liberation Army</t><br/>";
+	// 	[parseText _text, [0,1,1,1], [10,1], 4, 1, 0] spawn BIS_fnc_textTiles;
+	// },[],91] call CBA_fnc_waitAndExecute;
+	// [{
+	// 	private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Guest Starring</t><br/>";
+	// 	_text = _text + "<t size = '1.2'>The ""Censored Skulls"" Parasite Unit</t><br/>";
+	// 	[parseText _text, [0,1,1,1], [10,1], 1, 0.1, 0] spawn BIS_fnc_textTiles;
+	// },[],110] call CBA_fnc_waitAndExecute;
+
+	[{
+		private _text = "<t font='PuristaBold' align='left' size='1.6' valign='middle'>Directed by</t><br/>";
+		{
+			private _zeus = missionNamespace getVariable [_x, objNull];
+			if (!isNull _zeus) then {
+				_text = _text + "<t size = '1.2'>" + name _zeus + "</t><br/>";
+			};
+		} forEach ["zeus1", "zeus2"];
+		[parseText _text, [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+	},[],_time+77] call CBA_fnc_waitAndExecute;
+
+}] call CBA_fnc_addEventHandler;
 
 ["diw_alarm", {
 	if !(hasInterface) exitWith {};

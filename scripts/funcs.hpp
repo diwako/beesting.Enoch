@@ -88,6 +88,7 @@ class mission{
 		class saveUnit{};
 		class restoreUnit{};
 		class ldf{};
+		class ambientFlyby{};
 	};
 };
 class Second_primary{
