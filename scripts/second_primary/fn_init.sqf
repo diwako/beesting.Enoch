@@ -25,6 +25,9 @@ if(!isNil "ace_interact_menu_fnc_createAction") then {
 
 player addEventHandler["Respawn",{
     player setVariable ["second_primary_info", nil, true];
+    if !(isNil "ace_movement_fnc_handleVirtualMass") then {
+        player setVariable ["ace_movement_vLoad", 0, true];
+    };
 }];
 
 second_primary_units = [];

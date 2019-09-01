@@ -13,10 +13,10 @@ if( (currentWeapon _unit) == primaryWeapon _unit) then {
 
 	_unit playMoveNow _anim;
 	sleep 1.85;
-};	
+};
 
 // gather informatino of current primary weapon
-private _gunClass = (primaryWeapon _unit);
+private _gunClass = primaryWeapon _unit;
 private _tmpSecondWeapon = [];
 if (_gunClass isEqualTo "") then {
 	_tmpSecondWeapon = nil;
@@ -27,6 +27,37 @@ if (_gunClass isEqualTo "") then {
 		_unit ammo primaryWeapon _unit,
 		primaryWeaponMagazine _unit
 	];
+};
+// calculate weight
+private _gunWeight = 0;
+if !(_gunClass isEqualTo "") then {
+	_gunWeight = getNumber (configFile >> "CfgWeapons" >> _gunClass >> "WeaponSlotsInfo" >> "mass");
+	{
+		if !(_x isEqualTo "") then {
+			_gunWeight = _gunWeight + (getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "mass"));
+		};
+	} forEach (primaryWeaponItems _unit);
+	{
+		if !(_x isEqualTo "") then {
+			_gunWeight = _gunWeight + (getNumber (configFile >> "CfgMagazines" >> _x >> "mass"));
+		};
+	} forEach (primaryWeaponMagazine _unit);
+};
+
+if (isNil "ace_movement_fnc_handleVirtualMass") then {
+	private _maxCarryWeight = getNumber (configFile >> "CfgInventoryGlobalVariable" >> "maxSoldierLoad");
+	private _abs = loadAbs _unit;
+	if (_maxCarryWeight <= (_abs + _gunWeight)) then {
+		_unit forceWalk true;
+	} else {
+		_unit forceWalk false;
+	};
+
+	private _coef = 1 +  4.25 * (_gunWeight / _maxCarryWeight);
+	_unit setUnitTrait ["loadCoef", _coef , true];
+} else {
+	_unit setVariable ["ace_movement_vLoad", _gunWeight, true];
+	[_unit] call ace_movement_fnc_handleVirtualMass;
 };
 
 // remove current primary and get stored secondary primaries info
@@ -50,25 +81,6 @@ if(count _oldSecondWeapon != 0 && {(_oldSecondWeapon select 0) != ""}) then {
 			};
 		} forEach _attachments;
 	}
-};
-
-// calculate weight
-private _gunWeight = 0;
-if(_gunClass != "") then {
-	_gunWeight =  getNumber (configFile >> "CfgWeapons" >> _gunClass >> "WeaponSlotsInfo" >> "mass");
-};
-private _maxCarryWeight = getNumber (configFile >> "CfgInventoryGlobalVariable" >> "maxSoldierLoad");
-private _abs = loadAbs _unit;
-if (_maxCarryWeight <= (_abs + _gunWeight)) then{	
-	_unit forceWalk true;
-} else {
-	_unit forceWalk false;
-};
-if(_gunWeight == 0)then {
-	_unit setUnitTrait ["loadCoef",1,true];
-} else {
-	private _coef = 1 +  4.25 * (_gunWeight / _maxCarryWeight);
-	_unit setUnitTrait ["loadCoef", _coef , true];
 };
 
 _unit selectWeapon primaryWeapon _unit;
