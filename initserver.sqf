@@ -248,7 +248,7 @@ publicVariable "LDF";
 ["marker_37", 2, 100, 400] call cbrn_fnc_createZone;
 ["marker_38", 2.5, 100, 50] call cbrn_fnc_createZone;
 ["marker_39", 2.5, 300, 200] call cbrn_fnc_createZone;
-["marker_40", 2.75, 300, 200] call cbrn_fnc_createZone;
+["marker_40", 2.75, 500, 100] call cbrn_fnc_createZone;
 
 //HIGH
 ["marker_41", 3.75, 40, 110] call cbrn_fnc_createZone;
