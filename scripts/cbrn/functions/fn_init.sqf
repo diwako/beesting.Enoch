@@ -210,7 +210,7 @@ cbrn_localZones = [];
     private _radius = _size + _falloffArea;
     _trg setTriggerArea [_radius, _radius, 0, false, _radius];
     _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-    _trg setTriggerStatements ["thisTrigger getVariable ['cbrn_active',false] && {this && {ace_player in thisList}}", "[thisTrigger, ace_player, true] call cbrn_fnc_addZone", "[thisTrigger, ace_player, false] call cbrn_fnc_addZone"];
+    _trg setTriggerStatements ["thisTrigger getVariable ['cbrn_active',false] && {this && {(vehicle ace_player) in thisList}}", "[thisTrigger, ace_player, true] call cbrn_fnc_addZone", "[thisTrigger, ace_player, false] call cbrn_fnc_addZone"];
     cbrn_localZones pushBack _trg;
 }] call CBA_fnc_addEventhandler;
 
