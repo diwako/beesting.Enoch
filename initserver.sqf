@@ -1,78 +1,90 @@
 // 15 setFog [0.146246,0,-1000];
 diw_difficulty = paramsArray select 0;
+diw_training = (paramsArray select 1) != 1;
 
 // diwako_dui_special_track = [stompi];
 // publicVariable "diwako_dui_special_track";
+if !(diw_training) then {
+	[blufor,
+	["task_1"],
+	[
+		"Scavenge the area, your main group needs all the resources you can find!",
+		"Scavange",
+		"XIAOJIAN"
+	],
+	objNull,
+	true,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_1"],
-[
-	"Scavenge the area, your main group needs all the resources you can find!",
-	"Scavange",
-	"XIAOJIAN"
-],
-objNull,
-true,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_2"],
+	[
+		"Find oxygen tanks in order to survive in Gieraltów and the area around it. The area is full of dangerious chemical residue, traversing the area will require the use of CBRN gear.",
+		"Oxygen Tanks",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_2"],
-[
-	"Find oxygen tanks in order to survive in Gieraltów and the area around it. The area is full of dangerious chemical residue, traversing the area will require the use of CBRN gear.",
-	"Oxygen Tanks",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_3"],
+	[
+		"Gieraltów seems to be ripe for the taking now. It is a town that has not been scavanged as it is int he middle of a chemical heavy zone. However, with a gas mask and fresh air supply it will be possible to traverse",
+		"Gieraltów",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_3"],
-[
-	"Gieraltów seems to be ripe for the taking now. It is a town that has not been scavanged as it is int he middle of a chemical heavy zone. However, with a gas mask and fresh air supply it will be possible to traverse",
-	"Gieraltów",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_4"],
+	[
+		"You left your family at the main camp, make sure you come back alive and bring something back.",
+		"Survive!",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_4"],
-[
-	"You left your family at the main camp, make sure you come back alive and bring something back.",
-	"Survive!",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_5"],
+	[
+		"Everything in this category is optional",
+		"Optional",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_5"],
-[
-	"Everything in this category is optional",
-	"Optional",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_5_1","task_5"],
+	[
+		"You are on foot as your truck just broke down. Find a car you can bring back.",
+		"Vehicle",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
 
-[blufor,
-["task_5_1","task_5"],
-[
-	"You are on foot as your truck just broke down. Find a car you can bring back.",
-	"Vehicle",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
-
-[blufor,
-["task_5_2","task_5"],
-[
-	"Find out if there is a livable area to settle in nearby. Gieraltów has a lot in it, maybe it is possible to live of the town for a while?",
-	"Settlment Area",
-	"XIAOJIAN"
-],
-objNull,
-false,2,false,"",false] call BIS_fnc_taskCreate;
+	[blufor,
+	["task_5_2","task_5"],
+	[
+		"Find out if there is a livable area to settle in nearby. Gieraltów has a lot in it, maybe it is possible to live of the town for a while?",
+		"Settlment Area",
+		"XIAOJIAN"
+	],
+	objNull,
+	false,2,false,"",false] call BIS_fnc_taskCreate;
+} else {
+	[blufor,
+	["task_1"],
+	[
+		"Check out how CBRN stuff works and maybe clear some houses.",
+		"Training",
+		"XIAOJIAN"
+	],
+	objNull,
+	true,2,false,"",false] call BIS_fnc_taskCreate;
+};
 
 [] spawn {
 	diw_patrol_callouts = true;
@@ -120,9 +132,24 @@ false,2,false,"",false] call BIS_fnc_taskCreate;
 	}, [_unit], 5] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addClassEventHandler;
 
-// [[3126.300,1316.491], [2993.318,1297.753,0]] call mission_fnc_coverMap;
-// [getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
-[[9625,4480],[2100,900,0]] spawn mission_fnc_coverMap; // Rute 2 AO
+if !(diw_training) then {
+	// [[3126.300,1316.491], [2993.318,1297.753,0]] call mission_fnc_coverMap;
+	// [getMarkerPos "cover1", [1700,500,0]] spawn mission_fnc_coverMap;
+	[[9625,4480],[2100,900,0]] spawn mission_fnc_coverMap; // Rute 2 AO
+	deleteMarker "tr_1";
+	deleteMarker "tr_2";
+	deleteMarker "tr_3";
+	deleteMarker "tr_4";
+	deleteMarker "tr_5";
+	deleteVehicle tri_1;
+	deleteVehicle tri_2;
+	deleteVehicle trb_1;
+	deleteVehicle trb_2;
+} else {
+	[[7448.375,6017.125],[450,1000,0]] spawn mission_fnc_coverMap;
+	25 setFog [0.6, 0.018, 170];
+	trb_2 addItemCargoGlobal ["ACE_microDAGR", 20];
+};
 
 ["marker_0", 300, 32] call msc_fnc_destroyCity;
 ["destr1", 300, 32] call msc_fnc_destroyCity;
@@ -236,22 +263,28 @@ publicVariable "ldfSound";
 LDF = false;
 publicVariable "LDF";
 
-//ZONE SETUP
-//LOW LEVEL
-["marker_33", 1, 100, 400] call cbrn_fnc_createZone;
-["marker_34", 1.5, 300, 200] call cbrn_fnc_createZone;
-["marker_35", 1.5, 500, 0] call cbrn_fnc_createZone;
-["marker_36", 1.75, 500, 0] call cbrn_fnc_createZone;
-["marker_45", 1, 3, 7] call cbrn_fnc_createZone;
+if !(diw_training) then {
+	//ZONE SETUP
+	//LOW LEVEL
+	["marker_33", 1, 100, 400] call cbrn_fnc_createZone;
+	["marker_34", 1.5, 300, 200] call cbrn_fnc_createZone;
+	["marker_35", 1.5, 500, 0] call cbrn_fnc_createZone;
+	["marker_36", 1.75, 500, 0] call cbrn_fnc_createZone;
+	["marker_45", 1, 3, 7] call cbrn_fnc_createZone;
 
-//MEDIUM
-["marker_37", 2, 100, 400] call cbrn_fnc_createZone;
-["marker_38", 2.5, 100, 50] call cbrn_fnc_createZone;
-["marker_39", 2.5, 300, 200] call cbrn_fnc_createZone;
-["marker_40", 2.75, 500, 100] call cbrn_fnc_createZone;
+	//MEDIUM
+	["marker_37", 2, 100, 400] call cbrn_fnc_createZone;
+	["marker_38", 2.5, 100, 50] call cbrn_fnc_createZone;
+	["marker_39", 2.5, 300, 200] call cbrn_fnc_createZone;
+	["marker_40", 2.75, 500, 100] call cbrn_fnc_createZone;
 
-//HIGH
-["marker_41", 3.75, 40, 110] call cbrn_fnc_createZone;
-["marker_42", 3, 10, 40] call cbrn_fnc_createZone;
-["marker_43", 3, 20, 30] call cbrn_fnc_createZone;
-["marker_44", 3.5, 15, 0] call cbrn_fnc_createZone;
+	//HIGH
+	["marker_41", 3.75, 40, 110] call cbrn_fnc_createZone;
+	["marker_42", 3, 10, 40] call cbrn_fnc_createZone;
+	["marker_43", 3, 20, 30] call cbrn_fnc_createZone;
+	["marker_44", 3.5, 15, 0] call cbrn_fnc_createZone;
+} else {
+	["tr_2", 1.5, 250, 50] call cbrn_fnc_createZone;
+	["tr_3", 2.5, 300, 50] call cbrn_fnc_createZone;
+	["tr_4", 3.5, 50, 10] call cbrn_fnc_createZone;
+};

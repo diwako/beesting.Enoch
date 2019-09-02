@@ -5,25 +5,25 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=554;
+	toggles=546;
 	class ItemIDProvider
 	{
-		nextID=2226;
+		nextID=2239;
 	};
 	class MarkerIDProvider
 	{
-		nextID=46;
+		nextID=50;
 	};
 	class LayerIndexProvider
 	{
-		nextID=621;
+		nextID=630;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={7652.4194,469.27155,5350.5278};
+		dir[]={-0.18793629,-0.68079638,0.70797122};
+		up[]={-0.17467262,0.73246521,0.65800762};
+		aside[]={0.96653628,1.9639265e-007,0.25657442};
 	};
 };
 binarizationWanted=0;
@@ -336,7 +336,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=135;
+		items=143;
 		class Item0
 		{
 			dataType="Layer";
@@ -8745,7 +8745,7 @@ class Mission
 			name="Placed_Loot";
 			class Entities
 			{
-				items=13;
+				items=14;
 				class Item0
 				{
 					dataType="Object";
@@ -9087,9 +9087,50 @@ class Mission
 					type="ACE_Item_Vector";
 					atlOffset=0.64257813;
 				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7637.1821,74.702072,5212.6489};
+						angles[]={0,0.34906584,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						name="trb_2";
+						dynamicSimulation=1;
+					};
+					id=2237;
+					type="Box_EAF_Uniforms_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ammoBox";
+							expression="[_this,_value] call bis_fnc_initAmmoBox;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="[[[[],[]],[[],[]],[[],[]],[[""B_SCBA_01_F""],[20]]],false]";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
 			};
 			id=2042;
-			atlOffset=-19.008942;
+			atlOffset=-29.565231;
 		};
 		class Item107
 		{
@@ -10687,6 +10728,167 @@ class Mission
 			};
 			id=2123;
 			atlOffset=-84.059296;
+		};
+		class Item135
+		{
+			dataType="Marker";
+			position[]={7536.6909,69.485001,5915.6982};
+			name="tr_2";
+			markerType="ELLIPSE";
+			type="ellipse";
+			colorName="ColorGreen";
+			alpha=0.67790586;
+			a=300;
+			b=300;
+			id=2227;
+			atlOffset=1.2218857;
+		};
+		class Item136
+		{
+			dataType="Marker";
+			position[]={7341.2114,57.980999,6315.8477};
+			name="tr_3";
+			markerType="ELLIPSE";
+			type="ellipse";
+			colorName="ColorYellow";
+			a=350;
+			b=350;
+			id=2228;
+			atlOffset=0.8967514;
+		};
+		class Item137
+		{
+			dataType="Marker";
+			position[]={7395.418,55.772999,6570.98};
+			name="tr_4";
+			markerType="ELLIPSE";
+			type="ellipse";
+			colorName="ColorRed";
+			alpha=0.67790586;
+			a=60;
+			b=60;
+			id=2229;
+			atlOffset=-0.55250931;
+		};
+		class Item138
+		{
+			dataType="Marker";
+			position[]={7659.8301,67.398003,5748.7109};
+			name="tr_1";
+			text="training";
+			type="mil_arrow2";
+			angle=324.99985;
+			id=2230;
+			atlOffset=0.00021362305;
+		};
+		class Item139
+		{
+			dataType="Marker";
+			position[]={7350.9219,54.029999,6462.9551};
+			name="tr_5";
+			text="Clear";
+			type="mil_objective";
+			id=2232;
+		};
+		class Item140
+		{
+			dataType="Trigger";
+			position[]={7314.5264,57.786133,6342.9009};
+			class Attributes
+			{
+				name="tri_1";
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 1, 50, true] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=2233;
+			type="EmptyDetectorAreaR250";
+			atlOffset=0.72718048;
+		};
+		class Item141
+		{
+			dataType="Trigger";
+			position[]={7346.417,54.029999,6470.9668};
+			class Attributes
+			{
+				name="tri_2";
+				condition="call{this}";
+				onActivation="call{[thisTrigger, true, 1, 25, true] call spawner_fnc_spawnPatrol;}";
+				onDeactivation="call{[thisTrigger, false] call spawner_fnc_spawnPatrol;}";
+				sizeA=400;
+				sizeB=400;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=2235;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item142
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={7636.6499,75.54924,5209.6538};
+				angles[]={0,2.2165682,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="trb_1";
+				dynamicSimulation=1;
+			};
+			id=2236;
+			type="DeconShower_01_F";
+			atlOffset=7.6293945e-006;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Decon_Shower_DisableUserActions";
+					expression="if(_value)then{_this setVariable ['bin_deconshower_disableAction',true]};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="Decon_Shower";
+					expression="if(_value)then{[_this,1.5,9] spawn bin_fnc_deconShowerAnim;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 };
