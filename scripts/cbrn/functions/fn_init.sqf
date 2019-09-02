@@ -25,6 +25,10 @@ if (isNil "MISSION_ROOT") then {
 };
 
 cbrn_maxDamage = 100;
+if (isServer) then {
+    cbrn_zoneSimulationRange = 500;
+    publicVariable "cbrn_zoneSimulationRange";
+};
 
 if !(hasInterface) exitWith {};
 
@@ -218,8 +222,9 @@ cbrn_localZones = [];
 
 [{
     private _player = ace_player;
+    private _range = missionNameSpace getVariable ["cbrn_zoneSimulationRange", 500];
     {
-        if ((_player distance2D _x) < 500) then {
+        if ((_player distance2D _x) < _range) then {
             if !(simulationEnabled _x) then {
                 _x enableSimulation true;
             };
