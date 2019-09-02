@@ -235,3 +235,23 @@ publicVariable "oxygen_box";
 publicVariable "ldfSound";
 LDF = false;
 publicVariable "LDF";
+
+//ZONE SETUP
+//LOW LEVEL
+["marker_33", 1, 100, 400] call cbrn_fnc_createZone;
+["marker_34", 1.5, 300, 200] call cbrn_fnc_createZone;
+["marker_35", 1.5, 500, 0] call cbrn_fnc_createZone;
+["marker_36", 1.75, 500, 0] call cbrn_fnc_createZone;
+["marker_45", 1, 3, 7] call cbrn_fnc_createZone;
+
+//MEDIUM
+["marker_37", 2, 100, 400] call cbrn_fnc_createZone;
+["marker_38", 2.5, 100, 50] call cbrn_fnc_createZone;
+["marker_39", 2.5, 300, 200] call cbrn_fnc_createZone;
+["marker_40", 2.75, 300, 200] call cbrn_fnc_createZone;
+
+//HIGH
+["marker_41", 3.75, 40, 110] call cbrn_fnc_createZone;
+["marker_42", 3, 10, 40] call cbrn_fnc_createZone;
+["marker_43", 3, 20, 30] call cbrn_fnc_createZone;
+["marker_44", 3.5, 15, 0] call cbrn_fnc_createZone;
