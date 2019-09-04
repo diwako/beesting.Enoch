@@ -251,6 +251,7 @@ diw_genericLoot = [
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 	[_unit, _uid] call mission_fnc_saveUnit;
+	_unit setVariable ["second_primary_info", nil, true];
 
 	// We don't want the unit to live on as AI
 	false
