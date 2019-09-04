@@ -1,5 +1,7 @@
-diw_difficulty = paramsArray select 0;
-// diw_training = (paramsArray select 1) == 1;
+if !(isServer) then {
+    diw_difficulty = paramsArray select 0;
+    diw_training = (paramsArray select 1) == 1;
+};
 if !(hasInterface) exitWith {};
 [] execvm "briefing.sqf";
 
@@ -352,3 +354,18 @@ player addEventHandler ["Killed", {
         camDestroy _cam;
     };
 }];
+
+[{!isNil 'cbrn_localZones'},{
+    private _trg = createTrigger ["EmptyDetector", [7635.46,5202.32,0], false];
+    _trg setVariable ["cbrn_zone", true];
+    _trg enableDynamicSimulation false;
+    _trg setVariable ["cbrn_active", true];
+    _trg setTriggerArea [250, 250, 0, false, 250];
+    _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+    _trg setTriggerStatements ["thisTrigger getVariable ['cbrn_active',false] && {this && {(vehicle ace_player) in thisList}}", 'truck_particle = "#particlesource" createVehicleLocal [0,0,0];truck_particle setPosWorld [7635.46,5202.32,75.7438];truck_particle setParticleClass "SmallWreckSmoke";', "deleteVehicle truck_particle"];
+    cbrn_localZones pushBack _trg;
+},[]] call CBA_fnc_waitUntilAndExecute;
+
+// type = "SmokeWreck1";
+// type = "WeaponWreckSmoke";
+// type = "SmallWreckSmoke";

@@ -1,10 +1,9 @@
-// 15 setFog [0.146246,0,-1000];
 diw_difficulty = paramsArray select 0;
-diw_training = (paramsArray select 1) != 1;
+diw_training = (paramsArray select 1) == 1;
 
-// diwako_dui_special_track = [stompi];
-// publicVariable "diwako_dui_special_track";
 if !(diw_training) then {
+	diwako_dui_special_track = [oxygen_box];
+	publicVariable "diwako_dui_special_track";
 	[blufor,
 	["task_1"],
 	[
