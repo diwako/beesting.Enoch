@@ -1,7 +1,4 @@
-if !(isServer) then {
-    diw_difficulty = paramsArray select 0;
-    diw_training = (paramsArray select 1) == 1;
-};
+call mission_fnc_setMissionParams;
 if !(hasInterface) exitWith {};
 [] execvm "briefing.sqf";
 
@@ -27,6 +24,7 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
             diwako_ambientFogglets = false;
             setViewDistance 2000;
             setObjectViewDistance 1500;
+            player enableStamina false;
             acex_field_rations_timeWithoutFood = 9999;
             acex_field_rations_timeWithoutWater = 9999;
         };
@@ -34,7 +32,6 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
     player setVariable ["fpz_zombies_ignore",true,true];
     player allowDamage false;
     player setVariable ["ace_medical_allowDamage", false, true];
-    player enableStamina false;
     player setCaptive true;
     [player, true] remoteExec ["hideObjectGlobal", 2];
     player addEventHandler ["Respawn", {
@@ -292,7 +289,11 @@ player setVariable ["ace_medical_unitDamageThreshold", [ace_medical_playerDamage
 
 //READABLES (or at least debug for now)
 [] execVM "scripts\mission\readables.sqf";
-
+if (diw_training) then {
+    // private _pos = [[[7651.064,5762.239,0], 20, 20, 0, false]] call CBA_fnc_randPosArea;
+    private _pos = ["trainint_start"] call CBA_fnc_randPosArea;
+    player setpos _pos;
+};
 [player] call mission_fnc_restoreUnit;
 
 

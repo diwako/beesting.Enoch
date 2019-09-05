@@ -1,6 +1,4 @@
-diw_difficulty = paramsArray select 0;
-diw_training = (paramsArray select 1) == 1;
-
+call mission_fnc_setMissionParams;
 if !(diw_training) then {
 	diwako_dui_special_track = [oxygen_box];
 	publicVariable "diwako_dui_special_track";
@@ -140,14 +138,16 @@ if !(diw_training) then {
 	deleteMarker "tr_3";
 	deleteMarker "tr_4";
 	deleteMarker "tr_5";
+	deleteMarker "trainint_start";
 	deleteVehicle tri_1;
 	deleteVehicle tri_2;
 	deleteVehicle trb_1;
 	deleteVehicle trb_2;
 } else {
-	[[7448.375,6017.125],[450,1000,0]] spawn mission_fnc_coverMap;
+	[[7335.375,6109.737],[450,800,0]] spawn mission_fnc_coverMap;
 	25 setFog [0.6, 0.018, 170];
 	trb_2 addItemCargoGlobal ["ACE_microDAGR", 20];
+	"marker_0" setMarkerPos [7651.064,5762.239];
 };
 
 ["marker_0", 300, 32] call msc_fnc_destroyCity;
@@ -225,18 +225,22 @@ diw_genericLoot = [
 	["ACE_WaterBottle_Half"]
 ];
 
-{
-	private _box = createVehicle ["groundWeaponHolder", getPosAtl _x, [], 0, "CAN_COLLIDE"];
+if !(diw_training) then {
 	{
-		_box addItemCargoGlobal [_x, 1];
-	} forEach (selectRandom diw_genericLoot);
-	deleteVehicle _x;
-	_box enableDynamicSimulation true;
-} forEach ((getMissionLayerEntities "traffic jam building pos")#0);
+		private _box = createVehicle ["groundWeaponHolder", getPosAtl _x, [], 0, "CAN_COLLIDE"];
+		{
+			_box addItemCargoGlobal [_x, 1];
+		} forEach (selectRandom diw_genericLoot);
+		deleteVehicle _x;
+		_box enableDynamicSimulation true;
+	} forEach ((getMissionLayerEntities "traffic jam building pos")#0);
 
-[[11054.366,4307.835], nil, 3] call mission_fnc_setUpLoot;
-[[11519.837,4602.323], nil, 3] call mission_fnc_setUpLoot;
-[getMarkerPos "destr1", nil, 1] call mission_fnc_setUpLoot;
+	[[11054.366,4307.835], nil, 3] call mission_fnc_setUpLoot;
+	[[11519.837,4602.323], nil, 3] call mission_fnc_setUpLoot;
+	[getMarkerPos "destr1", nil, 1] call mission_fnc_setUpLoot;
+} else {
+	[[7306.237,6400.375], nil, 1] call mission_fnc_setUpLoot;
+};
 
 {
 	private _pos = _x;
