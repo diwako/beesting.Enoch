@@ -4,6 +4,9 @@ class Extended_PreInit_EventHandlers {
 	class Cronus_preInit {
 		init = "[] call compile preProcessFileLineNumbers 'scripts\XEH_PreInit.sqf'";
 	};
+	class cbrn_preInit {
+		init = "[] call compile preProcessFileLineNumbers 'scripts\cbrn\XEH_PreInit.sqf'";
+	};
 };
 
 class Extended_PostInit_EventHandlers {

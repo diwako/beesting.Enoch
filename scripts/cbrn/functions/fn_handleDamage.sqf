@@ -1,5 +1,6 @@
 params ["_unit", "_threadLevel"];
 
+if !(isDamageAllowed _unit) exitWith {};
 private _actualThreat = _threadLevel;
 private _curDamage = _unit getVariable ["cbrn_damage", 0];
 
