@@ -157,14 +157,14 @@ if !(hasInterface) exitWith {};
 
 ["diw_intro",{
 	private _time = 4.29;
-	[parseText "<t font='PuristaBold' align='center' size='1.5' valign='middle'>diwako and G4rrus presents</t>", [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+	[parseText "<t font='PuristaBold' align='center' size='1.5' valign='middle'>diwako and G4rrus presents</t>", [0,0.5,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
 	
 	[{
 		playMusic "intro";
 	},[],_time] call CBA_fnc_waitAndExecute;
 
 	[{
-		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>A COOP mission set on Livonia<br/>with %1 °C, %2%4 humidity and %3 m/s wind</t>", ace_weather_currentTemperature, [ace_weather_currentHumidity, 1, 2] call CBA_fnc_formatNumber, [[eyePos ACE_player, flase, false, flase] call ace_weather_fnc_calculateWindSpeed, 1, 2] call CBA_fnc_formatNumber, "%"], [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>A COOP mission set on Livonia<br/>with %1 °C, %2%4 humidity and %3 m/s wind</t>", ace_weather_currentTemperature, [ace_weather_currentHumidity, 1, 2] call CBA_fnc_formatNumber, [[eyePos ACE_player, flase, false, flase] call ace_weather_fnc_calculateWindSpeed, 1, 2] call CBA_fnc_formatNumber, "%"], [0,0.5,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
 	},[],_time+5.71] call CBA_fnc_waitAndExecute;
 	
 	[{
@@ -173,7 +173,7 @@ if !(hasInterface) exitWith {};
 	},[],_time+22.68 - 1] call CBA_fnc_waitAndExecute;
 
 	[{
-		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>You are playing as %1</t>", player getVariable ["mab_playerName", "yourself"]], [0,1,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
+		[parseText format["<t font='PuristaBold' align='center' size='1.5' valign='middle'>You are playing as %1</t>", player getVariable ["mab_playerName", "yourself"]], [0,0.5,1,1], [10,1], 8, 1, 0] spawn BIS_fnc_textTiles;
 	},[],_time+45.5] call CBA_fnc_waitAndExecute;
 
 	[{

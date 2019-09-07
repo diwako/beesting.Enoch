@@ -38,9 +38,9 @@ player addEventHandler ["Fired", {
 
     // Disable remote sensors for regular clients (not server, hc, zeus)
     // Curator logic might be null at time 0
-    if (!isServer &&
-        {isNull (getAssignedCuratorLogic player)}
-        ) then {
-        disableRemoteSensors true;
-    };
-}, [], 0.2] call ACE_common_fnc_waitAndExecute;
+    // if (!isServer &&
+    //     {isNull (getAssignedCuratorLogic player)}
+    //     ) then {
+    //     disableRemoteSensors true;
+    // };
+}, [], 0.5] call ACE_common_fnc_waitAndExecute;

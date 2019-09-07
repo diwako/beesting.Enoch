@@ -62,11 +62,13 @@ player addEventHandler ["Respawn", {
 private _tile = parseText format ["<t font='PuristaBold' color='#ffffff' size='1' align='center'>Your name is</t><br/><t color='#ffffff' size='2' align='center'>%1</t>",player getVariable ["mab_playerName", name player]];
 [_tile, true, nil, 10, 0.7, 0] spawn BIS_fnc_textTiles;
 cutText  ["", "BLACK FADED", 10, true];
+disableUserInput true;
 [{
     private _customName = player getVariable ["mab_playerName", name player];
     player setVariable ["ACE_Name", _customName, true];
     player setVariable ["ACE_NameRaw", _customName, true];
     cutText  ["", "BLACK IN", 2, true];
+    disableUserInput false;
 }, [], 5] call CBA_fnc_waitAndExecute;
 
 if (!isnil "zen_custom_modules_fnc_register") then{

@@ -10,4 +10,8 @@ player addEventHandler["Respawn",{
     };
 }];
 
+if (primaryWeapon player != "") then {
+    player switchMove "amovpercmstpslowwrfldnon";
+};
+
 [] execVM "scripts\loadout\loadoutBriefing.sqf";
