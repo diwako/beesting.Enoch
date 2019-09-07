@@ -71,6 +71,10 @@ disableUserInput true;
     disableUserInput false;
 }, [], 5] call CBA_fnc_waitAndExecute;
 
+if (missionNamespace getVariable ["ace_advanced_fatigue_enabled", false]) then {
+    ["ohgoditistoohot", 0.5] call ace_advanced_fatigue_fnc_addDutyFactor;
+};
+
 if (!isnil "zen_custom_modules_fnc_register") then{
     [] execVM "scripts\CR_fnc_ares.sqf";
 };

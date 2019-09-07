@@ -11,7 +11,7 @@ if !(isGroupDeletedWhenEmpty group _man) then {
 
 if (_man getVariable ["edited", false]) exitWith {};
 _man setVariable ["edited", true];
-_man setVariable ["ace_medical_unitDamageThreshold", [ace_medical_AIDamageThreshold, ace_medical_AIDamageThreshold,ace_medical_AIDamageThreshold * 15], true];
+_man setVariable ["ace_medical_unitDamageThreshold", [ace_medical_AIDamageThreshold, ace_medical_AIDamageThreshold,ace_medical_AIDamageThreshold * 7.5], true];
 
 switch(side group _man) do {
 	default {};
