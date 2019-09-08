@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=675;
+		nextID=684;
 	};
 	class Camera
 	{
@@ -425,7 +425,7 @@ class Mission
 					dataType="Marker";
 					position[]={9885.3779,180.793,3875.377};
 					name="marker_14";
-					text="Side Location";
+					text="Abandoned Military area";
 					type="mil_dot";
 					id=38;
 					atlOffset=-0.00039672852;
@@ -11113,7 +11113,7 @@ class Mission
 			alpha=0.5042358;
 			a=22.815001;
 			b=5.6269999;
-			angle=227.99968;
+			angle=227.99963;
 			id=2240;
 			atlOffset=0.64990997;
 		};
