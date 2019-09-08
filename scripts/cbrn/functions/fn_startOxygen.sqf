@@ -5,13 +5,19 @@ if (!alive _unit || {_unit getVariable ["cbrn_oxygen", false]}) exitWith {};
 _unit setVariable ["cbrn_oxygen", true, true];
 [{
     params ["_args", "_idPFH"];
-    _args params ["_unit", "_lastTimeUpdated"];
+    _args params ["_unit", "_oldBackpack", "_lastTimeUpdated"];
     private _backpack = backpackContainer _unit;
     private _curOxygen = _backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime];
     if (!alive _unit || {!(_unit getVariable ["cbrn_oxygen", false]) || {!(_unit getVariable ["cbrn_mask_on", false]) || !(_unit getVariable ["cbrn_backpack_on", false]) || {_curOxygen <= 0}}}) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         _backpack setVariable ["cbrn_oxygen", _curOxygen, true];
         _unit setVariable ["cbrn_oxygen", false, true];
+    };
+
+    if !(_oldBackpack isEqualTo _backpack) then {
+        systemChat format ["Connected to new oxygen tank with %1%2 reaming air!", round ((_curOxygen/cbrn_maxOxygenTime) * 100), "%"];
+        _oldBackpack setVariable ["cbrn_oxygen", (_oldBackpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime]), true];
+        _args set [1, _backpack];
     };
 
     private _delta = CBA_missionTime - _lastTimeUpdated;
@@ -39,5 +45,5 @@ _unit setVariable ["cbrn_oxygen", true, true];
         }, _proxy, 15] call CBA_fnc_waitAndExecute;
     };
 
-    _args set [1, CBA_missionTime];
-}, 1, [_unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+    _args set [2, CBA_missionTime];
+}, 1, [_unit, backpackContainer _unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;

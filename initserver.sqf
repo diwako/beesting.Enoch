@@ -1,7 +1,7 @@
 call mission_fnc_setMissionParams;
 if !(diw_training) then {
-	diwako_dui_special_track = [oxygen_box];
-	publicVariable "diwako_dui_special_track";
+	// diwako_dui_special_track = [oxygen_box];
+	// publicVariable "diwako_dui_special_track";
 	[blufor,
 	["task_1"],
 	[
@@ -147,6 +147,7 @@ if !(diw_training) then {
 	[[7335.375,6109.737],[450,800,0]] spawn mission_fnc_coverMap;
 	25 setFog [0.6, 0.018, 170];
 	trb_2 addItemCargoGlobal ["ACE_microDAGR", 20];
+	publicVariable "trb_2";
 	"marker_0" setMarkerPos [7651.064,5762.239];
 };
 

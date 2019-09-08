@@ -195,6 +195,14 @@ if(_side == west) exitWith {
 	};
 	for "_i" from 1 to 2 do {_man addItemToUniform "FirstAidKit";};
 
+	if (_type == "B_Survivor_F") then {
+		_man forceAddUniform selectRandom ["U_C_IDAP_Man_Jeans_F", "U_C_IDAP_Man_TeeShorts_F"];
+		_man addVest "V_Rangemaster_belt";
+		_man addHeadgear selectRandom ["H_Hat_Safari_olive_F", "H_Hat_Safari_sand_F"];
+		_man addItemToUniform "ACRE_SEM52SL";
+		_man addItemToUniform "ACE_microDAGR";
+	};
+
 	//Add grenades and smoke grenades to people that have space in their vests (also some chance to that)
 	if (50 > random 100) then {_man addItemToVest "SmokeShell";};
 	if (25 > random 100) then {_man addItemToVest "HandGrenade";};

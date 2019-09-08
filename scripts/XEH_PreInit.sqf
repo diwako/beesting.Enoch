@@ -153,6 +153,10 @@
 	_this call mission_fnc_ldf;
 }] call CBA_fnc_addEventHandler;
 
+["diw_setupHospital", {
+	_this call mission_fnc_setupHospital;
+}] call CBA_fnc_addEventHandler;
+
 if !(hasInterface) exitWith {};
 
 ["diw_intro",{

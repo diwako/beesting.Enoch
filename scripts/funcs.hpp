@@ -90,6 +90,7 @@ class mission{
 		class ldf{};
 		class ambientFlyby{};
 		class setMissionParams{};
+		class setupHospital{};
 	};
 };
 class Second_primary{

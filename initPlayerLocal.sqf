@@ -33,7 +33,9 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
     player allowDamage false;
     player setVariable ["ace_medical_allowDamage", false, true];
     player setCaptive true;
-    [player, true] remoteExec ["hideObjectGlobal", 2];
+    if !(diw_training) then {
+        [player, true] remoteExec ["hideObjectGlobal", 2];
+    };
     player addEventHandler ["Respawn", {
         [{[player] call zeus_fnc_createDynamicZeus;}, [], 5] call CBA_fnc_waitAndExecute;
         player setVariable ["fpz_zombies_ignore",true,true];
@@ -299,6 +301,18 @@ if (diw_training) then {
     // private _pos = [[[7651.064,5762.239,0], 20, 20, 0, false]] call CBA_fnc_randPosArea;
     private _pos = ["trainint_start"] call CBA_fnc_randPosArea;
     player setpos _pos;
+
+    private _trnbox = missionNamespace getVariable ["trb_2", objNull];
+    if (alive _trnbox) then {
+        _trnbox addAction ["5 Minute warning", {
+            params ["_target"];
+            [_target, "lowoxwarning_short"] remoteExec ["say3D"];
+        },nil,1.5,false,true,"","typeOf player == ""B_Survivor_F"" || getPlayerUID player in [""_SP_PLAYER_"", ""76561197980328722"", ""76561197997590271""]",3];
+        _trnbox addAction ["30 Second warning", {
+            params ["_target"];
+            [_target, "lowoxwarning"] remoteExec ["say3D"];
+        },nil,1.5,false,true,"","typeOf player == ""B_Survivor_F"" || getPlayerUID player in [""_SP_PLAYER_"", ""76561197980328722"", ""76561197997590271""]",3];
+    };
 };
 [player] call mission_fnc_restoreUnit;
 
