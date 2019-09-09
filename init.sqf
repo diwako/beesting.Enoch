@@ -79,3 +79,7 @@ enableEnvironment [false, false];
 
 [] execvm "scripts\mission\trafficJamObjects.sqf";
 [] execvm "scripts\mission\nigelsCookOff.sqf";
+
+{
+	_x setMarkerAlphaLocal 0;
+} forEach ["marker_33","marker_34","marker_35","marker_36","marker_45","marker_37","marker_38","marker_39","marker_40","marker_41","marker_42","marker_43","marker_44"];
