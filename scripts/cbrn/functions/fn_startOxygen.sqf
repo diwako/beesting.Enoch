@@ -3,6 +3,21 @@ params ["_unit"];
 if (!alive _unit || {_unit getVariable ["cbrn_oxygen", false]}) exitWith {};
 
 _unit setVariable ["cbrn_oxygen", true, true];
+
+if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
+    private _display = findDisplay 46;
+    if !(isNull _display) then {
+        private _ctrl = _display ctrlCreate ["RscStructuredText", 856];
+        _ctrl ctrlSetPosition [safeZoneX,safeZoneY + (50 * pixelH),256 * pixelW, 256 * pixelH];
+        _ctrl ctrlSetBackgroundColor [0,0,0,0];
+        // _ctrl ctrlSetText "O²";
+        _ctrl ctrlSetStructuredText parseText "<t color='#ffffff' align='left' valign='top' size='1.2'>O²</t>";
+        _ctrl ctrlSetTextColor [1,1,1,1];
+        _ctrl ctrlCommit 0;
+        uiNamespace setVariable ["cbrn_o2", _ctrl];
+    };
+};
+
 [{
     params ["_args", "_idPFH"];
     _args params ["_unit", "_oldBackpack", "_lastTimeUpdated"];
@@ -12,6 +27,7 @@ _unit setVariable ["cbrn_oxygen", true, true];
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         _backpack setVariable ["cbrn_oxygen", _curOxygen, true];
         _unit setVariable ["cbrn_oxygen", false, true];
+        ctrlDelete (uiNamespace getVariable ["cbrn_o2", ctrlNull]);
     };
 
     if !(_oldBackpack isEqualTo _backpack) then {
