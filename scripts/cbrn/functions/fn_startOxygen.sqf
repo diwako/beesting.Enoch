@@ -3,15 +3,22 @@ params ["_unit"];
 if (!alive _unit || {_unit getVariable ["cbrn_oxygen", false]}) exitWith {};
 
 _unit setVariable ["cbrn_oxygen", true, true];
-
+private _backpack = backpackContainer _unit;
 if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
     private _display = findDisplay 46;
     if !(isNull _display) then {
+        private _air = _backpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime];
+        private _color = "ffffff";
+        if (_air <= 300) then {
+            _color = "ffa500";
+            if (_air <= 30) then {
+                _color = "ff0000";
+            };
+        };
         private _ctrl = _display ctrlCreate ["RscStructuredText", 856];
         _ctrl ctrlSetPosition [safeZoneX,safeZoneY + (50 * pixelH),256 * pixelW, 256 * pixelH];
         _ctrl ctrlSetBackgroundColor [0,0,0,0];
-        // _ctrl ctrlSetText "O²";
-        _ctrl ctrlSetStructuredText parseText "<t color='#ffffff' align='left' valign='top' size='1.2'>O²</t>";
+        _ctrl ctrlSetStructuredText parseText format ["<t color='#%1' align='left' valign='top' size='1.2'>O²</t>", _color];
         _ctrl ctrlSetTextColor [1,1,1,1];
         _ctrl ctrlCommit 0;
         uiNamespace setVariable ["cbrn_o2", _ctrl];
@@ -45,6 +52,7 @@ if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
         private _proxy = "building" createVehicle position _unit;
         _proxy attachTo [_unit, [0, 0, 0.5], "Head"];
         [_proxy, "lowoxwarning_short"] remoteExec ["say3D"];
+        (uiNamespace getVariable ["cbrn_o2", ctrlNull]) ctrlSetStructuredText parseText "<t color='#ffa500' align='left' valign='top' size='1.2'>O²</t>";
         [{
             detach _this;
             deleteVehicle _this;
@@ -55,6 +63,7 @@ if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
         private _proxy = "building" createVehicle position _unit;
         _proxy attachTo [_unit, [0, 0, 0.5], "Head"];
         [_proxy, "lowoxwarning"] remoteExec ["say3D"];
+        (uiNamespace getVariable ["cbrn_o2", ctrlNull]) ctrlSetStructuredText parseText "<t color='#ff0000' align='left' valign='top' size='1.2'>O²</t>";
         [{
             detach _this;
             deleteVehicle _this;
@@ -62,4 +71,4 @@ if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
     };
 
     _args set [2, CBA_missionTime];
-}, 1, [_unit, backpackContainer _unit, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_unit, _backpack, CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
