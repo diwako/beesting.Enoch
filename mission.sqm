@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=684;
+		nextID=693;
 	};
 	class Camera
 	{
-		pos[]={7642.9287,89.166985,5189.0508};
-		dir[]={0.02424722,-0.67004263,0.74193156};
-		up[]={0.02188623,0.7423209,0.66968697};
-		aside[]={0.99946952,-1.8331775e-008,-0.03266393};
+		pos[]={7641.3516,86.219749,5191.4507};
+		dir[]={0.016772641,-0.5834989,0.81194788};
+		up[]={0.012050912,0.81211138,0.58337581};
+		aside[]={0.99978995,6.5501808e-009,-0.020652825};
 	};
 };
 binarizationWanted=0;
@@ -10751,20 +10751,20 @@ class Mission
 		class Item133
 		{
 			dataType="Trigger";
-			position[]={10009.621,180.97508,4268.2119};
+			position[]={9769.3232,181.22968,4296.8892};
 			angle=0.13962629;
 			class Attributes
 			{
 				condition="call{LDF && {this}}";
 				onActivation="call{call mission_fnc_ambientFlyby;deleteVehicle thisTrigger;[getMarkerPos ""flyby_4"", 2000, independent] call spawner_fnc_spawnHunter;}";
-				sizeB=200;
+				sizeB=364.04999;
 				activationBy="ANYPLAYER";
 				isRectangle=1;
 				isServerOnly=1;
 			};
 			id=2108;
 			type="EmptyDetector";
-			atlOffset=-1.5258789e-005;
+			atlOffset=-1.7980042;
 		};
 		class Item134
 		{
@@ -11113,7 +11113,7 @@ class Mission
 			alpha=0.5042358;
 			a=22.815001;
 			b=5.6269999;
-			angle=227.99963;
+			angle=227.9996;
 			id=2240;
 			atlOffset=0.64990997;
 		};
