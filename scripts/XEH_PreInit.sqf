@@ -173,7 +173,8 @@ if !(hasInterface) exitWith {};
 	
 	[{
 		// [parseText format["<t font='PuristaBold' align='center' size='2' valign='middle'>Bee Sting</t>", ace_weather_currentTemperature], [0,0.5,1,1], [10,1], 12, 2, 0] spawn BIS_fnc_textTiles;
-		["intro.paa", [0,0,1,1], [10,10], 17, 2, 0] spawn BIS_fnc_textTiles;
+		// ["intro.paa", [0,0,1,1], [10,10], 17, 2, 0] spawn BIS_fnc_textTiles;
+		cutRsc ["IntroTitle", "PLAIN", 1, true];
 	},[],_time+22.68 - 1] call CBA_fnc_waitAndExecute;
 
 	[{

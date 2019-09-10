@@ -43,6 +43,32 @@ class CfgDebriefingSections {
 class RscTitles
 {
   #include "scripts\cbrn\rsctitles.hpp"
+  class IntroTitle
+  {
+    idd = -1;
+    duration = 17;
+    fadein = 2;
+    fadeout = 2;
+    class controls
+    {
+      class ExampleControl
+      {
+        idc = -1;
+        type = 0;
+        style = 2096; //1 2 3...176
+        x = 0;
+        y = 0;
+        h = 1;
+        w = 1;
+        font = "EtelkaNarrowMediumPro";
+        sizeEx = 0.05;
+        colorBackground[] = {1,1,1,1}; //white background
+        colorText[] = {1,1,1,1}; //grey foreground
+        text = "intro.paa";
+        lineSpacing = 1; //required for multi-line style
+      };
+    };
+  };
 }
 
 class CfgSounds {
