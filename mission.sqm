@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=546;
+	toggles=554;
 	class ItemIDProvider
 	{
-		nextID=2258;
+		nextID=2283;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=693;
+		nextID=702;
 	};
 	class Camera
 	{
-		pos[]={7641.3516,86.219749,5191.4507};
-		dir[]={0.016772641,-0.5834989,0.81194788};
-		up[]={0.012050912,0.81211138,0.58337581};
-		aside[]={0.99978995,6.5501808e-009,-0.020652825};
+		pos[]={7642,99.32,5187};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -54,12 +54,14 @@ addons[]=
 	"A3_Props_F_Enoch_Civilian_Forest",
 	"A3_Structures_F_Enoch_Wrecks",
 	"A3_Structures_F_Wrecks",
+	"A3_Structures_F_Civ_Dead",
+	"A3_Soft_F_Exp_Offroad_02",
+	"ace_realisticnames",
 	"CUP_Misc_e_Config",
 	"ace_spectator",
 	"A3_Weapons_F_Exp",
 	"A3_Props_F_Enoch_Military_Supplies",
 	"A3_Weapons_F",
-	"ace_realisticnames",
 	"A3_Air_F_Enoch_UAV_06",
 	"A3_Characters_F_Enoch",
 	"A3_Supplies_F_Exp_Ammoboxes",
@@ -72,7 +74,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=31;
+		items=32;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -214,66 +216,73 @@ class AddonsMetaData
 		};
 		class Item21
 		{
+			className="A3_Soft_F_Exp";
+			name="Arma 3 Apex - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item22
+		{
 			className="CUP_Misc_e_Config";
 			name="CUP_Misc_e_Config";
 		};
-		class Item22
+		class Item23
 		{
 			className="ace_spectator";
 			name="ACE3 - Spectator";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item23
+		class Item24
 		{
 			className="A3_Weapons_F_Exp";
 			name="Arma 3 Apex - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item25
 		{
 			className="A3_Weapons_F";
 			name="Arma 3 Alpha - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item25
+		class Item26
 		{
 			className="A3_Air_F_Enoch";
 			name="Arma 3 Enoch - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item26
+		class Item27
 		{
 			className="A3_Characters_F_Enoch";
 			name="Arma 3 Enoch - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item27
+		class Item28
 		{
 			className="A3_Supplies_F_Exp";
 			name="Arma 3 Apex - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item28
+		class Item29
 		{
 			className="ace_dragging";
 			name="ACE3 - Dragging";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item29
+		class Item30
 		{
 			className="A3_Supplies_F_Enoch";
 			name="Arma 3 Enoch - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item30
+		class Item31
 		{
 			className="ace_vector";
 			name="ACE3 - Vector";
@@ -4999,7 +5008,7 @@ class Mission
 			state=1;
 			class Entities
 			{
-				items=32;
+				items=38;
 				class Item0
 				{
 					dataType="Object";
@@ -5512,9 +5521,102 @@ class Mission
 					id=2026;
 					type="CBA_BuildingPos";
 				};
+				class Item32
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8557.9961,176.6613,4390.2095};
+						angles[]={6.2799835,0,6.219274};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2258;
+					type="CBA_BuildingPos";
+					atlOffset=0.024429321;
+				};
+				class Item33
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11115.764,176.04991,4336.563};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2272;
+					type="CBA_BuildingPos";
+				};
+				class Item34
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11117.166,176.04785,4338.7886};
+						angles[]={0.001544081,0,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2273;
+					type="CBA_BuildingPos";
+				};
+				class Item35
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11118.292,176.04991,4335.9712};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2274;
+					type="CBA_BuildingPos";
+				};
+				class Item36
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11120.645,176.04991,4334.7134};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2275;
+					type="CBA_BuildingPos";
+				};
+				class Item37
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11119.374,176.04991,4332.6948};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2276;
+					type="CBA_BuildingPos";
+				};
 			};
 			id=1010;
-			atlOffset=27.205719;
+			atlOffset=17.038864;
 		};
 		class Item44
 		{
@@ -7143,7 +7245,7 @@ class Mission
 			name="EXPORT";
 			class Entities
 			{
-				items=7;
+				items=24;
 				class Item0
 				{
 					dataType="Object";
@@ -7259,9 +7361,297 @@ class Mission
 					id=2254;
 					type="CUP_kmen_1_buk";
 				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8462.3008,197.88925,4279.895};
+						angles[]={0.095707878,1.5009831,0.027193764};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2260;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.24043274;
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11118.56,176.06856,4339.6333};
+						angles[]={0.001544081,2.2863812,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2262;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19177246;
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11115.101,176.07082,4338.2251};
+						angles[]={0.001544081,3.6477385,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2263;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19177246;
+				};
+				class Item10
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11113.889,176.04774,4335.9946};
+						angles[]={-0,5.0963616,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2264;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.21600342;
+				};
+				class Item11
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11117.28,176.07198,4337.0415};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2265;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19177246;
+				};
+				class Item12
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11115.93,176.07346,4334.647};
+						angles[]={-0,3.0892327,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2266;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11120.294,176.07346,4336.5498};
+						angles[]={-0,3.0892327,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2267;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item14
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11118.822,176.07346,4334.5464};
+						angles[]={-0,2.9321532,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2268;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item15
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11117.449,176.07346,4332.5044};
+						angles[]={-0,4.1015239,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2269;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item16
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11120.88,176.07346,4331.4399};
+						angles[]={-0,4.1364307,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2270;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item17
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11121.917,176.07346,4334.125};
+						angles[]={-0,3.2986724,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2271;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19029236;
+				};
+				class Item18
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11498.349,159.82007,4626.7778};
+						angles[]={0,5.77704,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2277;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.19528198;
+				};
+				class Item19
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11507.78,159.86555,4638.4414};
+						angles[]={0,2.6529007,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2279;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.2097168;
+				};
+				class Item20
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11499.727,159.87177,4682.7813};
+						angles[]={0,3.979351,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2280;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.21444702;
+				};
+				class Item21
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11486.001,159.85159,4686.2295};
+						angles[]={0,5.77704,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2281;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.23773193;
+				};
+				class Item22
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11498.598,160.00525,4708.1909};
+						angles[]={0,5.77704,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2282;
+					type="Land_HumanSkeleton_F";
+					atlOffset=-0.27954102;
+				};
+				class Item23
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8460.8936,199.5329,4278.7476};
+						angles[]={0.095707878,2.0071287,0.027193764};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2259;
+					type="C_Offroad_02_unarmed_F";
+					atlOffset=0.008972168;
+				};
 			};
 			id=1273;
-			atlOffset=-2.9830704;
+			atlOffset=27.231705;
 		};
 		class Item59
 		{
@@ -11113,7 +11503,7 @@ class Mission
 			alpha=0.5042358;
 			a=22.815001;
 			b=5.6269999;
-			angle=227.9996;
+			angle=227.99959;
 			id=2240;
 			atlOffset=0.64990997;
 		};

@@ -25,7 +25,7 @@ if !(diw_training) then {
 	[blufor,
 	["task_3"],
 	[
-		"Gieraltów seems to be ripe for the taking now. It is a town that has not been scavanged as it is int he middle of a chemical heavy zone. However, with a gas mask and fresh air supply it will be possible to traverse",
+		"Gieraltów seems to be ripe for the taking now. It is a town that has not been scavanged as it is in the middle of a chemical heavy zone. However, with a gas mask and fresh air supply it will be possible to traverse",
 		"Gieraltów",
 		"XIAOJIAN"
 	],
