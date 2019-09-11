@@ -178,18 +178,6 @@ for "_i" from 0 to 10 do {
 };
 [_ambient_snds] call Mission_fnc_ambientSounds;
 
-{
-	_x addEventHandler ["FiredNear", {
-		params ["_nest"];
-		if !(_nest getVariable ["active", false]) then {
-			_nest setVariable ["active", true];
-			_nest removeEventHandler ["FiredNear", _thisEventhandler];
-			["crows_spawn", ["Crowe", getpos _nest,1 + (ceil random 5), 0, 29, _nest]] call CBA_fnc_globalevent;
-			[{deleteVehicle _this}, _nest, 60*5] call CBA_fnc_waitAndExecute;
-		};
-	}];
-} forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9,crows_10,crows_11,crows_12];
-
 private _scrvgrp = createGroup [civilian, true];
 private _dude = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_1", [], 0, "CAN_COLLIDE"];
 private _dude2 = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_2", [], 0, "CAN_COLLIDE"];
@@ -235,6 +223,19 @@ if !(diw_training) then {
 		deleteVehicle _x;
 		_box enableDynamicSimulation true;
 	} forEach ((getMissionLayerEntities "traffic jam building pos")#0);
+
+	{
+		_x addEventHandler ["FiredNear", {
+			params ["_nest"];
+			if !(_nest getVariable ["active", false]) then {
+				_nest setVariable ["active", true];
+				_nest removeEventHandler ["FiredNear", _thisEventhandler];
+				["crows_spawn", ["Crowe", getpos _nest,1 + (ceil random 5), 0, 29, _nest]] call CBA_fnc_globalevent;
+				[{deleteVehicle _this}, _nest, 60*5] call CBA_fnc_waitAndExecute;
+			};
+		}];
+	// } forEach [crows_1,crows_2,crows_3,crows_4,crows_5,crows_6,crows_7,crows_8,crows_9,crows_10,crows_11,crows_12];
+	} forEach ((getMissionLayerEntities "Crow Nests")#0);
 
 	[[11054.366,4307.835], nil, 3] call mission_fnc_setUpLoot;
 	[[11519.837,4602.323], nil, 3] call mission_fnc_setUpLoot;
