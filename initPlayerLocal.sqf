@@ -49,7 +49,7 @@ if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "7
  //   disableRemoteSensors true;
 };
 
-diw_camoCoef = [0.4,0.6,0.7] select diw_difficulty;
+diw_camoCoef = [0.35,0.5,0.6] select diw_difficulty;
 
 player setUnitTrait ["camouflageCoef", diw_camoCoef];
 player addEventHandler ["Respawn", {
@@ -81,7 +81,7 @@ if (!isnil "zen_custom_modules_fnc_register") then{
     [] execVM "scripts\CR_fnc_ares.sqf";
 };
 
-execvm "scripts\groupTracker.sqf";
+execVM "scripts\groupTracker.sqf";
 
 [] spawn {
     sleep 5;
@@ -314,7 +314,10 @@ if (diw_training) then {
         },nil,1.5,false,true,"","typeOf player == ""B_Survivor_F"" || getPlayerUID player in [""_SP_PLAYER_"", ""76561197980328722"", ""76561197997590271""]",3];
     };
 };
-[player] call mission_fnc_restoreUnit;
+[] spawn {
+    sleep 2.5;
+    [player] call mission_fnc_restoreUnit;
+};
 
 
 private _van = missionnameSpace getVariable ["van_van", objNull];
@@ -334,6 +337,23 @@ if (alive _van) then {
     _van addEventHandler ["Killed", {
         params ["_van"];
         private _arr = _van getVariable ["crates", []];
+        {
+            detach _x;
+            deleteVehicle _x;
+        } forEach _arr;
+    }];
+};
+private _offroad = missionnameSpace getVariable ["offroad_0", objNull];
+if (alive _offroad) then {
+    private _crates = [];
+    private _obj = createSimpleObject ["C_IDAP_supplyCrate_F", [0,0,0], true];
+    _obj attachTo [_offroad, [0,-1.5,0.2]];
+    _crates pushBack _obj;
+
+    _offroad setVariable ["crates", _crates];
+    _offroad addEventHandler ["Killed", {
+        params ["_offroad"];
+        private _arr = _offroad getVariable ["crates", []];
         {
             detach _x;
             deleteVehicle _x;

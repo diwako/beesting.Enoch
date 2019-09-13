@@ -181,12 +181,19 @@ for "_i" from 0 to 10 do {
 private _scrvgrp = createGroup [civilian, true];
 private _dude = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_1", [], 0, "CAN_COLLIDE"];
 private _dude2 = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_2", [], 0, "CAN_COLLIDE"];
-removeFromRemainsCollector [_dude, _dude2];
+private _dude3 = _scrvgrp createUnit ["C_man_polo_1_F", getMarkerPos "scav_3", [], 0, "CAN_COLLIDE"];
+removeFromRemainsCollector [_dude, _dude2, _dude3];
 _dude enableDynamicSimulation true;
 _dude2 enableDynamicSimulation true;
+_dude3 enableDynamicSimulation true;
 _scrvgrp enableDynamicSimulation true;
 _dude setDamage 1;
 _dude2 setDamage 1;
+_dude3 setDamage 1;
+_dude3 spawn {
+	sleep 1;
+	[_this, offroad_0, true] call ace_vehiclelock_fnc_addKeyForVehicle;
+};
 
 private _holder = createVehicle ["groundWeaponHolder", getmarkerpos "promet_mrk", [], 0, "CAN_COLLIDE"];
 _holder setdir random 360;
@@ -255,6 +262,7 @@ if !(diw_training) then {
 } forEach [getMarkerPos "destr1", getMarkerPos "destr2", getMarkerPos "destr3"];
 
 addMissionEventHandler ["HandleDisconnect", {
+	if (time <= 0) exitWith {};
 	params ["_unit", "_id", "_uid", "_name"];
 	[_unit, _uid] call mission_fnc_saveUnit;
 	_unit setVariable ["second_primary_info", nil, true];
@@ -264,6 +272,7 @@ addMissionEventHandler ["HandleDisconnect", {
 }];
 
 publicVariable "van_van";
+publicVariable "offroad_0";
 publicVariable "oxygen_box";
 publicVariable "ldfSound";
 LDF = false;

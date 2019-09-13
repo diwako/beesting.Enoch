@@ -44,7 +44,7 @@ if !((_loadout # 5) isEqualTo []) then {
 
 //various variables
 private _variables = [];
-{
+/*{
     _variables pushBack (+[_x#0, (_unit getVariable [_x#0, _x#1])]);
 } forEach [
     ["ace_medical_pain", 0],
@@ -76,7 +76,16 @@ private _variables = [];
     ["second_primary_info", []],
     ["acex_field_rations_hunger", 0],
     ["acex_field_rations_thirst", 0]
-];
+];*/
+{
+    if( !((_x select [0, 3]) isEqualTo "cba") && {
+        !((_x select [0, 11]) isEqualTo "ace_arsenal") && {
+        !((_x select [0, 4]) isEqualTo "bis_") && {
+        !((_x select [0, 12]) isEqualTo "ace_interact")
+    }}}) then {
+        _variables pushBack (+[_x, (_unit getVariable _x)]);
+    };
+} forEach (allVariables _unit);
 
 if (isNil "diw_persistence") then {
     diw_persistence = [true] call CBA_fnc_createNamespace;

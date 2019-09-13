@@ -40,6 +40,14 @@ if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
     if !(_oldBackpack isEqualTo _backpack) then {
         systemChat format ["Connected to new oxygen tank with %1%2 reaming air!", round ((_curOxygen/cbrn_maxOxygenTime) * 100), "%"];
         _oldBackpack setVariable ["cbrn_oxygen", (_oldBackpack getVariable ["cbrn_oxygen", cbrn_maxOxygenTime]), true];
+        private _color = "ffffff";
+        if (_curOxygen <= 300) then {
+            _color = "ffa500";
+            if (_curOxygen <= 30) then {
+                _color = "ff0000";
+            };
+        };
+        (uiNamespace getVariable ["cbrn_o2", ctrlNull]) ctrlSetStructuredText parseText format ["<t color='#%1' align='left' valign='top' size='1.2'>O²</t>", _color];
         _args set [1, _backpack];
     };
 
