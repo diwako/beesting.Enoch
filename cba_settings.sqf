@@ -118,6 +118,14 @@ force ace_mk6mortar_allowComputerRangefinder = true;
 force ace_mk6mortar_allowCompass = true;
 force ace_mk6mortar_useAmmoHandling = true;
 
+// ACE Name Tags
+force ace_nametags_playerNamesViewDistance = 10;
+force ace_nametags_showCursorTagForVehicles = false;
+force ace_nametags_showNamesForAI = false;
+force ace_nametags_showPlayerNames = 1;
+force ace_nametags_showSoundWaves = 1;
+force ace_nametags_showVehicleCrewInfo = true;
+
 // ACE NVG
 force ace_nightvision_disableNVGsWithSights = false;
 force ace_nightvision_fogScaling = 1.5; 
