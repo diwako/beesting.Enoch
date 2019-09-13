@@ -55,7 +55,7 @@ if !(diw_training) then {
 	[blufor,
 	["task_5_1","task_5"],
 	[
-		"You are on foot as your truck just broke down. Find a car you can bring back.",
+		"Your truck is probably about to break down. Find a car you can bring back.",
 		"Vehicle",
 		"XIAOJIAN"
 	],
