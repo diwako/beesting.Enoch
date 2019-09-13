@@ -31,7 +31,8 @@ private _allReadables = [
 	readable_28,
 	readable_29,
 	readable_30,
-	readable_31
+	readable_31,
+	readable_32
 ];
 
 //DEBUG////////////////////////////////////////////////////////////////////////////////////////////
@@ -322,7 +323,20 @@ Been about a month since they unleashed the chemicals and you can’t even get a
 "
 ]] call BIS_fnc_initLeaflet;
 
+//32
+["init", [readable_32, "images\paper2.paa",
+"
+<t size='2'>Sermon Excerpt:</t><br/>
+...<br/>
+And I looked, and behold a pale horse: and his name that sat on him was Death, and Hell followed with him. And power was given unto them over the fourth part of the earth, to kill with sword, and with hunger, and with death, and with the beasts of the earth.<br/>
+And when he had opened the fifth seal, I saw under the altar the souls of them that were slain for the word of God, and for the testimony which they held:<br/>
+And they cried with a loud voice, saying, How long, O Lord, holy and true, dost thou not judge and avenge our blood on them that dwell on the earth?<br/>
+And white robes were given unto every one of them; and it was said unto them, that they should rest yet for a little season, until their fellow servants also and their brethren, that should be killed as they were, should be fulfilled.<br/>
+...
+"
+]] call BIS_fnc_initLeaflet;
+
 //CHANGE TEXTURES//////////////////////////////////////////////////////////////////////////////////
-{_x setObjectTexture [0,"images\paper3.paa"];} forEach [readable_5,readable_6,readable_7,readable_8,readable_9,readable_10,readable_11,readable_12,readable_13,readable_14,readable_19,readable_20,readable_21,readable_22,readable_24,readable_25,readable_26,readable_27,readable_28,readable_29,readable_30,readable_31];
+{_x setObjectTexture [0,"images\paper3.paa"];} forEach [readable_5,readable_6,readable_7,readable_8,readable_9,readable_10,readable_11,readable_12,readable_13,readable_14,readable_19,readable_20,readable_21,readable_22,readable_24,readable_25,readable_26,readable_27,readable_28,readable_29,readable_30,readable_31,readable_32];
 {_x setObjectTexture [0,"#(argb,8,8,3)color(0.835294,0,0,0.0,ca)"];} forEach [readable_18,readable_23];
 {_x setObjectTexture [0,"a3\props_f_enoch\items\documents\data\newspaper_01_co.paa"];} forEach [readable_0,readable_1,readable_2,readable_3,readable_4,readable_15,readable_16,readable_17];
