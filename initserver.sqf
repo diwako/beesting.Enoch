@@ -273,6 +273,7 @@ addMissionEventHandler ["HandleDisconnect", {
 
 publicVariable "van_van";
 publicVariable "offroad_0";
+publicVariable "truck_start";
 publicVariable "oxygen_box";
 publicVariable "ldfSound";
 LDF = false;

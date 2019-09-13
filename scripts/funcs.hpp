@@ -91,6 +91,7 @@ class mission{
 		class ambientFlyby{};
 		class setMissionParams{};
 		class setupHospital{};
+		class ripTruck{};
 	};
 };
 class Second_primary{
