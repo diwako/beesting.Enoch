@@ -1,3 +1,5 @@
+params ["_args", "_idPFH"];
+_args params ["_lastIteration"];
 private _player = ace_player;
 private _zones = _player getVariable ["cbrn_zones", []];
 private _max = 0;
@@ -21,7 +23,10 @@ if (alive _player && {!(_zones isEqualTo [])}) then {
         };
     } forEach _zones;
 };
-[_player, _max] call cbrn_fnc_handleDamage;
+private _time = cba_missiontime;
+private _delta = _time - _lastIteration;
+_args set [0, _time];
+[_player, _max, _delta] call cbrn_fnc_handleDamage;
 
 if (_player getVariable ["cbrn_using_threat_meter", false]) then {
     if (isNull (uiNamespace getVariable ["cbrn_threatBaseCtrl", objNull])) then {
@@ -53,7 +58,7 @@ if (_player getVariable ["cbrn_using_threat_meter", false]) then {
         uiNamespace setVariable ["cbrn_threatOverlayCtrl", _ctrl];
     };
     private _needle = uiNamespace getVariable ["cbrn_threatNeedleCtrl", ctrlNull];
-    private _dir = (linearConversion [0, 4, _max - 0.1 + (random 0.2), 90, -90, true]) mod 360;
+    private _dir = (linearConversion [0, 4, _max - 0.05 + (random 0.1), 90, -90, true]) mod 360;
     _needle ctrlSetAngle [_dir, 0.5, 0.5];
 } else {
     ctrlDelete (uiNamespace getVariable ["cbrn_threatBaseCtrl", ctrlNull]);

@@ -201,7 +201,7 @@ _action = ["cbrn_check_oxygen", "Check remaining oxygen","",{
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
-[cbrn_fnc_threatPFH, 1] call CBA_fnc_addPerFrameHandler;
+[cbrn_fnc_threatPFH, 0.33, [cba_missiontime]] call CBA_fnc_addPerFrameHandler;
 
 [{
     private _player = ace_player;
