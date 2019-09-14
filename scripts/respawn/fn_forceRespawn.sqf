@@ -69,3 +69,7 @@ if (!isNil "_pos") then {
     [false] call ace_spectator_fnc_setSpectator;
   };
 };
+
+if (!isNil "acex_field_rations_timeWithoutWater_old") then {
+  acex_field_rations_timeWithoutWater = acex_field_rations_timeWithoutWater_old;
+};

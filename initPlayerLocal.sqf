@@ -53,6 +53,8 @@ diw_camoCoef = [0.35,0.5,0.6] select diw_difficulty;
 
 player setUnitTrait ["camouflageCoef", diw_camoCoef];
 player addEventHandler ["Respawn", {
+    acex_field_rations_timeWithoutWater_old = acex_field_rations_timeWithoutWater;
+    acex_field_rations_timeWithoutWater = 9999999;
     player setUnitTrait ["camouflageCoef", diw_camoCoef];
     [{
         private _customName = player getVariable ["mab_playerName", name player];
