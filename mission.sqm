@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2365;
+		nextID=2366;
 	};
 	class MarkerIDProvider
 	{
@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=765;
+		nextID=774;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5182};
+		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,-0};
@@ -346,7 +346,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=144;
+		items=145;
 		class Item0
 		{
 			dataType="Layer";
@@ -11604,7 +11604,7 @@ class Mission
 			alpha=0.5042358;
 			a=22.815001;
 			b=5.6269999;
-			angle=227.99911;
+			angle=227.9991;
 			id=2240;
 			atlOffset=0.64990997;
 		};
@@ -12213,6 +12213,22 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item144
+		{
+			dataType="Trigger";
+			position[]={11501.494,159.82286,4639.2881};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{deleteVehicle thisTrigger;[blufor, " \n "[""task_3_1"", ""task_3""], " \n "[ " \n "    ""There is a van with supplies infront of the hospital, bring it back to the start area!"", " \n "    ""Van with supplies"", " \n "    ""XIAOJIAN"" " \n "], " \n "objNull, " \n "false,2,true,"""",false] call BIS_fnc_taskCreate;}";
+				sizeA=7;
+				sizeB=7;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=2365;
+			type="EmptyDetectorAreaR50";
 		};
 	};
 };
