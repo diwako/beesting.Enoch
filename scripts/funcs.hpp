@@ -104,6 +104,7 @@ class Second_primary{
 		class toggleCondition{};
 		class fill{};
 		class renderPFH{};
+		class addMagazine{};
 	};
 };
 #include "cbrn\funcs.hpp"

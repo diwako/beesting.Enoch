@@ -4,7 +4,7 @@ _unit setVariable ["second_primary_can_toggle",false];
 
 // play animatino if unit has a primary weapon equipped
 if( (currentWeapon _unit) == primaryWeapon _unit) then {
-	_anim = switch (stance _unit) do {
+	private _anim = switch (stance _unit) do {
 		case "PRONE": { "AmovPpneMstpSrasWrflDnon_AmovPpneMstpSnonWnonDnon" };
 		case "CROUCH": { "AmovPknlMstpSrasWrflDnon_AmovPknlMstpSnonWnonDnon" };
 		case "STAND": { "amovpercmstpsraswrfldnon_amovpercmstpsnonwnondnon" };
@@ -68,8 +68,13 @@ private _oldSecondWeapon = _unit getVariable ["second_primary_info",[""]];
 if(count _oldSecondWeapon != 0 && {(_oldSecondWeapon select 0) != ""}) then {
 	_oldSecondWeapon params [["_gun", "", [""]],"_attachments","_ammo","_mag"];
 	if !(_gun isEqualTo "") then {
+		private _couldNotAdd = [];
 		{
-			_unit addMagazine [_x, _ammo];
+			private _verify = [_unit, _x, _ammo, true] call second_primary_fnc_addMagazine;
+			if !(_verify) then {
+				// mag could not be added!
+				_couldNotAdd pushBack _x;
+			};
 		} forEach _mag;
 		if(count _mag == 0) then {
 			_unit setAmmo [primaryWeapon _unit, _ammo];
@@ -80,6 +85,18 @@ if(count _oldSecondWeapon != 0 && {(_oldSecondWeapon select 0) != ""}) then {
 				_unit addPrimaryWeaponItem _x;
 			};
 		} forEach _attachments;
+		if !(_couldNotAdd isEqualTo []) then {
+			private _stillFailed = false;
+			{
+				if !([_unit, _x, _ammo, true, true] call second_primary_fnc_addMagazine) then {
+					_stillFailed = true;
+				};
+			} forEach _couldNotAdd;
+
+			if (_stillFailed) then {
+				[["Warning!", 1.5, [1, 1, 0, 1]], ["One or more magazines could not be added to your inventory!"], true] call CBA_fnc_notify;
+			};
+		};
 	}
 };
 
