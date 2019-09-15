@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=774;
+		nextID=783;
 	};
 	class Camera
 	{
 		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -8682,7 +8682,7 @@ class Mission
 			{
 				position[]={6088.4819,216.50919,4147.333};
 			};
-			name="hc";
+			name="albert";
 			isPlayable=1;
 			description="Headless Idiot";
 			id=1483;
