@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2366;
+		nextID=2372;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=783;
+		nextID=792;
 	};
 	class Camera
 	{
 		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,0};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -49,6 +49,7 @@ addons[]=
 	"A3_Weapons_F_Orange",
 	"A3_Props_F_Enoch_Items_Documents",
 	"A3_Structures_F_Items_Documents",
+	"A3_Structures_F_Civ_Camping",
 	"CUP_Misc_e_Config",
 	"ace_spectator",
 	"A3_Weapons_F_Exp",
@@ -7884,8 +7885,60 @@ class Mission
 		{
 			dataType="Layer";
 			name="EXPORT";
+			class Entities
+			{
+				items=3;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7654.856,74.848007,5196.7002};
+						angles[]={0.0079935296,2.1293015,6.2767911};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2367;
+					type="Land_TentA_F";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7647.6143,74.898079,5195.6431};
+						angles[]={0.0032018756,3.6826451,6.278389};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2370;
+					type="Land_TentA_F";
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7651.3286,74.880524,5194.6533};
+						angles[]={0.006394445,3.0892327,6.278389};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=2366;
+					type="Land_TentA_F";
+				};
+			};
 			id=1273;
-			atlOffset=-252.33;
+			atlOffset=0.00089263916;
 		};
 		class Item52
 		{
