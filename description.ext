@@ -13,7 +13,7 @@ onLoadMission="Why does this air make my skin all bubbly?"; // Longer descriptio
 briefingName = NAME;
 overviewText = "My mask, my oxygen tank, my rules!";
 // loadScreen = "img_loading.jpg"; // custom load image
-overviewPicture = "intro.paa";
+// overviewPicture = "intro.paa";
 author="diwako | G4rrus";
 
 //respawnOnStart = -1;
