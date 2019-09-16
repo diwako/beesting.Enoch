@@ -2,17 +2,18 @@ class Header
 {
   gameType = Coop;
   minPlayers = 1;
-  maxPlayers = 39;
+  maxPlayers = 32;
 };
 disabledAI = 1;
 
-#define NAME "Bee Sting v2"
+#define NAME "Bee Sting v3"
 
 OnLoadName = NAME;// Mission name (short)
 onLoadMission="Why does this air make my skin all bubbly?"; // Longer description
 briefingName = NAME;
 overviewText = "My mask, my oxygen tank, my rules!";
 // loadScreen = "img_loading.jpg"; // custom load image
+overviewPicture = "intro.paa";
 author="diwako | G4rrus";
 
 //respawnOnStart = -1;
@@ -30,15 +31,15 @@ class CfgFunctions {
 
 class CfgDebriefingSections {
   // FPARMA end stats
-    class fparma_stats {
-        title = "Mission Statistics";
-        variable = "fpa_common_stats";
-    };
-    // ACEX Killtracker
-    class acex_killTracker {
-        title = "Acex Killed Events";
-        variable = "acex_killTracker_outputText";
-    };
+  class fparma_stats {
+    title = "Mission Statistics";
+    variable = "fpa_common_stats";
+  };
+  // ACEX Killtracker
+  class acex_killTracker {
+    title = "Acex Killed Events";
+    variable = "acex_killTracker_outputText";
+  };
 };
 class RscTitles
 {
@@ -213,7 +214,7 @@ showWatch = 1;
 showCompass = 1;
 joinUnassigned = 1;
 allowFunctionsLog = 0;
-enableDebugConsole[] = {"76561197980328722"};
+enableDebugConsole[] = {"76561197980328722", "76561197997590271"};
 enableTargetDebug = 1;
 onLoadIntroTime = 0;
 enableItemsDropping = 0;

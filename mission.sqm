@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2372;
+		nextID=2373;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=792;
+		nextID=801;
 	};
 	class Camera
 	{
@@ -347,7 +347,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=145;
+		items=146;
 		class Item0
 		{
 			dataType="Layer";
@@ -11918,7 +11918,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10368.131,171.09547,4259.627};
+						position[]={10368.131,171.09549,4259.627};
 					};
 					side="Independent";
 					flags=7;
@@ -11927,14 +11927,57 @@ class Mission
 					};
 					id=2352;
 					type="I_soldier_F";
+					atlOffset=1.5258789e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male06GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
 			{
 				garbageCollect=1;
-				dynamicSimulation=1;
 			};
 			id=2351;
+			atlOffset=1.5258789e-005;
 		};
 		class Item140
 		{
@@ -11948,7 +11991,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10369.395,171.11607,4259.0215};
+						position[]={10369.395,171.11609,4259.022};
 					};
 					side="Independent";
 					flags=7;
@@ -12004,7 +12047,6 @@ class Mission
 			class Attributes
 			{
 				garbageCollect=1;
-				dynamicSimulation=1;
 			};
 			id=2355;
 		};
@@ -12281,6 +12323,20 @@ class Mission
 				isServerOnly=1;
 			};
 			id=2365;
+			type="EmptyDetectorAreaR50";
+		};
+		class Item145
+		{
+			dataType="Trigger";
+			position[]={10813.937,176.36081,4138.7412};
+			class Attributes
+			{
+				condition="call{ldf && {this}}";
+				onActivation="call{[""task_5_2"", ""FAILED"", true] call BIS_fnc_taskSetState;deleteVehicle thisTrigger;[] spawn {sleep 10;[""task_1"", ""SUCCEEDED"", true] call BIS_fnc_taskSetState;};}";
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=2372;
 			type="EmptyDetectorAreaR50";
 		};
 	};
