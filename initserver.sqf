@@ -262,7 +262,7 @@ if !(diw_training) then {
 } forEach [getMarkerPos "destr1", getMarkerPos "destr2", getMarkerPos "destr3"];
 
 addMissionEventHandler ["HandleDisconnect", {
-	if (time <= 0) exitWith {};
+	if (time <= 30) exitWith {};
 	params ["_unit", "_id", "_uid", "_name"];
 	[_unit, _uid] call mission_fnc_saveUnit;
 	_unit setVariable ["second_primary_info", nil, true];

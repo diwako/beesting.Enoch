@@ -1,4 +1,5 @@
 if !(isServer) exitWith {};
+if (time < 30) exitWith {};
 params ["_unit", "_uid"];
 
 // if !(isPlayer _unit) exitWith {};
