@@ -8,22 +8,22 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2373;
+		nextID=2374;
 	};
 	class MarkerIDProvider
 	{
-		nextID=51;
+		nextID=52;
 	};
 	class LayerIndexProvider
 	{
-		nextID=801;
+		nextID=810;
 	};
 	class Camera
 	{
 		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -347,7 +347,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=146;
+		items=147;
 		class Item0
 		{
 			dataType="Layer";
@@ -12338,6 +12338,16 @@ class Mission
 			};
 			id=2372;
 			type="EmptyDetectorAreaR50";
+		};
+		class Item146
+		{
+			dataType="Marker";
+			position[]={10078.329,176.864,4254.9409};
+			name="marker_51";
+			text="Old LDF checkpoint";
+			type="mil_dot";
+			id=2373;
+			atlOffset=0.00019836426;
 		};
 	};
 };
