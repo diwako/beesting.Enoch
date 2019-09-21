@@ -3,8 +3,9 @@ params ["_unit", "_threadLevel", "_delta"];
 if !(isDamageAllowed _unit) exitWith {};
 private _actualThreat = _threadLevel;
 private _curDamage = _unit getVariable ["cbrn_damage", 0];
+private _maxDamage = cbrn_maxDamage;
 
-if (_curDamage > 50 && {!(_unit getVariable ["cbrn_autoDamage", false])}) then {
+if ((_curDamage / _maxDamage) > 0.5 && {!(_unit getVariable ["cbrn_autoDamage", false])}) then {
     _unit setVariable ["cbrn_autoDamage", true];
     "WARNING!" hintC ["Your CBRN exposure is now rising automatically!!","SEEK DECONTAMINATION IMMIDIATELY!!","FIND DECONTAMINATION SHOWERS!"];
     [{
@@ -55,7 +56,7 @@ private _effectStrength = _actualThreat / 5;
 _curDamage = _curDamage + (_actualThreat * _delta);
 _unit setVariable ["cbrn_damage", _curDamage];
 
-if (alive _unit && {_curDamage > cbrn_maxDamage}) exitWith {
+if (alive _unit && {_curDamage > _maxDamage}) exitWith {
     // I am sorry john...
     _unit setDamage 1;
 };

@@ -128,7 +128,6 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
         _unit setVariable ["cbrn_hasSuite", false, true];
     };
 
-    // todo: https://forums.bohemia.net/forums/topic/143930-general-discussion-dev-branch/?page=1020&tab=comments#comment-3363538
     private _backPackContainer = backpackContainer _unit;
     // private _textures = getObjectTextures _backPackContainer;
     if (_unit getVariable ["cbrn_backpack_on", false] && {_unit getVariable ["cbrn_mask_on", false]}) then {
