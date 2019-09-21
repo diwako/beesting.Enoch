@@ -16,7 +16,8 @@ if (!isMultiplayer) then {
     } forEach (switchableUnits - (entities "HeadlessClient_F" + [player] + allCurators));
 };
 
-if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722", "76561197997590271"]) then {
+// if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722", "76561197997590271"]) then {
+if (typeOf player == "B_Survivor_F" || {getPlayerUID player isEqualTo "_SP_PLAYER_"}) then {
     [{
         [player] call zeus_fnc_createDynamicZeus;
         if (isMultiplayer) then {

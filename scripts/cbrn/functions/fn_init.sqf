@@ -163,7 +163,7 @@ private _action = ["cbrn_turn_on_oxygen", "Turn on oxygen","",{
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
 _action = ["cbrn_turn_off_oxygen", "Turn off oxygen","",{
-    ace_player setVariable ["cbrn_oxygen", false, true];
+    ace_player setVariable ["cbrn_oxygen", false];
 },{
     ace_player getVariable ["cbrn_oxygen", false]
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
@@ -236,6 +236,7 @@ player addEventHandler ["Respawn", {
     player setVariable ["cbrn_damage", nil];
     player setVariable ["cbrn_autoDamage", nil];
     player setVariable ["cbrn_stoppedAutoDamage", nil];
+    player setVariable ["cbrn_oxygen", nil];
 }];
 
 _action = ["cbrn_turn_check_damage", "Check CRBN Exposure","",{

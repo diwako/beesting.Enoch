@@ -171,8 +171,8 @@ force ace_repair_wheelRepairRequiredItems = 0;
 force ace_repair_autoShutOffEngineWhenStartingRepair = true;
 
 // ACE Spect
-force ace_spectator_enableAI = false;
-force ace_spectator_restrictModes = 1;
+force ace_spectator_enableAI = true;
+force ace_spectator_restrictModes = 0;
 force ace_spectator_restrictVisions = 0;
 
 // ACE VD

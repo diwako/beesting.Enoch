@@ -2,7 +2,7 @@ params ["_unit"];
 
 if (!alive _unit || {_unit getVariable ["cbrn_oxygen", false]}) exitWith {};
 
-_unit setVariable ["cbrn_oxygen", true, true];
+_unit setVariable ["cbrn_oxygen", true];
 private _backpack = backpackContainer _unit;
 if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
     private _display = findDisplay 46;
@@ -33,7 +33,7 @@ if (isNull (uiNamespace getVariable ["cbrn_o2", objNull])) then {
     if (!alive _unit || {!(_unit getVariable ["cbrn_oxygen", false]) || {!(_unit getVariable ["cbrn_mask_on", false]) || !(_unit getVariable ["cbrn_backpack_on", false]) || {_curOxygen <= 0}}}) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         _backpack setVariable ["cbrn_oxygen", _curOxygen, true];
-        _unit setVariable ["cbrn_oxygen", false, true];
+        _unit setVariable ["cbrn_oxygen", false];
         ctrlDelete (uiNamespace getVariable ["cbrn_o2", ctrlNull]);
     };
 
