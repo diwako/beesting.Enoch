@@ -34,8 +34,8 @@
 	(group _unit) allowFleeing 0;
 	private _skill_regular = skill _unit * selectRandom [0.35,0.45,0.50,0.55,0.60];
 	_unit setskill _skill_regular;
-	_unit setSkill ["spotDistance", 1];
-	_unit setSkill ["spotTime", 1];
+	// _unit setSkill ["spotDistance", 1];
+	// _unit setSkill ["spotTime", 1];
 	_unit setSkill ["courage",1];
 	{
 		_unit setskill _x;
@@ -51,10 +51,10 @@
 		['courage',1],
 		['endurance',1],
 		// ['general',1],
-		['reloadSpeed',1]
-		// ['spotDistance',0.35],
+		['reloadSpeed',1],
+		['spotDistance',0.35],
 		// ['spotDistance',0.85],
-		// ['spotTime',0.25]
+		['spotTime',0.25]
 		// ['spotTime',0.85]
 	];
 
