@@ -6,26 +6,35 @@ if (_unit getVariable ["usedCover", false] || {(behaviour _unit) isEqualTo "COMB
 
 // getting shot by enemy
 _unit setVariable ["usedCover", true, true];
-private _safePos = [_unit, 0, 25, 1, 1, 0.5, 0] call BIS_fnc_findSafePos;
+
+private _safePos = [_unit, _gunner] call ai_fnc_findCover;
+
+if (_safePos isEqualTo []) then {
+	private _pos = [_unit, 0, 25, 1, 1, 0.5, 0] call BIS_fnc_findSafePos;
+	if !(isNil "_pos") then {
+		_safePos = [_pos, selectRandom ["MIDDLE", "DOWN"]];
+	}
+};
 if (isNil "_safePos" || {_safePos isEqualTo []}) exitWith {
 	// systemChat ("Shit was fucked!" + str _safePos);
 };
-_unit doMove _safePos;
+_unit doMove (_safePos select 0);
 (group _unit) setSpeedMode "FULL";
 [_unit, _safePos, _gunner] spawn {
 	params ["_unit", "_safePos", "_gunner"];
+	_safePos params ["_pos", "_stance"];
 	// systemChat "DOBE0";
 	private _time = cba_missiontime + 15;
 	waitUntil {
 		if ((speed _unit) < 4) then {
-			_unit doMove _safePos;
+			_unit doMove _pos;
 		};
-		sleep 0.1;
-		(!(alive _unit) || {(_unit distance _safePos) < 1.5 || {cba_missiontime > _time}})
+		sleep 0.5;
+		(!(alive _unit) || {(_unit distance _pos) < 1.5 || {cba_missiontime > _time}})
 	};
 	if !(alive _unit) exitWith {};
 	doStop _unit;
-	_unit setUnitPos selectRandom ["MIDDLE", "DOWN"];
+	_unit setUnitPos _stance;
 	(group _unit) setBehaviour "COMBAT";
 	// systemChat "DOBE1";
 	sleep 5;

@@ -58,6 +58,7 @@ class Ai{
 		class taskHunt{};
 		class taskAssault{};
 		class firedNearEH{};
+		class findCover{};
 	};
 };
 class Spawner{
