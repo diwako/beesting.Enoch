@@ -4,6 +4,8 @@ private _goggle = goggles _man;
 
 [_man, 'shut_up'] call ace_common_fnc_muteUnit;
 
+private _hasAcre = isClass (configFile >> "CfgPatches" >> "acre_main");
+
 removeAllWeapons _man;
 removeAllItems _man;
 removeAllAssignedItems _man;
@@ -27,26 +29,8 @@ private _type = typeOf _man;
 //if(_side == resistance) exitWith {
 //};
 
-// [{
-// 	params["_unit"];
-// 	_unit removeAllEventHandlers "HandleDamage";
-
-// 	_unit addEventHandler ["HandleDamage", {
-// 		params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-// 		private _ret = _unit getHit _selection;
-// 		if (_selection == "") then {
-// 			_ret = damage _unit;
-// 		};
-// 		// Handle falling damage
-// 		if (((vehicle _unit) != _unit ) || {!((_source == _unit) || {isNull _source}) || {(_projectile != "")}}) then {
-// 			_ret = _this call ace_medical_fnc_handleDamage;
-// 		};
-// 		_ret
-// 	}];
-// },[_man],2] call CBA_fnc_waitAndExecute;
-
-if(_side == civilian) exitWith {
-};
+// if(_side == civilian) exitWith {
+// };
 
 if(_side == west) exitWith {
 	private _noDLC = getDLCs 2;
@@ -188,7 +172,11 @@ if(_side == west) exitWith {
 
 	//Add radios and basic first aid to everyone (radios only to leader)
 	if (_type == "B_officer_F" || {_type == "B_Soldier_SL_F" || {_type == "B_Soldier_TL_F"}}) then {
-		_man addItemToUniform "ACRE_SEM52SL";
+		if (_hasAcre) then {
+			_man addItemToUniform "ACRE_SEM52SL";
+		} else {
+			_man linkItem "TFAR_rf7800str";
+		};
 		_man addItemToUniform "ACE_microDAGR";
 	} else {
 		if (10 > random 100) then {_man addItemToUniform "ACE_microDAGR";};	
@@ -199,7 +187,11 @@ if(_side == west) exitWith {
 		_man forceAddUniform selectRandom ["U_C_IDAP_Man_Jeans_F", "U_C_IDAP_Man_TeeShorts_F"];
 		_man addVest "V_Rangemaster_belt";
 		_man addHeadgear selectRandom ["H_Hat_Safari_olive_F", "H_Hat_Safari_sand_F"];
-		_man addItemToUniform "ACRE_SEM52SL";
+		if (_hasAcre) then {
+			_man addItemToUniform "ACRE_SEM52SL";
+		} else {
+			_man linkItem "TFAR_rf7800str";
+		};
 		_man addItemToUniform "ACE_microDAGR";
 	};
 
@@ -223,7 +215,10 @@ if(_side == west) exitWith {
 		for "_i" from 1 to 10 do {_man addItemToBackpack "ACE_epinephrine";};
 		for "_i" from 1 to 6 do {_man addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 5 do {_man addItemToBackpack "ACE_salineIV";};
+		if (isClass (configFile >> "CfgPatches" >> "GRAD_alk")) then {
+			_man addItemToBackpack "GRAD_ALK";
+		};
 	};
 
-	_man addItemToBackpack selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
+	_man addItem selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
 };

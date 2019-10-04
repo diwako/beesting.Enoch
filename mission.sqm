@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2412;
+		nextID=2414;
 	};
 	class MarkerIDProvider
 	{
@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=820;
+		nextID=830;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5177};
+		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,-0};
@@ -286,7 +286,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
@@ -490,7 +490,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=155;
+		items=156;
 		class Item0
 		{
 			dataType="Layer";
@@ -6515,8 +6515,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10919.967,176.74423,4106.7534};
-				angles[]={0.038379833,4.5939512,0.011214594};
+				position[]={10916.117,176.105,4119.3911};
+				angles[]={0.041577213,4.5939512,6.2815661};
 			};
 			side="Empty";
 			flags=4;
@@ -6526,7 +6526,7 @@ class Mission
 			};
 			id=1038;
 			type="DeconShower_01_F";
-			atlOffset=0.022460938;
+			atlOffset=-0.00012207031;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -12695,7 +12695,7 @@ class Mission
 					};
 					id=2386;
 					type="CBA_BuildingPos";
-					atlOffset=0.042709351;
+					atlOffset=0.042999268;
 				};
 				class Item13
 				{
@@ -12985,6 +12985,65 @@ class Mission
 			type="hd_warning";
 			id=2411;
 			atlOffset=0.00019836426;
+		};
+		class Item155
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11512.337,161.05652,4653.8013};
+				angles[]={-0,4.5939512,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=2413;
+			type="DeconShower_01_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Decon_Shower_DisableUserActions";
+					expression="if(_value)then{_this setVariable ['bin_deconshower_disableAction',true]};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="Decon_Shower";
+					expression="if(_value)then{[_this,1.5,9] spawn bin_fnc_deconShowerAnim;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 };
