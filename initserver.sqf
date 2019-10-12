@@ -205,8 +205,11 @@ diw_genericLoot = [
     ["ACE_packingBandage","ACE_elasticBandage","ACE_packingBandage","ACE_elasticBandage"],
     ["ACE_packingBandage","ACE_elasticBandage","ACE_morphine"],
     ["ACE_packingBandage","ACE_elasticBandage"],
+    ["ACE_fieldDressing","ACE_elasticBandage"],
+    ["ACE_fieldDressing","ACE_fieldDressing"],
     ["ACE_morphine","ACE_morphine","ACE_epinephrine"],
     ["ACE_morphine","ACE_morphine"],
+    ["ACE_tourniquet","ACE_fieldDressing"],
     ["ACE_Can_Franta","ACE_Can_RedGull"],
     ["ACE_Can_Franta"],
     ["ACE_Can_RedGull"],
@@ -216,7 +219,9 @@ diw_genericLoot = [
     ["ACE_WaterBottle"],
     ["ACE_WaterBottle","ACE_WaterBottle"],
     ["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
-    ["30Rnd_762x39_AK12_Mag_F","30Rnd_762x39_AK12_Mag_F"],
+    ["2Rnd_12Gauge_Slug","2Rnd_12Gauge_Slug","2Rnd_12Gauge_Slug"],
+    ["30Rnd_9x21_Mag","30Rnd_9x21_Mag"],
+    ["30Rnd_762x39_AK12_Mag_F"],
     // ["75Rnd_762x39_Mag_F","75Rnd_762x39_Mag_F"],
     ["ACE_WaterBottle_Half"]
 ];

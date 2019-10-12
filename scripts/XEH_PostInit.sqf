@@ -19,8 +19,9 @@ player addEventHandler ["Fired", {
         private _idx = [blufor, opfor, independent, civilian] find side player;
         if (_idx == -1) exitWith {};
 
-        private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
-        if ((_this select 0) distance _mrk < 80) then {
+        private _mrk = markerPos "start_pos";
+        // private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
+        if ((_this select 0) distance _mrk < 150) then {
             [_proj] call ace_frag_fnc_addBlackList;
             deleteVehicle _proj;
             titleText ["G IS FOR GRENADES", "PLAIN", 2];

@@ -47,7 +47,7 @@ if (typeOf player == "B_Survivor_F" || {getPlayerUID player isEqualTo "_SP_PLAYE
         [player, true] remoteExec ["hideObjectGlobal", 2];
     }];
 } else {
- //   disableRemoteSensors true;
+   disableRemoteSensors true;
 };
 
 diw_camoCoef = [0.35,0.5,0.6] select diw_difficulty;

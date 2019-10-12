@@ -8,19 +8,19 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2414;
+		nextID=2416;
 	};
 	class MarkerIDProvider
 	{
-		nextID=54;
+		nextID=63;
 	};
 	class LayerIndexProvider
 	{
-		nextID=830;
+		nextID=850;
 	};
 	class Camera
 	{
-		pos[]={7642,99.32,5187};
+		pos[]={7641,99.32,5186};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,-0};
@@ -286,7 +286,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category1
+	class Category0
 	{
 		name="Scenario";
 		class Attribute0
@@ -490,7 +490,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=156;
+		items=158;
 		class Item0
 		{
 			dataType="Layer";
@@ -12992,7 +12992,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11512.337,161.05652,4653.8013};
-				angles[]={-0,4.5939512,0};
+				angles[]={0,4.5939512,0};
 			};
 			side="Empty";
 			flags=4;
@@ -13044,6 +13044,29 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item156
+		{
+			dataType="Trigger";
+			position[]={7639.8599,74.347664,5197.1079};
+			class Attributes
+			{
+				condition="call{this && {(vehicle ace_player) in thisList}}";
+				onDeactivation="call{ace_player setVariable[""acex_field_rations_thirst"", 0, true]; " \n "ace_player setVariable[""acex_field_rations_hunger"", 0, true];}";
+				repeatable=1;
+				activationBy="ANYPLAYER";
+			};
+			id=2414;
+			type="EmptyDetectorAreaR50";
+		};
+		class Item157
+		{
+			dataType="Marker";
+			position[]={7643.9922,74.32,5206.188};
+			name="start_pos";
+			type="Empty";
+			id=2415;
+			atlOffset=0.00049591064;
 		};
 	};
 };

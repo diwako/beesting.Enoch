@@ -16,4 +16,8 @@ _unit setDir _dir;
     _unit setVariable [_x#0, _x#1, true];
 } forEach _variables;
 
+if ((_unit distance2D (markerPos "respawn")) < 250) then {
+    [true] call ace_spectator_fnc_setSpectator;
+};
+
 diw_persistence setVariable [_uid, nil, true];
