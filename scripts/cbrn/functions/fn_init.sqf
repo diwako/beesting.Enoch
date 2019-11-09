@@ -235,6 +235,7 @@ player addEventHandler ["Respawn", {
     player setVariable ["cbrn_damage", nil];
     player setVariable ["cbrn_autoDamage", nil];
     player setVariable ["cbrn_stoppedAutoDamage", nil];
+    player getVariable ["cbrn_using_threat_meter", nil];
     player setVariable ["cbrn_oxygen", nil];
 }];
 

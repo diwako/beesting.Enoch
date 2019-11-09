@@ -3,7 +3,7 @@ force acre_sys_core_ts3ChannelSwitch = true;
 force acre_sys_core_interference = false;
 force acre_sys_core_fullDuplex = true;
 force acre_sys_core_ignoreAntennaDirection = true;
-force acre_sys_core_revealToAI = true;
+force acre_sys_core_revealToAI = 0.2;
 force acre_sys_core_terrainLoss = 0.2;
 
 // ACE Misc
@@ -278,3 +278,24 @@ force acex_field_rations_thirstQuenched = 10;
 force acex_field_rations_timeWithoutFood = 6;
 force acex_field_rations_timeWithoutWater = 3;
 force acex_field_rations_hudShowLevel = 60;
+
+// TFAR - Global settings
+force TFAR_AICanHearPlayer = true;
+force TFAR_AICanHearSpeaker = true;
+force TFAR_curatorCamEars = true;
+force TFAR_fullDuplex = true;
+force TFAR_giveLongRangeRadioToGroupLeaders = false;
+force TFAR_giveMicroDagrToSoldier = false;
+force TFAR_givePersonalRadioToRegularSoldier = false;
+force TFAR_SameLRFrequenciesForSide = true;
+force TFAR_SameSRFrequenciesForSide = true;
+force TFAR_setting_DefaultRadio_Rifleman_East = "TFAR_rf7800str";
+force TFAR_setting_DefaultRadio_Rifleman_Independent = "TFAR_rf7800str";
+force TFAR_setting_DefaultRadio_Rifleman_West = "TFAR_rf7800str";
+force TFAR_setting_DefaultRadio_Personal_east = "TFAR_rf7800str";
+force TFAR_setting_DefaultRadio_Personal_Independent = "TFAR_rf7800str";
+force TFAR_setting_DefaultRadio_Personal_West = "TFAR_rf7800str";
+force TFAR_spectatorCanHearEnemyUnits = true;
+force TFAR_spectatorCanHearEnemyUnits = true;
+force TFAR_spectatorCanHearFriendlies = true;
+force TFAR_voiceCone = true;

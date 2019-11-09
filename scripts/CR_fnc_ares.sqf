@@ -229,6 +229,9 @@
 
   private _code = {
     [false] call ace_spectator_fnc_setSpectator;
+    if !(isnil 'TFAR_fnc_forceSpectator') then {
+      [player, false] call TFAR_fnc_forceSpectator;
+    };
     jrm_moveInCargoWait = CBA_missionTime + 6;
     [{
       params ["_args", "_id"];
@@ -264,4 +267,63 @@
   if !(isPlayer _dude) then {
     _dude spawn {sleep 0.5; _this setDamage 1};
   };
+}] call zen_custom_modules_fnc_register;
+
+if (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
+  private _action = ["diw_tfarZeusJoin","Join spectator","",{
+    [player, true] call TFAR_fnc_forceSpectator;
+  },{!(player getVariable ["TFAR_forceSpectator", false])}] call ace_interact_menu_fnc_createAction;
+  [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
+  _action = ["diw_tfarZeusLeave","Leave spectator","",{
+    [player, false] call TFAR_fnc_forceSpectator;
+  },{player getVariable ["TFAR_forceSpectator", false]}] call ace_interact_menu_fnc_createAction;
+  [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
+};
+
+["Mission", "End Mission (COOP)", {
+  private _endings = [];
+  private _usedClasses= [];
+
+  private _missionEndings = "true" configClasses (getMissionConfig "CfgDebriefing");
+  private _addonEndings = "true" configClasses (configFile >> "CfgDebriefing");
+
+  private _add = {
+    params [["_config", configNull]];
+    if (isNull _config) exitWith {};
+
+    private _cfgName = configName _config;
+    if !((tolower _cfgName) in _usedClasses) then {
+      private _title = getText (_config >> "title");
+      if (_title isEqualTo "") exitWith {};
+
+      private _extra = getText (_config >> "subtitle");
+      private _str = format ['(%1) "%2" %3', _cfgName, _title, ["", " - " + _extra] select (count _extra > 0)];
+
+      _endings pushBack [_cfgName, _str];
+      _usedClasses pushBack (tolower _cfgName);
+    };
+  };
+
+  // add all mission endings first
+  {_x call _add} forEach _missionEndings;
+
+  _addonEndings = _addonEndings select {
+    private _name = configName _x;
+    (_name select [0, 8] != "moduleMP" &&
+      {_name select [0,5] != "CPEnd"} &&
+      {!(toUpper _name isEqualTo _name)})
+  };
+
+  {_x call _add} forEach _addonEndings;
+
+  ["End Mission", [
+      ["COMBO", "Ending", [_endings apply {_x select 0}, _endings apply {[_x select 1, "", "", [1,1,1,1]]}, 0]],
+      ["CHECKBOX", "Victory", true]
+    ],
+    {
+      params ["_dialog"];
+      _dialog params ["_end", "_victory"];
+      [_end, _victory] remoteExec ["BIS_fnc_endMission"];
+    }
+  ] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;

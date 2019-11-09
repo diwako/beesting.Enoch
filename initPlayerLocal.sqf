@@ -17,7 +17,13 @@ if (!isMultiplayer) then {
 };
 
 // if (typeOf player == "B_Survivor_F" || getPlayerUID player in ["_SP_PLAYER_", "76561197980328722", "76561197997590271"]) then {
-if (typeOf player == "B_Survivor_F" || {getPlayerUID player isEqualTo "_SP_PLAYER_"}) then {
+if (typeOf player == "B_Survivor_F" || {typeOf player == "VirtualCurator_F"} || {getPlayerUID player isEqualTo "_SP_PLAYER_"}) then {
+    TFAR_setting_DefaultRadio_Rifleman_East = "TFAR_rf7800str";
+    TFAR_setting_DefaultRadio_Rifleman_Independent = "TFAR_rf7800str";
+    TFAR_setting_DefaultRadio_Rifleman_West = "TFAR_rf7800str";
+    TFAR_setting_DefaultRadio_Personal_east = "TFAR_rf7800str";
+    TFAR_setting_DefaultRadio_Personal_Independent = "TFAR_rf7800str";
+    TFAR_setting_DefaultRadio_Personal_West = "TFAR_rf7800str";
     [{
         [player] call zeus_fnc_createDynamicZeus;
         if (isMultiplayer) then {
@@ -54,6 +60,11 @@ diw_camoCoef = [0.35,0.5,0.6] select diw_difficulty;
 
 player setUnitTrait ["camouflageCoef", diw_camoCoef];
 player addEventHandler ["Respawn", {
+    if !(isnil 'TFAR_fnc_forceSpectator') then {
+        [{
+            [player, true] call TFAR_fnc_forceSpectator;
+        }, [], 1] call cba_fnc_waitAndExecute;
+    };
     acex_field_rations_timeWithoutWater_old = acex_field_rations_timeWithoutWater;
     acex_field_rations_timeWithoutWater = 9999999;
     player setUnitTrait ["camouflageCoef", diw_camoCoef];
@@ -378,11 +389,12 @@ if (alive (missionNamespace getVariable ["oxygen_box", objNull])) then {
     }];
 };
 
-// execVM "furniture\out.sqf"
-
 player addEventHandler ["Killed", {
     params ["_unit"];
     playSound "gameover";
+    if !(isnil 'TFAR_fnc_forceSpectator') then {
+        [_unit, true] call TFAR_fnc_forceSpectator;
+    };
     [] spawn {
         sleep 5;
         [parseText "<t font='PuristaBold' align='center' size='2' valign='middle'>You are dead</t>", [0,0.5,1,1], [10,10], 11, 5, 0] spawn BIS_fnc_textTiles;
@@ -402,18 +414,3 @@ player addEventHandler ["Killed", {
         camDestroy _cam;
     };
 }];
-
-// [{!isNil 'cbrn_localZones'},{
-//     private _trg = createTrigger ["EmptyDetector", [7635.46,5202.32,0], false];
-//     _trg setVariable ["cbrn_zone", true];
-//     _trg enableDynamicSimulation false;
-//     _trg setVariable ["cbrn_active", true];
-//     _trg setTriggerArea [250, 250, 0, false, 250];
-//     _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-//     _trg setTriggerStatements ["thisTrigger getVariable ['cbrn_active',false] && {this && {(vehicle ace_player) in thisList}}", 'truck_particle = "#particlesource" createVehicleLocal [0,0,0];truck_particle setPosWorld [7635.46,5202.32,75.7438];truck_particle setParticleClass "SmallWreckSmoke";', "deleteVehicle truck_particle"];
-//     cbrn_localZones pushBack _trg;
-// },[]] call CBA_fnc_waitUntilAndExecute;
-
-// type = "SmokeWreck1";
-// type = "WeaponWreckSmoke";
-// type = "SmallWreckSmoke";

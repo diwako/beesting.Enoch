@@ -67,6 +67,9 @@ if (!isNil "_pos") then {
     // ace spectator handles the teleport
     // [false] call respawn_fnc_spectate;
     [false] call ace_spectator_fnc_setSpectator;
+    if !(isnil 'TFAR_fnc_forceSpectator') then {
+      [player, false] call TFAR_fnc_forceSpectator;
+    };
   };
 };
 
