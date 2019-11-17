@@ -1,5 +1,5 @@
 if !(isServer) exitWith {};
-if (time < 30) exitWith {};
+if (isMultiplayer && {time < 30}) exitWith {};
 params ["_unit", "_uid"];
 
 // if !(isPlayer _unit) exitWith {};
@@ -9,39 +9,41 @@ private _pos = getPosWorld _unit;
 private _loadout = getUnitLoadout _unit;
 private _dir = getDirVisual _unit;
 
-private _fnc_sanatize = {
-    private _splt = [];
-    private _item = "";
-    {
-        _item = _x # 0;
-        if((_item select [0, 4]) == "ACRE") then {
-            _splt = _item splitString "_ID";
-            if (count _splt > 1) then {
-                _this set [_forEachIndex, [format ["%1_%2",_splt # 0, _splt # 1], 1]];
+if (isClass (configFile >> "CfgPatches" >> "acre_main")) then {
+    private _fnc_sanatize = {
+        private _splt = [];
+        private _item = "";
+        {
+            _item = _x # 0;
+            if((_item select [0, 4]) == "ACRE") then {
+                _splt = _item splitString "_ID";
+                if (count _splt > 1) then {
+                    _this set [_forEachIndex, [format ["%1_%2",_splt # 0, _splt # 1], 1]];
+                };
             };
-        };
-    } forEach _this;
-};
-
-// sanatize unitform
-if !((_loadout # 3) isEqualTo []) then {
-    (_loadout # 3 # 1) call _fnc_sanatize;
-};
-// sanatize vest
-if !((_loadout # 4) isEqualTo []) then {
-    (_loadout # 4 # 1) call _fnc_sanatize;
-};
-// sanatize backpack
-if !((_loadout # 5) isEqualTo []) then {
-    (_loadout # 5 # 1) call _fnc_sanatize;
-};
-
-//sanatize assigned items
-{
-    if (_x == "ItemRadioAcreFlagged") then {
-        (_loadout # 9) set [_forEachIndex, ""];
+        } forEach _this;
     };
-} forEach (_loadout # 9);
+
+    // sanatize unitform
+    if !((_loadout # 3) isEqualTo []) then {
+        (_loadout # 3 # 1) call _fnc_sanatize;
+    };
+    // sanatize vest
+    if !((_loadout # 4) isEqualTo []) then {
+        (_loadout # 4 # 1) call _fnc_sanatize;
+    };
+    // sanatize backpack
+    if !((_loadout # 5) isEqualTo []) then {
+        (_loadout # 5 # 1) call _fnc_sanatize;
+    };
+
+    //sanatize assigned items
+    {
+        if (_x == "ItemRadioAcreFlagged") then {
+            (_loadout # 9) set [_forEachIndex, ""];
+        };
+    } forEach (_loadout # 9);
+};
 
 //various variables
 private _variables = [];

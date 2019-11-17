@@ -6,7 +6,7 @@ class Header
 };
 disabledAI = 1;
 
-#define NAME "Bee Sting v8"
+#define NAME "Bee Sting v8.1"
 
 OnLoadName = NAME;// Mission name (short)
 onLoadMission="Why does this air make my skin all bubbly?"; // Longer description
