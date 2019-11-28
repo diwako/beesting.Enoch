@@ -54,6 +54,12 @@ if (typeOf player == "B_Survivor_F" || {typeOf player == "VirtualCurator_F"} || 
     }];
 } else {
    disableRemoteSensors true;
+    if (typeOf player == "ace_spectator_virtual") then {
+        if (!(isnil 'TFAR_fnc_forceSpectator')) then {
+            [player, true] call TFAR_fnc_forceSpectator;
+        };
+        player allowDamage false;
+    };
 };
 
 diw_camoCoef = [0.35,0.5,0.6] select diw_difficulty;
