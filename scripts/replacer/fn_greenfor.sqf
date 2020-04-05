@@ -53,3 +53,5 @@ if (20 > random 100) then {_man addItem "SmokeShell"};
 
 //apply some other AI suff
 ["lmf_ai_listener", [_man]] call CBA_fnc_localEvent;
+
+_man setVariable ["acex_killtracker_aiName", "Looter", true];

@@ -76,41 +76,44 @@ force ace_markers_movableMarkersEnabled = true;
 force ace_markers_moveRestriction = 3;
 
 // ACE Medical
-force ace_medical_blood_enabledFor = 2;
-force ace_medical_level = 2;
-force ace_medical_medicSetting = 0;
-force ace_medical_increaseTrainingInLocations = true;
-force ace_medical_enableFor = 0;
-force ace_medical_enableOverdosing = false;
-force ace_medical_bleedingCoefficient = 1;
-force ace_medical_painCoefficient = 1;
-force ace_medical_enableAdvancedWounds = false;
-force ace_medical_enableVehicleCrashes = true;
-force ace_medical_enableScreams = true;
 force ace_medical_playerDamageThreshold = 1;
 force ace_medical_AIDamageThreshold = 1;
-force ace_medical_enableUnconsciousnessAI = 0;
-force ace_medical_remoteControlledAI = false;
-force ace_medical_preventInstaDeath = true;
+force ace_medical_fractures = 1;
+force ace_medical_fractureChance = 0.2;
 
-force ace_medical_enableRevive = 0;
-force ace_medical_maxReviveTime = 600;
-force ace_medical_amountOfReviveLives = -1;
-force ace_medical_allowDeadBodyMovement = true;
-force ace_medical_allowLitterCreation = true;
-force ace_medical_litterSimulationDetail = 2;
-force ace_medical_litterCleanUpDelay = 300;
-force ace_medical_medicSetting_basicEpi = 0;
-force ace_medical_uselocation_basicepi = 0;
-force ace_medical_keepLocalSettingsSynced = true;
-force ace_medical_healHitPointAfterAdvBandage = true;
-force ace_medical_painIsOnlySuppressed = false;
-force ace_medical_allowUnconsciousAnimationOnTreatment = true;
-force ace_medical_moveUnitsFromGroupOnUnconscious = false;
-force ace_medical_delayUnconCaptive = 2;
-force ace_medical_ai_enabledFor = 2;
-force ace_medical_menu_allow = 1;
-force ace_medical_menu_maxRange = 5;
+force ace_medical_treatment_advancedBandages = 0;
+force ace_medical_treatment_advancedMedication = true;
+force ace_medical_treatment_woundReopening = false;
+
+force ace_medical_ai_enabledFor = 0; // no one
+force ace_medical_blood_enabledFor = 2; // blood drops are players only
+force ace_medical_fatalDamageSource = 1; // trauma
+force ace_medical_fractures = 0; // enable fractures
+force ace_medical_gui_enableMedicalMenu = 1;
+force ace_medical_gui_maxDistance = 5;
+force ace_medical_gui_openAfterTreatment = true;
+force ace_medical_ivFlowRate = 3.5;
+force ace_medical_limping = 1; // limp on open wounds
+force ace_medical_spontaneousWakeUpChance = 1; // boosted wake up chance
+force ace_medical_spontaneousWakeUpEpinephrineBoost = 10; // epi boost on wake up chance
+force ace_medical_statemachine_AIUnconsciousness = false; // disallow AI to be unconscious
+force ace_medical_statemachine_cardiacArrestTime = 900; // 15 minutes
+force ace_medical_statemachine_fatalInjuriesAI = 0; // AI can die any time
+force ace_medical_statemachine_fatalInjuriesPlayer = 1; // players can only die during cardiac arrest
+force ace_medical_treatment_advancedDiagnose = true;
+force ace_medical_treatment_medicIV = 0; // anyone can give blood
+force ace_medical_treatment_allowSelfIV = 1; // allow giving IV to yourself
+force ace_medical_treatment_allowSharedEquipment = 1; // use medics stuff first
+force ace_medical_treatment_clearTraumaAfterBandage = true; // clear trauma on bandage
+force ace_medical_treatment_consumePAK = 0; // do not consume pak
+force ace_medical_treatment_convertItems = 0; // convert vanilla items to ace medical
+force ace_medical_treatment_cprSuccessChance = 0.40; // chance to stabilize heart rate
+force ace_medical_treatment_locationEpinephrine = 0; // allow everywhere
+force ace_medical_treatment_locationPAK = 0; // allow everywhere
+force ace_medical_treatment_medicEpinephrine = 0; // allow for everyone
+force ace_medical_treatment_medicPAK = 1; // only allow for medics
+force ace_medical_painCoefficient = 0.8; // pain coefficient
+force ace_medical_bleedingCoefficient = 0.5; // bleeding coeficient
 
 // ACE MK6 Mortar
 force ace_mk6mortar_airResistanceEnabled = false;
@@ -248,12 +251,6 @@ force acex_headless_delay = 60;
 force acex_headless_endMission = 2;
 force acex_headless_log = false;
 
-// Ragdolling
-force diwako_ragdoll_ragdolling = true;
-force diwako_ragdoll_ai = true;
-force diwako_ragdoll_server_only = false;
-force fpa_common_ragdoll_ai = true;
-force fpa_common_ragdolling = true;
 
 // Enhanced Movement
 force EM_ALLOW_AIR_CLIMB = true;
@@ -299,3 +296,10 @@ force TFAR_spectatorCanHearEnemyUnits = true;
 force TFAR_spectatorCanHearEnemyUnits = true;
 force TFAR_spectatorCanHearFriendlies = true;
 force TFAR_voiceCone = true;
+
+// LAMBS Danger
+force lambs_danger_CQB_range = 25;
+force lambs_danger_disableAIFleeing = true;
+force lambs_danger_disableAIGestures = true;
+force lambs_danger_minSuppression_range = 10;
+force lambs_danger_panic_chance = 1;

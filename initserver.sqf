@@ -205,6 +205,9 @@ diw_genericLoot = [
     ["ACE_packingBandage","ACE_elasticBandage","ACE_packingBandage","ACE_elasticBandage"],
     ["ACE_packingBandage","ACE_elasticBandage","ACE_morphine"],
     ["ACE_packingBandage","ACE_elasticBandage"],
+    ["ACE_packingBandage","ACE_elasticBandage","ACE_splint"],
+    ["ACE_splint","ACE_splint"],
+    ["ACE_salineIV"],
     ["ACE_fieldDressing","ACE_elasticBandage"],
     ["ACE_fieldDressing","ACE_fieldDressing"],
     ["ACE_morphine","ACE_morphine","ACE_epinephrine"],
@@ -273,7 +276,10 @@ addMissionEventHandler ["HandleDisconnect", {
     _unit setVariable ["second_primary_info", nil, true];
 
     // We don't want the unit to live on as AI
-    false
+    [{
+        deleteVehicle _this
+    }, _unit, 1] call CBA_fnc_waitAndExecute;
+    true
 }];
 
 publicVariable "van_van";

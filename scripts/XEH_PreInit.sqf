@@ -157,6 +157,10 @@
 	_this call mission_fnc_setupHospital;
 }] call CBA_fnc_addEventHandler;
 
+["diw_setupRaiderPos", {
+	_this call mission_fnc_setUpRaiderPos;
+}] call CBA_fnc_addEventHandler;
+
 if !(hasInterface) exitWith {};
 
 ["diw_intro",{

@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2418;
+		nextID=2425;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=930;
+		nextID=960;
 	};
 	class Camera
 	{
-		pos[]={7641,99.32,5186};
+		pos[]={7642,99.32,5187};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -498,7 +498,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=160;
+		items=165;
 		class Item0
 		{
 			dataType="Layer";
@@ -692,7 +692,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -10037,7 +10037,7 @@ class Mission
 					};
 					id=2045;
 					type="ACE_Item_Vector";
-					atlOffset=0.64257813;
+					atlOffset=1.1049957;
 				};
 				class Item13
 				{
@@ -10166,7 +10166,7 @@ class Mission
 				};
 			};
 			id=2042;
-			atlOffset=-16.235596;
+			atlOffset=-16.206696;
 		};
 		class Item98
 		{
@@ -13088,46 +13088,6 @@ class Mission
 			description="Virtual Zeus@Virtual Heat Masters";
 			id=2416;
 			type="VirtualCurator_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="TFAR_freq_lr";
-					expression="if !(_value isEqualTo []) then {_value=[str _value,9,87,30,10] call tfar_fnc_parseFrequenciesInput;_this setVariable ['TFAR_freq_lr',_value,true];}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="TFAR_freq_sr";
-					expression="if !(_value isEqualTo []) then {_value=[str _value,8,512,30,10] call tfar_fnc_parseFrequenciesInput;_this setVariable ['TFAR_freq_sr',_value,true];}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-						};
-					};
-				};
-				nAttributes=2;
-			};
 		};
 		class Item159
 		{
@@ -13141,46 +13101,86 @@ class Mission
 			description="Virtual Zeus@Virtual Heat Masters";
 			id=2417;
 			type="VirtualCurator_F";
-			class CustomAttributes
+		};
+		class Item160
+		{
+			dataType="Object";
+			class PositionInfo
 			{
-				class Attribute0
-				{
-					property="TFAR_freq_lr";
-					expression="if !(_value isEqualTo []) then {_value=[str _value,9,87,30,10] call tfar_fnc_parseFrequenciesInput;_this setVariable ['TFAR_freq_lr',_value,true];}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="TFAR_freq_sr";
-					expression="if !(_value isEqualTo []) then {_value=[str _value,8,512,30,10] call tfar_fnc_parseFrequenciesInput;_this setVariable ['TFAR_freq_sr',_value,true];}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-						};
-					};
-				};
-				nAttributes=2;
+				position[]={9049.0264,175.26842,4423.4165};
+				angles[]={0,4.8520155,0};
 			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=2419;
+			type="CBA_BuildingPos";
+		};
+		class Item161
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9053.418,175.26842,4423.8071};
+				angles[]={0,3.2637658,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=2420;
+			type="CBA_BuildingPos";
+		};
+		class Item162
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9051.4922,175.26842,4422.3867};
+				angles[]={0,2.146755,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=2421;
+			type="CBA_BuildingPos";
+		};
+		class Item163
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9050.7881,172.55542,4422.519};
+				angles[]={0,2.8797932,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=2422;
+			type="CBA_BuildingPos";
+		};
+		class Item164
+		{
+			dataType="Trigger";
+			position[]={9029.9199,173.28101,4438.2119};
+			class Attributes
+			{
+				condition="call{this}";
+				onActivation="call{[] call mission_fnc_setUpRaiderPos; deleteVehicle thisTrigger,}";
+				sizeA=250;
+				sizeB=250;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=2424;
+			type="EmptyDetectorAreaR250";
 		};
 	};
 };

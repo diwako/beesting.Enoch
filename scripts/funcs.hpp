@@ -92,6 +92,7 @@ class mission{
 		class ambientFlyby{};
 		class setMissionParams{};
 		class setupHospital{};
+		class setUpRaiderPos{};
 		class ripTruck{};
 	};
 };

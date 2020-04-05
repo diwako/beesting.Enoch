@@ -56,7 +56,9 @@ if(_side == west) exitWith {
     //Doc
     if (_type == "B_medic_F") then {
         _man forceAddUniform "U_Marshal";
-        _man addVest "V_Rangemaster_belt";
+        // _man addVest "V_Rangemaster_belt";
+        // _man addVest "V_HarnessOGL_gry";
+        _man addVest "V_SmershVest_01_F";
         if (_ownsLow) then {
             _man addHeadgear "H_PASGT_basic_blue_F";
         } else {
@@ -219,16 +221,14 @@ if(_side == west) exitWith {
         _man addBackpack selectRandom _backpacks;
     } else {
         _man addBackpack selectRandom ["B_Kitbag_cbr","B_Kitbag_rgr","B_Kitbag_mcamo","B_Kitbag_sgg","B_Kitbag_tan"];
-        _man addItemToBackpack "ACE_personalAidKit";
-        for "_i" from 1 to 25 do {_man addItemToBackpack "ACE_packingBandage";};
-        for "_i" from 1 to 25 do {_man addItemToBackpack "ACE_elasticBandage";};
-        for "_i" from 1 to 10 do {_man addItemToBackpack "ACE_morphine";};
-        for "_i" from 1 to 10 do {_man addItemToBackpack "ACE_epinephrine";};
-        for "_i" from 1 to 6 do {_man addItemToBackpack "ACE_tourniquet";};
-        for "_i" from 1 to 5 do {_man addItemToBackpack "ACE_salineIV";};
-        if (isClass (configFile >> "CfgPatches" >> "GRAD_alk")) then {
-            _man addItemToBackpack "GRAD_ALK";
-        };
+        // _man addItemToBackpack "ACE_personalAidKit";
+        for "_i" from 1 to 25 do {_man addItem "ACE_packingBandage";};
+        for "_i" from 1 to 25 do {_man addItem "ACE_elasticBandage";};
+        for "_i" from 1 to 10 do {_man addItem "ACE_morphine";};
+        for "_i" from 1 to 10 do {_man addItem "ACE_epinephrine";};
+        for "_i" from 1 to 6 do {_man addItem "ACE_tourniquet";};
+        for "_i" from 1 to 7 do {_man addItemToBackpack "ACE_salineIV";};
+        for "_i" from 1 to 10 do {_man addItem "ACE_splint";};
     };
 
     _man addItem selectRandom ["G_AirPurifyingRespirator_02_black_F","G_AirPurifyingRespirator_02_olive_F","G_AirPurifyingRespirator_02_sand_F","G_AirPurifyingRespirator_01_F","G_RegulatorMask_F"];
