@@ -76,8 +76,8 @@ force ace_markers_movableMarkersEnabled = true;
 force ace_markers_moveRestriction = 3;
 
 // ACE Medical
-force ace_medical_playerDamageThreshold = 1;
-force ace_medical_AIDamageThreshold = 1;
+force ace_medical_playerDamageThreshold = 2;
+force ace_medical_AIDamageThreshold = 0.5;
 force ace_medical_fractures = 1;
 force ace_medical_fractureChance = 0.2;
 

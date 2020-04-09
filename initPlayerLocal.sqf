@@ -199,18 +199,18 @@ if (CBA_missionTime > 5*60) then {
         };
         diw_pissfilter ppEffectEnable true;
     };
-    if(isNil "diw_grainfilter") then {
-        private _name = "FilmGrain";
-        private _priority = 400;
-        diw_grainfilter = ppEffectCreate [_name, _priority];
-        while {
-            diw_grainfilter < 0
-        } do {
-            _priority = _priority + 1;
-            diw_grainfilter = ppEffectCreate [_name, _priority];
-        };
-        diw_grainfilter ppEffectEnable true;
-    };
+    // if(isNil "diw_grainfilter") then {
+    //     private _name = "FilmGrain";
+    //     private _priority = 400;
+    //     diw_grainfilter = ppEffectCreate [_name, _priority];
+    //     while {
+    //         diw_grainfilter < 0
+    //     } do {
+    //         _priority = _priority + 1;
+    //         diw_grainfilter = ppEffectCreate [_name, _priority];
+    //     };
+    //     diw_grainfilter ppEffectEnable true;
+    // };
     diw_pissfilter ppEffectAdjust [
         1, // brigthness
         0.95, // contrast
@@ -220,8 +220,8 @@ if (CBA_missionTime > 5*60) then {
         [0.299, 0.587, 0.114, 0] // desaturation
         ];
     diw_pissfilter ppEffectCommit 1;
-    diw_grainfilter ppEffectAdjust [0.1, 2, 0.1, 0.1, 2, true];
-    diw_grainfilter ppEffectCommit 1;
+    // diw_grainfilter ppEffectAdjust [0.1, 2, 0.1, 0.1, 2, true];
+    // diw_grainfilter ppEffectCommit 1;
 };
 
 player addEventHandler ["Hit", {
@@ -420,3 +420,53 @@ player addEventHandler ["Killed", {
         camDestroy _cam;
     };
 }];
+
+
+mission_fnc_mapOverlayCache = [] call CBA_fnc_createNamespace;
+mission_fnc_mapOverlay = {
+    params ["_map"];
+
+    private _ctrlSize = ctrlMapScale _map;
+    _map drawIcon [
+        getMissionPath "map.paa",
+        [1, 1, 1, 1],
+        [10240, 4370, 0],
+        151.04 / _ctrlSize,
+        37.76 / _ctrlSize,
+        0
+    ];
+
+    // {
+    //     if !(markerType _x in ["Empty", "ellipse", "rectangle"]) then {
+    //         private _color = if (markerColor _x in ["", "Default"]) then {
+    //             getArray (configFile >> "CfgMarkers" >> markerType _x >> "color");
+    //         } else {
+    //             getArray (configFile >> "CfgMarkerColors" >> markerColor _x >> "color");
+    //         };
+    //         _color = mission_fnc_mapOverlayCache getVariable [str _color, _color];
+
+    //         if !(_color isEqualTypeAll 0) then {
+    //             private _cacheKey = str _color;
+    //             _color = _color apply { call compile _x };
+    //             mission_fnc_mapOverlayCache setVariable [_cacheKey, _color];
+    //         };
+
+    //         _map drawIcon [
+    //             getText (configFile >> "CfgMarkers" >> markerType _x >> "icon"),
+    //             _color,
+    //             markerPos _x,
+    //             (markerSize _x)#0 * 30,
+    //             (markerSize _x)#1 * 30,
+    //             markerDir _x,
+    //             markerText _x,
+    //             1
+    //         ];
+    //     };
+    // } forEach allMapMarkers;
+};
+
+[{
+    !isNull findDisplay 12
+}, {
+    ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", { call mission_fnc_mapOverlay }]
+}] call CBA_fnc_waitUntilAndExecute;

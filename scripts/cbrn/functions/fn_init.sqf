@@ -16,14 +16,6 @@ cbrn_masks = ["G_AirPurifyingRespirator_02_black_F",
 
 cbrn_threatMeteritem = "ACE_microDAGR";
 
-if (isNil "MISSION_ROOT") then {
-    if(isDedicated) then {
-        MISSION_ROOT = "mpmissions\__CUR_MP." + worldName + "\";
-    } else {
-        MISSION_ROOT = str missionConfigFile select [0, count str missionConfigFile - 15];
-    };
-};
-
 cbrn_maxDamage = 100;
 if (isServer) then {
     cbrn_zoneSimulationRange = 500;
@@ -129,12 +121,11 @@ cbrn_loadouteh = ["cba_events_loadoutEvent",{
     };
 
     private _backPackContainer = backpackContainer _unit;
-    // private _textures = getObjectTextures _backPackContainer;
     if (_unit getVariable ["cbrn_backpack_on", false] && {_unit getVariable ["cbrn_mask_on", false]}) then {
         // add hose
         if !(_backPackContainer getVariable ["cbrn_hose_attached", false]) then {
             _backPackContainer setVariable ["cbrn_hose_attached", true];
-            
+
             if (_goggles isEqualTo "G_RegulatorMask_F") then {
                 _backPackContainer setObjectTextureGlobal [2,"a3\supplies_f_enoch\bags\data\b_cur_01_co.paa"];
             } else {
@@ -171,36 +162,16 @@ _action = ["cbrn_turn_off_oxygen", "Turn off oxygen","",{
 _action = ["cbrn_check_oxygen", "Check remaining oxygen","",{
     [{
         params ["_unit"];
-        private _remaining = (backpackContainer _unit) getVariable ["cbrn_oxygen", cbrn_maxOxygenTime];
-        private _bars = round ((_remaining / cbrn_maxOxygenTime) * 10);
-        if (_bars isEqualTo 0 && {_remaining > 0}) then {
-            _bars = 1;
-        };
-        private _emptyBars = 10 - _bars;
-
-        private _color = [((2 * (1 - _remaining / cbrn_maxOxygenTime)) min 1), ((2 * _remaining / cbrn_maxOxygenTime) min 1), 0];
-
-        private _string = "";
-        for "_a" from 1 to _bars do {
-            _string = _string + "|";
-        };
-        private _text = [_string, _color] call ace_common_fnc_stringToColoredText;
-
-        _string = "";
-        for "_a" from 1 to _emptyBars do {
-            _string = _string + "|";
-        };
-        _text = composeText [_text, [_string, "#808080"] call ace_common_fnc_stringToColoredText];
-
-        private _picture = getText (configFile >> "CfgVehicles" >> (backpack _unit) >> "picture");
-        [_text, _picture] call ace_common_fnc_displayTextPicture;
+        [_unit] call cbrn_fnc_checkOxygen;
     }, [ace_player]] call CBA_fnc_execNextFrame;
 },{
     ace_player getVariable ["cbrn_backpack_on", false];
 },{},[], [0,0,0], 3] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 1, ["ACE_SelfActions","ACE_Equipment"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
+"ChemiCalDetector" cutRsc ["RscWeaponChemicalDetector", "PLAIN", 1, false];
 cbrn_threatPfh = [cbrn_fnc_threatPFH, 0.5, [cba_missiontime]] call CBA_fnc_addPerFrameHandler;
+cbrn_beepPfh = -1;
 
 [{
     private _player = ace_player;
@@ -277,3 +248,70 @@ _action = ["cbrn_turn_off_threatmeter", "Turn off threatmeter","",{
     params ["_shower"];
     [_shower, false] call cbrn_fnc_toggleShower;
 }] call CBA_fnc_addEventhandler;
+if !(isNil "CBA_fnc_addItemContextMenuOption") then {
+    {
+        [_x, "BACKPACK", "Turn on oxygen", nil, nil, [{
+                private _plr = ace_player;
+                private _backpackItem = backpackContainer _plr;
+                !(_plr getVariable ["cbrn_oxygen", false]) && {!isNull _backpackItem && {_plr getVariable ["cbrn_mask_on", false] && {_plr getVariable ["cbrn_backpack_on", false] && {_backpackItem getVariable ["cbrn_air", 100] > 0}}}}
+            }, {
+                private _plr = ace_player;
+                _plr getVariable ["cbrn_backpack_on", false] && {!(_plr getVariable ["cbrn_oxygen", false])}
+            }], {
+            [ace_player] call cbrn_fnc_startOxygen;
+            false
+        }, false] call CBA_fnc_addItemContextMenuOption;
+
+        [_x, "BACKPACK", "Turn off oxygen", nil, nil,
+        [{ace_player getVariable ["cbrn_oxygen", false]}, {ace_player getVariable ["cbrn_oxygen", false]}], {
+            ace_player setVariable ["cbrn_oxygen", false];
+            false
+        }, false] call CBA_fnc_addItemContextMenuOption;
+
+        [_x, "BACKPACK", "Check remaining oxygen", nil, nil,
+        [{true}, {ace_player getVariable ["cbrn_backpack_on", false]}], {
+            [{
+                params ["_unit"];
+                [_unit] call cbrn_fnc_checkOxygen;
+            }, [ace_player]] call CBA_fnc_execNextFrame;
+            false
+        }, false] call CBA_fnc_addItemContextMenuOption;
+    } forEach cbrn_backpacks;
+
+    ["ChemicalDetector_01_watch_F", "WATCH", "Increase volume", nil, nil,
+    [{cbrn_beepVolume < 5},{cbrn_beep}], {
+        cbrn_beepVolume = cbrn_beepVolume + 1;
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+
+    ["ChemicalDetector_01_watch_F", "WATCH", "Decrease volume", nil, nil,
+    [{cbrn_beepVolume > 0},{cbrn_beep}], {
+        cbrn_beepVolume = cbrn_beepVolume - 1;
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+
+    ["ChemicalDetector_01_watch_F", "WATCH", "Turn beeping on", nil, nil,
+    [{!cbrn_beep},{!cbrn_beep}], {
+        cbrn_beep = true;
+        cbrn_beepPfh = [cbrn_fnc_detectorBeepPFH, 0.05, [cba_missiontime]] call CBA_fnc_addPerFrameHandler;
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+
+    ["ChemicalDetector_01_watch_F", "WATCH", "Turn beeping off", nil, nil,
+    [{cbrn_beep},{cbrn_beep}], {
+        cbrn_beep = false;
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+
+    [cbrn_threatMeteritem, "CONTAINER", "Turn on threatmeter", nil, nil,
+    [{!(ace_player getVariable ["cbrn_using_threat_meter", false]) && {ace_player getVariable ["cbrn_hasThreatMeter", false]}},{!(ace_player getVariable ["cbrn_using_threat_meter", false]) && {ace_player getVariable ["cbrn_hasThreatMeter", false]}}], {
+        ace_player setVariable ["cbrn_using_threat_meter", true, true];
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+
+    [cbrn_threatMeteritem, "CONTAINER", "Turn off threatmeter", nil, nil,
+    [{ace_player getVariable ["cbrn_using_threat_meter", false]},{ace_player getVariable ["cbrn_using_threat_meter", false]}], {
+        ace_player setVariable ["cbrn_using_threat_meter", false, true];
+        false
+    }, false] call CBA_fnc_addItemContextMenuOption;
+};

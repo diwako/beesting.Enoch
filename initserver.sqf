@@ -322,3 +322,11 @@ if (isClass(configFile >> "CfgPatches" >> "ace_zeus") && {!ace_zeus_autoAddObjec
     ace_zeus_autoAddObjects = true;
     ["AllVehicles", "InitPost", ace_zeus_fnc_addObjectToCurator, true, [], true] call CBA_fnc_addClassEventHandler;
 };
+
+[] spawn {
+    waitUntil {time > 0.1};
+    "marker_51" setMarkerAlpha 0;
+    "marker_15" setMarkerAlpha 0;
+    "marker_18" setMarkerAlpha 0;
+    "marker_10" setMarkerAlpha 0;
+};

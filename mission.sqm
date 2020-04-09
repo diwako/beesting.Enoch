@@ -8,7 +8,7 @@ class EditorData
 	toggles=545;
 	class ItemIDProvider
 	{
-		nextID=2425;
+		nextID=2426;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=960;
+		nextID=980;
 	};
 	class Camera
 	{
@@ -10016,7 +10016,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="[[[[],[]],[[],[]],[[],[]],[[""B_SCBA_01_F""],[20]]],false]";
+									value="[[[[],[]],[[],[]],[[""ChemicalDetector_01_watch_F""],[1]],[[""B_SCBA_01_F""],[20]]],false]";
 								};
 							};
 						};
@@ -10086,7 +10086,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9856.2695,182.43953,3786.9802};
+						position[]={9856.2695,182.43953,3786.98};
 						angles[]={0,1.5882496,0};
 					};
 					side="Empty";
@@ -10116,7 +10116,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="[[[[],[]],[[],[]],[[],[]],[[""B_SCBA_01_F""],[6]]],false]";
+									value="[[[[],[]],[[],[]],[[""ChemicalDetector_01_watch_F""],[2]],[[""B_SCBA_01_F""],[6]]],false]";
 								};
 							};
 						};
@@ -12907,12 +12907,12 @@ class Mission
 		class Item146
 		{
 			dataType="Marker";
-			position[]={9412.8018,172.29201,4587.106};
+			position[]={9502.208,152.91748,4510.4717};
 			name="marker_53";
 			text="Mines";
 			type="hd_warning";
 			id=2403;
-			atlOffset=0.00019836426;
+			atlOffset=-7.3929291;
 		};
 		class Item147
 		{
